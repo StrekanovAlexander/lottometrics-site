@@ -29,6 +29,7 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-8MCJSXD9GG');
           `}
         </Script>
+        <link rel="icon" href="/favicon.png" type="image/png" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
