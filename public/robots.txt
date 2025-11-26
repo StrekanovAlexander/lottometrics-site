@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://lottometrics.app/sitemap.xml
