@@ -8,6 +8,9 @@ export const metadata = {
     default: 'LottoMetrics',
     template: '%s | LottoMetrics',
   },
+  icons: {
+    icon: '/favicon.png',
+  },
   description: 'Honest lottery analytics and number frequency statistics for players and researchers.',
   keywords: ['lottery analytics', 'number frequency', 'lotto statistics', 'lottery software'],
 };
@@ -29,7 +32,6 @@ export default function RootLayout({ children }) {
             gtag('config', 'G-8MCJSXD9GG');
           `}
         </Script>
-        <link rel="icon" href="/favicon.png" type="image/png" />
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
