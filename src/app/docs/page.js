@@ -90,6 +90,43 @@ export default function Docs() {
     </section>
 
     <section className="mb-8">
+      <h2 className="text-3xl font-semibold text-gray-700 mb-4">Number Rhythm Analysis</h2>
+      <div className="max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Image
+            src="/images/lottometrics-interval-analysis.png"
+            alt="Number Rhythm Analysis"
+            width={600}
+            height={400}
+            className="rounded shadow mx-auto"
+          />
+          <div>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              The <strong>Number Rhythm Analysis</strong> module in LottoMetrics focuses on 
+              the <strong>intervals</strong> between each appearance of a number. Instead of looking only at 
+              absence or frequency, this approach highlights the natural rhythm of draws and shows 
+              how consistently or irregularly specific numbers return in the lottery results.
+            </p>
+            <p className="text-gray-600 leading-relaxed mb-4">
+              By studying intervals, players and analysts can detect repeating cycles, identify 
+              numbers with stable patterns, and spot those with unpredictable behavior. This section 
+              is optimized for clarity and search engines with keywords such as <strong>lottery 
+              rhythm analysis</strong>, <strong>number interval statistics</strong>, 
+              and <strong>draw cycle patterns</strong>. It helps users compare short‑term fluctuations 
+              with long‑term rhythms, offering a deeper perspective on lottery dynamics.
+            </p>
+            <p className="text-gray-600 leading-relaxed">
+              Unlike gaps analysis, which emphasizes absence, rhythm analysis reveals the 
+              <em>timing</em> of returns. It provides a transparent view of how numbers flow through 
+              the draws, empowering users to explore statistical cycles and understand the 
+              underlying tempo of the lottery.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section className="mb-8">
       <h2 className="text-3xl font-semibold text-gray-700 mb-4">Flexible Data Input and Updates</h2>
       <div className="max-w-6xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -126,7 +163,7 @@ export default function Docs() {
         </div>
       </div>
     </section>
-    </>
+  </>
   );
 }
 
