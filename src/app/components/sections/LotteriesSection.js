@@ -36,7 +36,7 @@ export default function LotteriesSection() {
   }
 
   return (
-    <section id="lotteries">
+    <section className="mb-16">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
         {lotteries.map(lottery => (
           <CardCTA key={lottery.id} lottery={lottery} />
