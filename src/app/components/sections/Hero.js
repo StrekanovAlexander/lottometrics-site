@@ -1,7 +1,7 @@
 export default function Hero() {
     return (
         <section className="bg-gray-50 py-10 mb-10">
-            <div className="mx-auto text-center px-6">
+            <div className="mx-auto text-center px-10 mt-8">
                 <h1 className="text-4xl md:text-5xl font-bold mb-6">
                     LottoMetrics - Lottery Analytics Online
                 </h1>

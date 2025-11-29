@@ -11,7 +11,7 @@ export default function Software() {
                 {/* Frequency Analysis */}
                 <div className="bg-white shadow-sm rounded-lg p-6 text-center border border-gray-300 rounded-lg">
                     <h3 className="text-xl font-semibold mb-4">Frequency Analysis</h3>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 text-md">
                         Frequency analysis shows which lottery numbers appear most often across past draws. 
                         This method highlights “hot” and “cold” numbers, helping players identify statistical 
                         trends and make more informed choices. Keywords: lottery frequency analysis, number 
