@@ -1,5 +1,6 @@
 // app/lottery/[slug]/analysis/page.js
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
+import Sidebar from "@/app/components/layout/Sidebar";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -61,22 +62,31 @@ export default async function LotteryAnalysisPage({ params }) {
   const description = data[0]?.description_en;
 
   return (
-    <section className="mx-auto">
-        <Breadcrumbs
-            items={[
-                { label: "Home", href: "/" },
-                { label: "Lotteries", href: "/lotteries" },
-                { label: lotteryName, href: `/lottery/${slug}` },
-                { label: "Analysis" },
-            ]}
-        />
-        <h1 className="text-4xl font-bold mb-6">{lotteryName} Lottery Analysis</h1>
-        <p className="text-lg md:text-xl text-gray-700">
-            {description}
-        </p>
-        <p className="mt-10 text-center">
-            Data coming soon...
-        </p>
-    </section>
+    <>
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Lotteries", href: "/lotteries" },
+          { label: lotteryName, href: `/lottery/${slug}` },
+          { label: "Analysis" },
+        ]}
+      />
+      {/* Header */}
+      <section className="py-8 px-6 border-b border-gray-200 bg-gray-50">
+        <h1 className="text-3xl font-bold text-gray-800">{lotteryName} Lottery Analysis</h1>
+        <p className="text-gray-600">Explore frequency, gaps, and interval statistics for your selected lottery.</p>
+      </section>
+      {/* Container */}  
+      <div className="flex flex-col md:flex-row">
+        {/* Sidebar */}
+        <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
+          <Sidebar />
+        </aside>
+        {/* Main content */}
+        <main className="flex-1 p-8 bg-white rounded-lg shadow-sm">
+          Data coming soon...
+        </main>
+      </div>
+    </>
     );
 }
