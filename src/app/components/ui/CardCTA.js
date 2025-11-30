@@ -4,32 +4,32 @@ import Ball from "./Ball"
 
 export default function CardCTA({ lottery }) {
     return (
-        <div className="bg-white shadow-sm rounded-md px-5 pb-10 text-center border border-gray-300 rounded-lg">
-            <h3 className="text-2xl font-semibold text-gray-800 mb-4 py-3 border-b border-b-gray-300">
-                {lottery.name} ({lottery.iso_code})
-            </h3>
-            <div className="mb-10">
-                <p className="text-gray-700 font-medium mb-6">
-                    <span className="text-gray-500">Last draw results:</span> <span className="font-bold">{formatDate(lottery.lastDrawDate)}</span>
-                </p>
-                {/* Numbers */}
-                <div className="flex justify-center space-x-1 my-4">
-                    {/* Main numbers */}
+        <div className="bg-white shadow-lg rounded-xl overflow-hidden border border-gray-200 w-full">
+            {/* Card Header */}
+            <div className="bg-gray-900 text-white py-3 px-6">
+                <h2 className="text-lg font-bold tracking-wide">{lottery.lotteryName}</h2>
+                <p className="text-sm text-gray-300">{lottery.country} - {lottery.descriptionShortEn}</p>
+            </div>
+            {/* Card Body */}
+            <div className="py-6 px-1 text-center">
+                <p className="text-gray-700 mb-4">Last draw results: {formatDate(lottery.lastDrawDate)}</p>
+                <div className="flex justify-center space-x-1">
                     {lottery.mainNumbers.map(num => (
-                        <Ball num={num} textColor="text-black" />
+                        <Ball num={num} textColor="text-gray-700" bgColor="bg-gray-200" borderColor="border-gray-300" />
                     ))}
-                    {/* Superzahl */}
                     {lottery.extraNumbers.map(num => (
-                        <Ball num={num} textColor="text-red-700" />
+                        <Ball num={num} textColor="text-black" bgColor="bg-gray-200" borderColor="border-gray-400" />
                     ))}
                 </div>
             </div>
-            <Link
-                href={`/lottery/${lottery.slug}/analysis`}
-                className="px-4 py-2 bg-black text-white rounded hover:no-underline hover:shadow-lg"
-            >
-                Analyze Lottery
-            </Link>
-        </div>
+            {/* Card Footer */}
+            <div className="bg-gray-50 border-t border-gray-200 py-4 px-6 text-center">
+                <Link
+                    href={`/lottery/${lottery.slug}/analysis`} 
+                    className="px-4 py-2 bg-black text-white rounded-md hover:bg-gray-800 hover:shadow-md transition">
+                        Analyze Lottery
+                </Link>
+            </div>
+        </div>        
     )
 }

@@ -1,10 +1,7 @@
-export default function Ball({ num, textColor }) {
+export default function Ball({ num, textColor, bgColor, borderColor }) {
     return (
-        <div
-             className={`w-10 h-10 flex items-center justify-center 
-              bg-[url('/images/elements/Lottometrics-3D-Ball-White.png')] 
-              bg-cover bg-center font-semibold ${textColor}`}
-        >           
+        <div className={`w-10 h-10 rounded-full flex items-center   
+          justify-center font-bold border ${borderColor} ${textColor} ${bgColor}`}>
             {num}
         </div>
     )

@@ -1,36 +1,49 @@
-const data = [
-    {id: 0, title: 'Frequency Analysis', text: `Frequency analysis shows which lottery numbers 
-        appear most often across past draws. This method highlights "hot" and "cold" numbers, 
-        helping players identify statistical trends and make more informed choices. 
-        Keywords: lottery frequency analysis, number frequency statistics, hot and cold numbers.`},
-    {id: 1, title: 'Gaps Analysis', text: `Gaps analysis tracks how many draws have passed since a specific 
-        number last appeared. By visualizing these gaps, players can spot overdue numbers and understand the cyclical 
-        nature of lottery results. Keywords: lottery skip analysis, overdue numbers, number cycles.`} ,
-    {id: 2, title: 'Interval Analysis', text: `Interval analysis examines the spacing between occurrences of 
-        numbers in different draws. This approach uncovers patterns in timing and helps forecast possible combinations based 
-        on historical intervals. Keywords: lottery interval analysis, interval statistics, number prediction.
-    `}                 
-];
+import { BarChart3, TrendingUp, Clock } from "lucide-react";
 
-export default function Software() {
+export default function PopularAnalyticsMetods() {
     return (
-        <section className="mt-16">
-            {/* Section Heading */}
-            <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+        <section className="bg-gray-50 border-t border-gray-200 py-16 px-6">
+            {/* Заголовок блока */}
+            <div className="text-center mb-12">
+                <h2 className="text-3xl font-bold text-gray-800 mb-4">
                 Popular Lottery Analytics Methods
-            </h2>
-
-            {/* Analytics Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-                {data.map(el => (
-                    <div key={ el.id } 
-                        className="bg-white shadow-sm rounded-lg px-5 pb-10 text-center border border-gray-300 rounded-lg"
-                    >
-                        <h3 className="text-xl font-semibold mb-4 py-3 border-b border-b-gray-300">{ el.title }</h3> 
-                        <p className="text-gray-600 text-md">{ el.text }</p>       
+                </h2>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                Explore the most common ways to analyze lottery numbers - from frequency to intervals.
+                </p>
+            </div>
+            {/* Карточки */}
+            <div className="grid md:grid-cols-3 gap-8">
+                {/* Frequency */}
+                <div className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-bold hover:bg-gray-300 transition">
+                        <BarChart3 className="w-6 h-6 text-gray-700" />
                     </div>
-                    )) 
-                }
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Frequency Analysis</h3>
+                    <p className="text-gray-600 text-sm">
+                        See how often each number appears in past draws.
+                    </p>
+                </div>
+                {/* Gaps */}
+                <div className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-bold hover:bg-gray-300 transition">
+                        <TrendingUp className="w-6 h-6 text-gray-700" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Gap Analysis</h3>
+                    <p className="text-gray-600 text-sm">
+                        Discover the spacing between number appearances.
+                    </p>
+                </div>
+                {/* Intervals */}
+                <div className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
+                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-bold hover:bg-gray-300 transition">
+                        <Clock className="w-6 h-6 text-gray-700" />
+                    </div>
+                    <h3 className="text-lg font-semibold text-gray-800 mb-2">Interval Analysis</h3>
+                    <p className="text-gray-600 text-sm">
+                        Track cycles and patterns in number intervals.
+                    </p>
+                </div>
             </div>
         </section>
     )

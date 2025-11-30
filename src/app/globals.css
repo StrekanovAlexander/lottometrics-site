@@ -10,16 +10,9 @@
 
 /* Base font */
 body {
-  font-family: sans-serif;
   line-height: 1.5;
   background-color: #fff;
   color: #000;
-}
-
-/* Links */
-a {
-  color: blue;
-  text-decoration: none;
 }
 
 a:hover {

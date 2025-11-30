@@ -17,11 +17,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-white shadow">
-      <div className="max-w-5xl mx-auto flex justify-between items-center py-4">
+    <header className="bg-black px-5 border-b border-gray-700">
+      <div className="max-w-5xl mx-auto flex justify-between items-center py-6">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link href="/" className="hover:no-underline text-black">
+          <Link href="/" className="hover:no-underline text-gray-100" title="Home">
             LottoMetrics
           </Link>
         </div>
@@ -33,10 +33,11 @@ export default function Header() {
               <li key={link.href}>
                 <Link
                   href={link.href}
+                  title={link.label}
                   className={
                     pathname === link.href
-                      ? "text-blue-600 font-semibold border-b-2 border-blue-600"
-                      : "text-gray-700 hover:text-blue-600"
+                      ? "text-gray-50 font-semibold hover:no-underline text-base"
+                      : "text-gray-300 font-semibold hover:text-white hover:no-underline text-base"
                   }
                 >
                   {link.label}
