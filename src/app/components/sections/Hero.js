@@ -6,7 +6,7 @@ export default function Hero() {
                     LottoMetrics - Lottery Analytics Online
                 </h1>
                 <p className="text-lg md:text-lg text-gray-700 mx-10">
-                    Analyze lottery results online with LottoMetrics. Access Powerball and 6 aus 49 archives,
+                    Analyze lottery results online with LottoMetrics. Access Powerball, Euromillions and 6 aus 49 archives,
                     check past draws, and discover number statistics. Our platform offers both online analytics
                     and a Windows offline version for professional lottery research.
                 </p>

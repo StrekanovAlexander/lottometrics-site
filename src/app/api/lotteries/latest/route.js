@@ -34,6 +34,7 @@ export async function GET() {
     const lotteries = rows.map(row => ({
       id: row.id,
       lotteryName: row.lottery_name,
+      slug: row.slug,
       country: row.country,
       descriptionShortEn: row.description_short_en,
       lastDrawDate: row.draw_date,
