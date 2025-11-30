@@ -69,8 +69,8 @@ export default async function LotteriesPage() {
             {data.lotteries.map((el) => (
               <div key={el.id} className="bg-white shadow-md rounded-lg p-6 flex flex-col justify-between">
                 <div>
-                  <h3 className="text-xl font-bold text-center text-gray-800 mb-2">{el.lottery_name}</h3>
-                  <p className="text-sm text-gray-500 text-center mb-1">{el.country} <span className="text-gray-700 text-sm">{el.description_short_en}</span></p>
+                  <h3 className="text-xl font-bold text-center text-gray-800 pb-3 mb-3 border-b">{el.lottery_name}</h3>
+                  <p className="text-sm text-gray-600 text-center mb-1 font-semibold">{el.description_short_en} | {el.country}</p>
                 </div>
                 <div className="mt-6 text-center">
                   <Link
