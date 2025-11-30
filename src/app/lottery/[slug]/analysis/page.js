@@ -1,4 +1,6 @@
 // app/lottery/[slug]/analysis/page.js
+import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
+
 export async function generateMetadata({ params }) {
   const { slug } = params;
 
@@ -41,7 +43,14 @@ export default async function LotteryAnalysisPage({ params }) {
 
   if (!data || data.length === 0) {
     return (
-      <section className="max-w-3xl mx-auto py-12">
+      <section className="w-full">
+        <Breadcrumbs
+            items={[
+                { label: "Home", href: "/" },
+                { label: "Lotteries", href: "/lotteries" },
+                { label: "Unknown Lottery" },
+            ]}
+        />
         <h1 className="text-2xl font-bold mb-6">Unknown Lottery</h1>
       </section>
     );
@@ -52,16 +61,22 @@ export default async function LotteryAnalysisPage({ params }) {
   const description = data[0]?.description_en;
 
   return (
-    <section className="mx-auto py-12">
-      <h1 className="text-4xl font-bold mb-6 text-center">
-        {lotteryName} ({isoCode})
-      </h1>
-      <p className="text-lg md:text-xl text-gray-700">
-        {description}
-      </p>
-      <p className="mt-10 text-center">
-        Data coming soon...
-      </p>
+    <section className="mx-auto">
+        <Breadcrumbs
+            items={[
+                { label: "Home", href: "/" },
+                { label: "Lotteries", href: "/lotteries" },
+                { label: lotteryName, href: `/lottery/${slug}` },
+                { label: "Analysis" },
+            ]}
+        />
+        <h1 className="text-4xl font-bold mb-6 text-center">{lotteryName} Lottery Analysis</h1>
+        <p className="text-lg md:text-xl text-gray-700">
+            {description}
+        </p>
+        <p className="mt-10 text-center">
+            Data coming soon...
+        </p>
     </section>
-  );
+    );
 }

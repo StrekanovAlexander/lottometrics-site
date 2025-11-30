@@ -1,23 +1,33 @@
+import Link from "next/link";
+import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
+
 export default async function LotteriesPage() {
-    const res = await fetch(`${process.env.BASE_URL}/api/lotteries`, {
-        cache: 'no-store',
-    });
-    if (!res.ok) {
+    const response = await fetch(`${process.env.BASE_URL}/api/lotteries`, {cache: "no-store"} );
+    if (!response.ok) {
         return <div>Error page</div>;
     }
-    const data = await res.json();
-    
+    const data = await response.json();
     return (
-    <>
-      <h1 className="text-2xl font-bold mb-4">Lotteries</h1>
-        {data.lotteries.map((lottery) => (
-          <>
-            <h2 key={lottery.id}>
-              {lottery.lottery_name}
-            </h2>
-            {lottery.lottery_description_en}
-          </>
-        ))}
-    </>
+      <section className="w-full">
+        <Breadcrumbs
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Lotteries" },
+          ]}
+        />
+        <h1 className="text-4xl font-bold mb-6 text-center">Lotteries</h1>
+        {data.lotteries.map((el) => (
+        <div key={el.id} className="mb-8">
+          <h2 className="text-3xl font-semibold py-2">{el.lottery_name}</h2>
+          <p className="text-gray-700 mb-2">{el.description_en}</p>
+          <Link
+            href={`/lottery/${el.slug}/analysis`}
+            className="px-4 py-2 bg-black text-white rounded hover:no-underline hover:shadow-lg"
+          >
+            Analyze Lottery
+          </Link>
+        </div>
+      ))}
+    </section>
   );
 }
