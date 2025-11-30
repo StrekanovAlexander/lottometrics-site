@@ -7,7 +7,7 @@ export default function Breadcrumbs({ items }) {
         {items.map((item, index) => (
             <li key={index} className="flex items-center">
             {item.href ? (
-                <Link href={item.href} className="hover:text-blue-600">
+                <Link href={item.href} className="hover:text-gray-900">
                     {item.label}
                 </Link>
                 ) : (

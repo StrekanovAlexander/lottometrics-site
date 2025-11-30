@@ -70,7 +70,7 @@ export default async function LotteryAnalysisPage({ params }) {
                 { label: "Analysis" },
             ]}
         />
-        <h1 className="text-4xl font-bold mb-6 text-center">{lotteryName} Lottery Analysis</h1>
+        <h1 className="text-4xl font-bold mb-6">{lotteryName} Lottery Analysis</h1>
         <p className="text-lg md:text-xl text-gray-700">
             {description}
         </p>

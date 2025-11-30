@@ -35,7 +35,7 @@ export default function RootLayout({ children }) {
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow max-w-5xl mx-auto py-8">
+        <main className="flex-grow max-w-5xl mx-auto py-8 w-full">
           {children}
         </main>
         <Footer />
