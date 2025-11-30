@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { formatDate } from "@/utils/formatDate"
 import Ball from "./Ball"
 
@@ -5,7 +6,7 @@ export default function CardCTA({ lottery }) {
     return (
         <div className="bg-white shadow-sm rounded-md px-5 pb-10 text-center border border-gray-300 rounded-lg">
             <h3 className="text-2xl font-semibold text-gray-800 mb-4 py-3 border-b border-b-gray-300">
-                {lottery.name}
+                {lottery.name} ({lottery.iso_code})
             </h3>
             <div className="mb-10">
                 <p className="text-gray-700 font-medium mb-6">
@@ -23,11 +24,12 @@ export default function CardCTA({ lottery }) {
                     ))}
                 </div>
             </div>
-            <button
-                className="bg-gray-800 text-white px-6 py-2 rounded-md font-medium hover:bg-gray-900 transition"
+            <Link
+                href={`/lottery/${lottery.slug}/analysis`}
+                className="px-4 py-2 bg-black text-white rounded hover:no-underline hover:shadow-lg"
             >
                 Analyze Lottery
-            </button>
+            </Link>
         </div>
     )
 }

@@ -11,7 +11,9 @@ export default function LotteriesSection() {
   useEffect(() => {
     const fetchLotteries = async () => {
       try {
-        const res = await fetch("/api/lotteries/latest");
+        const res = await fetch("/api/lotteries/latest", {
+          cache: "no-store", 
+        });
         if (!res.ok) {
           throw new Error("Failed to fetch lotteries");
         }

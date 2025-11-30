@@ -9,6 +9,18 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lottometrics.app/lottery/6-aus-49/analysis</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/powerball/analysis</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/euromillions/analysis</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lottometrics.app/download</loc>
     <priority>0.8</priority>
   </url>

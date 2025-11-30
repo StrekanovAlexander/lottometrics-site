@@ -6,6 +6,8 @@ export async function GET() {
       SELECT 
         l.id,
         l.lottery_name,
+        l.slug,
+        l.iso_code,
         d.draw_date,
       GROUP_CONCAT(
         CASE WHEN dn.number_kind = 'main' THEN dn.draw_number END 
@@ -25,12 +27,14 @@ export async function GET() {
       JOIN draws d ON d.lottery_id = l.id AND d.draw_date = latest.last_date
       JOIN draw_numbers dn ON dn.draw_id = d.id
       WHERE l.is_active = 1 AND dn.is_active = 1
-      GROUP BY l.id, l.lottery_name, d.draw_date;
+      GROUP BY l.id, l.lottery_name, l.slug, l.iso_code, d.draw_date;
     `);
     
     const lotteries = rows.map(row => ({
       id: row.id,
       name: row.lottery_name,
+      slug: row.slug,
+      iso_code: row.iso_code,
       lastDrawDate: row.draw_date,
       mainNumbers: row.main_numbers ? row.main_numbers.split(',').map(Number) : [],
       extraNumbers: row.extra_numbers ? row.extra_numbers.split(',').map(Number) : [],

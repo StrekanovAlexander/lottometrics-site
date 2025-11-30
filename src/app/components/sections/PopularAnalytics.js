@@ -21,7 +21,7 @@ export default function Software() {
             </h2>
 
             {/* Analytics Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
                 {data.map(el => (
                     <div key={ el.id } 
                         className="bg-white shadow-sm rounded-lg px-5 pb-10 text-center border border-gray-300 rounded-lg"
