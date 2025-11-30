@@ -1,36 +1,67 @@
 // app/lottery/[slug]/analysis/page.js
+export async function generateMetadata({ params }) {
+  const { slug } = params;
+
+  const response = await fetch(`${process.env.BASE_URL}/api/lotteries/${slug}/analysis`, {
+    cache: "no-store",
+  });
+  const { data } = await response.json();
+
+  if (!data || data.length === 0) {
+    return {
+      title: "Unknown Lottery Analysis - LottoMetrics",
+      description: "Explore honest lottery analytics with LottoMetrics.",
+      keywords: ["lottery analysis", "lotto metrics", "number frequency", "lottery statistics"],
+    };
+  }
+
+  const lotteryName = data[0]?.lottery_name;
+  const isoCode = data[0]?.iso_code;
+  const description = data[0]?.description_en;
+
+  return {
+    title: `${lotteryName} Lottery Analysis - LottoMetrics`,
+    description: description || `Explore ${lotteryName} analytics with LottoMetrics — number frequency and transparent insights.`,
+    keywords: [
+      `${lotteryName} analysis`,
+      `${lotteryName} lottery statistics`,
+      `number frequency ${lotteryName}`,
+      "lotto metrics",
+    ],
+  };
+}
+
 export default async function LotteryAnalysisPage({ params }) {
-    const { slug } = params;
+  const { slug } = params;
 
-    const response = await fetch(`${process.env.BASE_URL}/api/lotteries/${slug}/analysis`, {
-        cache: "no-store", 
-    });
-    
-    const { data } = await response.json();
-    
-    if (!data || data.length === 0) {
-        return (
-            <section className="max-w-3xl mx-auto py-12">
-                <h1 className="text-2xl font-bold mb-6">Unknown Lottery</h1>
-            </section>
-        );
-    }
+  const response = await fetch(`${process.env.BASE_URL}/api/lotteries/${slug}/analysis`, {
+    cache: "no-store",
+  });
+  const { data } = await response.json();
 
-    const lotteryName = data[0]?.lottery_name;
-    const isoCode = data[0]?.iso_code;
-    const description = data[0]?.description_en;
-
+  if (!data || data.length === 0) {
     return (
-        <section className="mx-auto py-12">
-            <h1 className="text-4xl font-bold mb-6 text-center">
-                { lotteryName } ({ isoCode })
-            </h1>
-            <p className="text-lg md:text-xl text-gray-700">
-                { description }
-            </p>
-            <p className="mt-10 text-center">
-                Data coming soon...
-            </p>
-        </section>
+      <section className="max-w-3xl mx-auto py-12">
+        <h1 className="text-2xl font-bold mb-6">Unknown Lottery</h1>
+      </section>
     );
+  }
+
+  const lotteryName = data[0]?.lottery_name;
+  const isoCode = data[0]?.iso_code;
+  const description = data[0]?.description_en;
+
+  return (
+    <section className="mx-auto py-12">
+      <h1 className="text-4xl font-bold mb-6 text-center">
+        {lotteryName} ({isoCode})
+      </h1>
+      <p className="text-lg md:text-xl text-gray-700">
+        {description}
+      </p>
+      <p className="mt-10 text-center">
+        Data coming soon...
+      </p>
+    </section>
+  );
 }

@@ -7,7 +7,7 @@ export async function GET(request, { params }) {
   const [data] = await db.query(
     `SELECT lottery_name, iso_code, description_en
       FROM lotteries
-      WHERE slug = ?
+      WHERE slug = ? AND is_active = true
     `,
     [slug]
   );
