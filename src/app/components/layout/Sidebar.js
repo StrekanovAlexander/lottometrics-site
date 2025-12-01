@@ -45,8 +45,8 @@ export default function Sidebar({ slug }) {
                         </button>
                     </li>
                 </ul>
-                <div className="flex items-center text-sm text-gray-700 my-2">
-                    Selected records: {recordCount}
+                <div className="flex justify-between items-center text-sm text-gray-700 mt-2">
+                    <span>Selected records:&nbsp;</span><span className="font-semibold">{recordCount}</span>
                 </div>
             </div>
             {/* Methods */}
