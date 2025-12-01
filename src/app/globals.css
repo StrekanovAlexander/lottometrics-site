@@ -3,15 +3,15 @@
 @tailwind utilities;
 
 .ball {
-  @apply w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium;
+  @apply w-8 h-8 flex items-center justify-center rounded-full text-sm text-white font-medium;
 }
 
 .ball-main {
-  @apply bg-gray-400 text-white;
+  @apply bg-gray-600;
 }
 
 .ball-extra {
-  @apply bg-gray-300 text-gray-800;
+  @apply bg-gray-500;
 }
 
 
