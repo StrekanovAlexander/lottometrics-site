@@ -2,7 +2,7 @@
 "use client";
 import { useAnalytics } from "@/context/AnalyticsContext";
 import { useEffect, useState } from "react";
-import { renderBalls } from "@/utils/lotteryUtils";
+import { renderTableBalls } from "@/utils/lotteryUtils";
 import { formatDate } from "@/utils/formatDate";
 
 export default function LotteryTable() {
@@ -49,12 +49,12 @@ export default function LotteryTable() {
               <td className="px-4 py-2 text-sm text-gray-800">{formatDate(new Date(row.draw_date))}</td>
               <td className="px-4 py-2">
                 <div className="flex flex-nowrap overflow-x-auto max-w-full gap-1">
-                  {renderBalls(row.main_numbers)}
+                  {renderTableBalls(row.main_numbers)}
                 </div>
               </td>
               <td className="px-4 py-2">
                 <div className="flex flex-nowrap overflow-x-auto max-w-full gap-1">
-                  {renderBalls(row.extra_numbers, true)}
+                  {renderTableBalls(row.extra_numbers, true)}
                 </div>
               </td>
             </tr>

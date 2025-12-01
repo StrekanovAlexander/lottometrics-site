@@ -10,17 +10,22 @@ export default function AnalyticsTitle({ mode, period}) {
 
     return (
         <div className="mb-6 border-b border-gray-200 pb-4">
-            <h2 className="text-xl font-semibold text-gray-900">
-                {strings.capitalize(mode)} Analytics
-            </h2>
-            <p className={`mt-1 text-sm flex justify-between ${isInvalidPeriod ? "text-red-600" : "text-gray-600"}`}>
+            <div className="flex justify-between">
+                <h2 className="text-xl font-semibold text-gray-900">
+                    {strings.capitalize(mode)} {mode !== "records" ? "Analysis" : "for Period"}
+                </h2>
+                {/* <div>
+                    Lottery
+                </div> */}
+            </div>
+            <div className={`mt-1 text-sm font-semibold ${isInvalidPeriod ? "text-red-600" : "text-gray-600"}`}>
                 <span>{isInvalidPeriod ? "Wrong Period" : "Period:"}&nbsp;</span>
                 {!isInvalidPeriod && (
                     <span>
                         {formatDate(new Date(period.startDate))} - {formatDate(new Date(period.endDate))}
                     </span>
                 )}
-            </p>
+            </div>
         </div>
     )
 }

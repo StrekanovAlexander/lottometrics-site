@@ -2,7 +2,7 @@
 import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Sidebar from "@/app/components/layout/Sidebar";
-import AnalyticsContent from "@/app/components/analytics/AnalyticsContent";
+import AnalysisContent from "@/app/components/analysis/AnalysisContent";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -85,7 +85,7 @@ export default async function LotteryAnalysisPage({ params }) {
           <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
             <Sidebar slug={slug} />
           </aside>
-          <AnalyticsContent />
+          <AnalysisContent />
         </div>
       </AnalyticsProvider>
     </>

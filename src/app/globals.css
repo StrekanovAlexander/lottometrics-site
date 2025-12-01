@@ -3,17 +3,24 @@
 @tailwind utilities;
 
 .ball {
-  @apply w-8 h-8 flex items-center justify-center rounded-full text-sm text-white font-medium;
+  @apply w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium;
 }
 
 .ball-main {
-  @apply bg-gray-600;
+  @apply bg-gray-600 text-white;
 }
 
 .ball-extra {
-  @apply bg-gray-500;
+  @apply bg-gray-500 text-white;
 }
 
+.ball-main-tbl {
+  @apply bg-gray-400 text-white;
+}
+
+.ball-extra-tbl {
+  @apply bg-gray-300 text-gray-800;
+}
 
 .cell-base {
   @apply flex flex-col items-center justify-center rounded-md py-2 px-3;
