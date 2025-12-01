@@ -38,8 +38,8 @@ export async function GET() {
       country: row.country,
       descriptionShortEn: row.description_short_en,
       lastDrawDate: row.draw_date,
-      mainNumbers: row.main_numbers ? row.main_numbers.split(',').map(Number) : [],
-      extraNumbers: row.extra_numbers ? row.extra_numbers.split(',').map(Number) : [],
+      mainNumbers: row.main_numbers,
+      extraNumbers: row.extra_numbers,
     }));
         return Response.json({ lotteries });
     } catch (error) {

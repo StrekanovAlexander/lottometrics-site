@@ -1,6 +1,8 @@
 // app/lottery/[slug]/analysis/page.js
+import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Sidebar from "@/app/components/layout/Sidebar";
+import AnalyticsContent from "@/app/components/analytics/AnalyticsContent";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -46,11 +48,11 @@ export default async function LotteryAnalysisPage({ params }) {
     return (
       <section className="w-full">
         <Breadcrumbs
-            items={[
-                { label: "Home", href: "/" },
-                { label: "Lotteries", href: "/lotteries" },
-                { label: "Unknown Lottery" },
-            ]}
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Lotteries", href: "/lotteries" },
+            { label: "Unknown Lottery" },
+          ]}
         />
         <h1 className="text-2xl font-bold mb-6">Unknown Lottery</h1>
       </section>
@@ -76,17 +78,16 @@ export default async function LotteryAnalysisPage({ params }) {
         <h1 className="text-3xl font-bold text-gray-800">{lotteryName} Lottery Analysis</h1>
         <p className="text-gray-600">Explore frequency, gaps, and interval statistics for your selected lottery.</p>
       </section>
-      {/* Container */}  
-      <div className="flex flex-col md:flex-row">
-        {/* Sidebar */}
-        <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
-          <Sidebar />
-        </aside>
-        {/* Main content */}
-        <main className="flex-1 p-8 bg-white rounded-lg shadow-sm">
-          Data coming soon...
-        </main>
-      </div>
+      {/* Container */} 
+      <AnalyticsProvider>
+        <div className="flex flex-col md:flex-row items-start">
+          {/* Sidebar */}
+          <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
+            <Sidebar slug={slug} />
+          </aside>
+          <AnalyticsContent />
+        </div>
+      </AnalyticsProvider>
     </>
-    );
+  );
 }
