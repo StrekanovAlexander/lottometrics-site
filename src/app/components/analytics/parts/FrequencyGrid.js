@@ -42,7 +42,7 @@ export default function FrequencyGrid() {
         return (
           <div
             key={number}
-            className={`flex flex-col items-center justify-center rounded-md py-2 px-3 ${bgColor}`}
+            className={`cell-base ${bgColor}`}
           >
             <span className="font-bold">{number}</span>
             <span className="text-xs">{freq}</span>

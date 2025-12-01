@@ -23,12 +23,10 @@ export function getFrequencyColor(freq, minFreq, maxFreq) {
   if (maxFreq === minFreq) {
     return "bg-gray-300 text-black";
   }
-  
   const norm = (freq - minFreq) / (maxFreq - minFreq);
-
-  if (norm >= 0.66) return "bg-green-600 text-white";
-  if (norm >= 0.33) return "bg-green-300 text-black";
-  if (norm > 0) return "bg-yellow-300 text-black";
-  return "bg-gray-300 text-black";
+  if (norm >= 0.66) return "cell-green";
+  if (norm >= 0.33) return "cell-lightgreen";
+  if (norm > 0) return "cell-yellow";
+  return "cell-gray";
 }
 
