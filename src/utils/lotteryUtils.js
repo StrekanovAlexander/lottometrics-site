@@ -10,8 +10,7 @@ export function renderBalls(numbersString, extra = false) {
       {str.split(",").map((num, idx) => (
         <span
           key={idx}
-            className={`w-8 h-8 flex items-center justify-center rounded-full text-sm font-medium 
-            ${extra === true ? "bg-gray-300 text-gray-800" : "bg-gray-400 text-white"}`}
+            className={`ball ${extra ? "ball-extra" : "ball-main"}`}
         >
           {num.trim()}
         </span>
