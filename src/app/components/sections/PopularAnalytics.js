@@ -12,12 +12,13 @@ export default function PopularAnalyticsMetods() {
                 Explore the most common ways to analyze lottery numbers - from frequency to intervals.
                 </p>
             </div>
-            {/* Карточки */}
+            {/* Cards */}
             <div className="grid md:grid-cols-3 gap-8">
                 {/* Frequency */}
                 <div className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
-                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-bold hover:bg-gray-300 transition">
-                        <BarChart3 className="w-6 h-6 text-gray-700" />
+                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-800 text-gray-100 
+                        rounded-full flex items-center justify-center font-bold hover:bg-gray-600 transition">
+                        <BarChart3 className="w-6 h-6 text-gray-100" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">Frequency Analysis</h3>
                     <p className="text-gray-600 text-sm">
@@ -26,8 +27,9 @@ export default function PopularAnalyticsMetods() {
                 </div>
                 {/* Gaps */}
                 <div className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
-                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-bold hover:bg-gray-300 transition">
-                        <TrendingUp className="w-6 h-6 text-gray-700" />
+                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-800 text-gray-100 
+                        rounded-full flex items-center justify-center font-bold hover:bg-gray-600 transition">
+                        <TrendingUp className="w-6 h-6 text-gray-100" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">Gap Analysis</h3>
                     <p className="text-gray-600 text-sm">
@@ -36,8 +38,9 @@ export default function PopularAnalyticsMetods() {
                 </div>
                 {/* Intervals */}
                 <div className="bg-white shadow-md rounded-lg p-6 text-center hover:shadow-lg transition">
-                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-200 text-gray-800 rounded-full flex items-center justify-center font-bold hover:bg-gray-300 transition">
-                        <Clock className="w-6 h-6 text-gray-700" />
+                    <div className="w-12 h-12 mx-auto mb-4 bg-gray-800 text-gray-100 
+                        rounded-full flex items-center justify-center font-bold hover:bg-gray-600 transition">
+                        <Clock className="w-6 h-6 text-gray-100" />
                     </div>
                     <h3 className="text-lg font-semibold text-gray-800 mb-2">Interval Analysis</h3>
                     <p className="text-gray-600 text-sm">
