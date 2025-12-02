@@ -1,6 +1,11 @@
 import Image from "next/image";
 import Breadcrumbs from "../components/layout/Breadcrumbs";
 import PageTitle from "../components/ui/PageTitle";
+import { Anton } from "next/font/google";
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 const title = "LottoMetrics Documentation";
 const description = "Working with LottoMetrics";
@@ -29,7 +34,7 @@ export default function Docs() {
       </section>  
     
       <section className="my-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Frequency Analysis</h2>
+        <h2 className={`${anton.className} text-2xl font-bold text-gray-900 mb-4`}>Frequency Analysis</h2>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Image
@@ -63,7 +68,7 @@ export default function Docs() {
       </section>
 
       <section className="my-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Gaps Analysis</h2>
+        <h2 className={`${anton.className} text-2xl font-bold text-gray-900 mb-4`}>Gaps Analysis</h2>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Image
@@ -98,7 +103,7 @@ export default function Docs() {
       </section>
 
       <section className="my-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Number Rhythm Analysis</h2>
+        <h2 className={`${anton.className} text-2xl font-bold text-gray-900 mb-4`}>Number Rhythm Analysis</h2>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Image
@@ -135,7 +140,7 @@ export default function Docs() {
       </section>
 
       <section className="my-8">
-        <h2 className="text-2xl font-bold text-gray-900 mb-4">Flexible Data Input and Updates</h2>
+        <h2 className={`${anton.className} text-2xl font-bold text-gray-900 mb-4`}>Flexible Data Input and Updates</h2>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <Image
