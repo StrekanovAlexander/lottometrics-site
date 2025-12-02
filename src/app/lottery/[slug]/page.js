@@ -1,6 +1,7 @@
 // app/lottery/[slug]/page.js
 import Link from "next/link";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
+import PageTitle from "@/app/components/ui/PageTitle";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -63,6 +64,7 @@ export default async function LotteryPage({ params }) {
   const country = data[0]?.country;
   const descriptionShortEn = data[0]?.description_short_en;
   const descriptionEn = data[0]?.description_en;
+  const pageTitleDescription = descriptionShortEn + " " + country;
 
   return (
     <>
@@ -74,29 +76,20 @@ export default async function LotteryPage({ params }) {
             ]}
         />
 
-        <section className="bg-gray-50 py-12 px-6">
-            <div className="max-w-3xl mx-auto bg-white shadow-md rounded-lg p-8">
-                <h1 className="text-3xl font-bold text-gray-800 mb-2">
-                    {lotteryName}
-                </h1>
-                <p className="text-sm text-gray-500 mb-4">
-                    Country: {country}
-                </p>
-                <p className="text-gray-700 mb-4">
-                    {descriptionShortEn}
-                </p>
-                <p className="text-gray-600 leading-relaxed mb-8">
-                    {descriptionEn}
-                </p>
-                <div className="text-center">
-                    <Link
-                        href={`/lottery/${slug}/analysis`} 
-                        className="inline-block px-6 py-3 bg-black text-white rounded-lg font-semibold hover:bg-gray-800 transition">
-                            Analyze Lottery
-                    </Link>
-                </div>
-            </div>
+        <PageTitle title={lotteryName} description={pageTitleDescription} />
+        <section className="bg-gray-50 p-8">
+          <p className="text-gray-600 leading-relaxed mb-8">
+            {descriptionEn}
+          </p>
+          <div>
+            <Link
+              href={`/lottery/${slug}/analysis`} 
+              class="px-4 py-2 bg-white text-gray-800 font-medium rounded-md border border-gray-300 
+                shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400">
+              Analyze Lottery
+            </Link>
+          </div>
         </section>
-    </>
+      </>
     );
 }
