@@ -8,7 +8,6 @@ const anton = Anton({
   subsets: ["latin"],
 });
 
-
 export default function CardCTA({ lottery }) {
     return (
         <div className="bg-white shadow-lg rounded-lg overflow-hidden 

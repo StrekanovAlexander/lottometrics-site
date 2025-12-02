@@ -1,5 +1,11 @@
 import Link from "next/link";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
+import Card from "../components/ui/Card";
+import { Anton } from "next/font/google";
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export const metadata = {
   title: 'Lotteries List - Official Archives | LottoMetrics',
@@ -44,42 +50,31 @@ export default async function LotteriesPage() {
             { label: "Lotteries" },
           ]}
         />
-        <h1 className="text-4xl font-bold mb-8">Lotteries</h1>
-        <section className="bg-gray-50 py-12 px-6 text-center border-b border-gray-200">
-          <div className="max-w-4xl mx-auto">
-            <h1 className="text-3xl font-bold text-gray-800 mb-6">
-              Explore Official Lottery Statistics
-            </h1>
-            <p className="text-gray-700 leading-relaxed">
-              Our service provides you with access to comprehensive statistical data from the world’s most popular lotteries, including national and international games such as Powerball, EuroMillions, and Germany’s 6 aus 49. 
-              All datasets are sourced directly from official lottery operators and contain the complete archive of past draws. 
-              Whether you are interested in frequency analysis, number gaps, or interval patterns, you will find transparent and reliable insights here.
-            </p>
-            <p className="text-gray-700 leading-relaxed mt-4">
-              LottoMetrics is designed to help players, researchers, and enthusiasts explore lottery results with confidence. 
-              By combining historical archives with modern analytics, we make it easy to understand trends and probabilities. 
-              This page serves as your starting point to select a lottery and dive into detailed analysis.
+        <section className="bg-gray-100 mb-8 px-8 p-6">
+          <h1 className={`${anton.className} text-gray-900 text-2xl md:text-3xl font-extrabold`}>
+            Lotteries
+          </h1>
+          <p className="text-gray-600 font-semibold">
+            Explore Official Lottery Statistics
+          </p>
+        </section>  
+        
+        <div class="flex flex-col md:flex-row gap-8 bg-white">
+          <div class="md:w-1/2">
+            <p class="text-gray-800 text-justify leading-relaxed">
+              Our service provides access to comprehensive statistical data from the world's most popular lotteries, including national and international games such as <strong>Powerball</strong>, <strong>EuroMillions</strong>, and <strong>Germany's 6 aus 49</strong>. All datasets are sourced directly from <strong>official lottery operators</strong> and contain the complete archive of past draws. Whether you are interested in <strong>frequency analysis</strong>, <strong>number gaps</strong>, or <strong>interval patterns</strong>, you will find transparent and reliable insights here.
             </p>
           </div>
-        </section>
-
-        <section className="bg-gray-50 py-12 px-6 mt-8">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            {/* Cards */}
-            {data.lotteries.map((el) => (
-              <div key={el.id} className="bg-white shadow-md rounded-lg p-6 flex flex-col justify-between">
-                <div>
-                  <h3 className="text-xl font-bold text-center text-gray-800 pb-3 mb-3 border-b">{el.lottery_name}</h3>
-                  <p className="text-sm text-gray-600 text-center mb-1 font-semibold">{el.description_short_en} | {el.country}</p>
-                </div>
-                <div className="mt-6 text-center">
-                  <Link
-                    href={`/lottery/${el.slug}`}
-                    className="inline-block px-4 py-2 bg-black text-white rounded hover:bg-gray-800 transition">
-                    More details
-                  </Link>  
-                </div>
-              </div>
+          <div class="md:w-1/2">
+            <p class="text-gray-800 text-justify leading-relaxed">
+              <strong>LottoMetrics</strong> is designed to help <strong>players</strong>, <strong>researchers</strong>, and <strong>enthusiasts</strong> explore lottery results with confidence. By combining <strong>historical archives</strong> with <strong>modern analytics</strong>, we make it easy to understand <strong>trends</strong> and <strong>probabilities</strong>. This page serves as your starting point to select a lottery and dive into detailed analysis. <strong>Clear insights empower smarter choices</strong>.
+            </p>
+          </div>
+        </div>
+        <section className="my-12 mx-5 md:mx-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {data.lotteries.map((lottery) => (
+              <Card key={lottery.id} lottery={lottery} />
             ))}
           </div>
         </section>  

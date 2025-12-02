@@ -9,7 +9,7 @@ export default function AnalysisHeader({ mode, period}) {
     })();
 
     return (
-        <div className="mb-6 border-b-2 border-gray-200 pb-4">
+        <div className="mb-6 border-b border-gray-200 pb-4">
             <h2 className="text-xl font-bold text-gray-900">
                 {strings.capitalize(mode)} {mode !== "records" ? "Analysis" : "for Period"}
             </h2>
