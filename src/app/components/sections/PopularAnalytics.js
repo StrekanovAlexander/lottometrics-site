@@ -1,13 +1,20 @@
 import { BarChart3, TrendingUp, Clock } from "lucide-react";
 
+import { Anton } from "next/font/google";
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+});
+
+
 export default function PopularAnalyticsMetods() {
     return (
-        <section className="bg-gray-50 border-t border-gray-200 py-16 px-6">
-            {/* Заголовок блока */}
+        <section className="bg-gray-50 py-12 px-6">
+            {/* Header */}
             <div className="text-center mb-12">
-                <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                Popular Lottery Analytics Methods
-                </h2>
+                <h3 className={`${anton.className} text-3xl font-bold text-gray-800 mb-4`}>
+                    Popular Lottery Analytics Methods
+                </h3>
                 <p className="text-gray-600 max-w-2xl mx-auto">
                 Explore the most common ways to analyze lottery numbers - from frequency to intervals.
                 </p>

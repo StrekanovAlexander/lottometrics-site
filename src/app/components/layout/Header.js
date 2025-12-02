@@ -1,8 +1,12 @@
 "use client";
-
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Anton } from "next/font/google";
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,11 +21,11 @@ export default function Header() {
   ];
 
   return (
-    <header className="bg-black px-5 border-b border-gray-700">
+    <header className="bg-gray-900 px-5 border-b border-gray-700">
       <div className="max-w-5xl mx-auto flex justify-between items-center py-6">
         {/* Logo */}
         <div className="text-xl font-bold">
-          <Link href="/" className="hover:no-underline text-gray-100" title="Home">
+          <Link href="/" className={`${anton.className} hover:no-underline text-gray-100`}>
             LottoMetrics
           </Link>
         </div>
@@ -37,7 +41,7 @@ export default function Header() {
                   className={
                     pathname === link.href
                       ? "text-gray-50 font-semibold hover:no-underline text-base"
-                      : "text-gray-300 font-semibold hover:text-white hover:no-underline text-base"
+                      : "text-gray-100 font-semibold hover:text-white hover:no-underline text-base"
                   }
                 >
                   {link.label}
