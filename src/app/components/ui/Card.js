@@ -23,15 +23,15 @@ export default function Card({ lottery }) {
             <div className="bg-gray-50 border-t border-gray-200 py-5 px-6 text-center flex justify-between">
                 <Link
                     href={`/lottery/${lottery.slug}`} 
-                    className="px-6 py-2 bg-gray-800 text-white text-base font-semibold rounded-md 
-                    hover:bg-gray-700 hover:shadow-md transition"
+                        class="px-4 py-2 bg-white text-gray-800 font-medium rounded-md border border-gray-300 
+                        shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
                 >
                     Details
                 </Link>
                 <Link
                     href={`/lottery/${lottery.slug}/analysis`} 
-                    className="px-6 py-2 bg-gray-800 text-white text-base font-semibold rounded-md 
-                    hover:bg-gray-700 hover:shadow-md transition"
+                        class="px-4 py-2 bg-white text-gray-800 font-medium rounded-md border border-gray-300 
+                        shadow-md hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-gray-400"
                 >
                     Analyze
                 </Link>
