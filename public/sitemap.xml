@@ -41,6 +41,10 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lottometrics.app/about</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lottometrics.app/contact</loc>
     <priority>0.8</priority>
   </url>
