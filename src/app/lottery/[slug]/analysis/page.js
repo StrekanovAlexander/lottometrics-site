@@ -1,12 +1,11 @@
 // app/lottery/[slug]/analysis/page.js
-import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Sidebar from "@/app/components/layout/Sidebar";
 import AnalysisContent from "@/app/components/analysis/AnalysisContent";
+import SelectLotteryBtn from "@/app/components/ui/SelectLotteryBtn";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
-
   const response = await fetch(`${process.env.BASE_URL}/api/lotteries/${slug}/analysis`, {
     cache: "no-store",
   });
@@ -74,20 +73,21 @@ export default async function LotteryAnalysisPage({ params }) {
         ]}
       />
       {/* Header */}
-      <section className="py-8 px-6 border-b border-gray-200 bg-gray-50">
-        <h1 className="text-3xl font-bold text-gray-800">{lotteryName} Lottery Analysis</h1>
-        <p className="text-gray-600">Explore frequency, gaps, and interval statistics for your selected lottery.</p>
+      <section className="flex justify-between items-center py-8 px-6 border-b border-gray-200 bg-gray-50">
+        <div>
+          <h1 className="text-3xl font-bold text-gray-800">{lotteryName} Lottery Analysis</h1>
+          <p className="text-gray-600">Explore frequency, gaps, and interval statistics for your selected lottery.</p>
+        </div>
+        <SelectLotteryBtn />
       </section>
       {/* Container */} 
-      <AnalyticsProvider>
-        <div className="flex flex-col md:flex-row items-start">
-          {/* Sidebar */}
-          <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
-            <Sidebar slug={slug} />
-          </aside>
-          <AnalysisContent />
-        </div>
-      </AnalyticsProvider>
+      <div className="flex flex-col md:flex-row items-start">
+        {/* Sidebar */}
+        <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
+          <Sidebar slug={slug} />
+        </aside>
+        <AnalysisContent />
+      </div>
     </>
   );
 }

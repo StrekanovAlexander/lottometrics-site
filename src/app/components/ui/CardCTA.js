@@ -7,7 +7,7 @@ export default function CardCTA({ lottery }) {
         <div className="bg-white shadow-lg rounded-lg overflow-hidden 
             border border-gray-200 w-full hover:shadow-xl hover:bg-gray-50">
             {/* Card Header */}
-            <div className="bg-gray-800 text-white py-3 px-6 flex justify-between items-center">
+            <div className="bg-gray-500 text-white py-3 px-6 flex justify-between items-center">
                 <h2 className="text-lg font-bold tracking-wide">{lottery.lotteryName}</h2>
                 <p className="text-sm text-gray-100 text-right font-semibold">{lottery.country}</p>
             </div>

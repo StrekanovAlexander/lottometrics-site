@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { AnalyticsProvider } from "@/context/AnalyticsContext";
 import Header from "./components/layout/Header";
 import Footer from "./components/layout/Footer";
 import "./globals.css";
@@ -35,9 +36,11 @@ export default function RootLayout({ children }) {
       </head>
       <body className="flex flex-col min-h-screen">
         <Header />
-        <main className="flex-grow max-w-5xl mx-auto py-8 w-full">
-          {children}
-        </main>
+          <AnalyticsProvider>
+            <main className="flex-grow max-w-5xl mx-auto py-8 w-full">
+              {children}
+            </main>
+          </AnalyticsProvider>
         <Footer />
       </body>
     </html>
