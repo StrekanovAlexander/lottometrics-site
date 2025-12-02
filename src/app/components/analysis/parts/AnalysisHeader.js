@@ -1,7 +1,7 @@
 import { formatDate } from "@/utils/formatDate"
 import strings from "@/utils/strings"
 
-export default function AnalyticsTitle({ mode, period}) {
+export default function AnalysisHeader({ mode, period}) {
     const isInvalidPeriod = (() => {
         const start = new Date(period.startDate).getTime();
         const end = new Date(period.endDate).getTime();
@@ -9,8 +9,8 @@ export default function AnalyticsTitle({ mode, period}) {
     })();
 
     return (
-        <div className="mb-6 border-b border-gray-200 pb-4">
-            <h2 className="text-xl font-semibold text-gray-900">
+        <div className="mb-6 border-b-2 border-gray-200 pb-4">
+            <h2 className="text-xl font-bold text-gray-900">
                 {strings.capitalize(mode)} {mode !== "records" ? "Analysis" : "for Period"}
             </h2>
             <div className={`mt-1 text-sm font-semibold ${isInvalidPeriod ? "text-red-600" : "text-gray-600"}`}>

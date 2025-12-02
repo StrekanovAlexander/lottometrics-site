@@ -3,6 +3,11 @@ import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Sidebar from "@/app/components/layout/Sidebar";
 import AnalysisContent from "@/app/components/analysis/AnalysisContent";
 import SelectLotteryBtn from "@/app/components/ui/SelectLotteryBtn";
+import { Anton } from "next/font/google";
+const anton = Anton({
+  weight: "400",
+  subsets: ["latin"],
+});
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -73,17 +78,21 @@ export default async function LotteryAnalysisPage({ params }) {
         ]}
       />
       {/* Header */}
-      <section className="flex justify-between items-center py-8 px-6 border-b border-gray-200 bg-gray-50">
+      <section className="flex justify-between items-center py-8 px-6 bg-gray-100 mb-8">
         <div>
-          <h1 className="text-3xl font-bold text-gray-800">{lotteryName} Lottery Analysis</h1>
-          <p className="text-gray-600">Explore frequency, gaps, and interval statistics for your selected lottery.</p>
+          <h1 className={`${anton.className} text-3xl font-bold text-gray-800`}>
+            {lotteryName} Lottery Analysis
+          </h1>
+          <p className="text-gray-600 font-semibold">
+            Explore frequency, gaps, and interval statistics for your selected lottery.
+          </p>
         </div>
         <SelectLotteryBtn />
       </section>
       {/* Container */} 
-      <div className="flex flex-col md:flex-row items-start">
+      <div className="flex flex-col md:flex-row gap-6">
         {/* Sidebar */}
-        <aside className="w-full md:w-64 bg-gray-100 p-6 mb-6 md:mb-0">
+        <aside className="md:w-80 bg-gray-50 p-6 mb-6 md:mb-0">
           <Sidebar slug={slug} />
         </aside>
         <AnalysisContent />
