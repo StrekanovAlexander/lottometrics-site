@@ -1,6 +1,5 @@
 import Hero from "./components/sections/Hero";
 import LotteriesSection from "./components/sections/LotteriesSection";
-import Software from "./components/sections/Software";
 import PopularAnalytics from "./components/sections/PopularAnalytics";
 
 export const metadata = {

@@ -46,7 +46,7 @@ export default function LotteryTable() {
         <tbody>
           {draws.map((row, i) => (
             <tr key={i} className="border-t border-gray-200">
-              <td className="px-4 py-2 text-sm text-gray-800">{formatDate(new Date(row.draw_date))}</td>
+              <td className="px-4 py-2 text-sm font-semibold text-gray-800">{formatDate(new Date(row.draw_date))}</td>
               <td className="px-4 py-2">
                 <div className="flex flex-nowrap overflow-x-auto max-w-full gap-1">
                   {renderTableBalls(row.main_numbers)}

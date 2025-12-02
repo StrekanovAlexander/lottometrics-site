@@ -68,13 +68,13 @@ export default async function LotteryPage({ params }) {
 
   return (
     <>
-        <Breadcrumbs
-            items={[
-                { label: "Home", href: "/" },
-                { label: "Lotteries", href: "/lotteries" },
-                { label: lotteryName },
-            ]}
-        />
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Lotteries", href: "/lotteries" },
+          { label: lotteryName },
+        ]}
+      />
 
         <PageTitle title={lotteryName} description={pageTitleDescription} />
         <section className="bg-gray-50 p-8">

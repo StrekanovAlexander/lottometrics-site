@@ -16,7 +16,7 @@ export default function Header() {
     { href: "/lotteries", label: "Lotteries" },
     { href: "/download", label: "Download" },
     { href: "/docs", label: "Docs" },
-    { href: "#about", label: "About" },
+    { href: "/about", label: "About" },
     { href: "/contact", label: "Contact" },
   ];
 

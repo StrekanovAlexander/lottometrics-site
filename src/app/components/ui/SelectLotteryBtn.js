@@ -29,7 +29,7 @@ export default function SelectLotteryBtn() {
                         onClick={() => handleSelect("6-aus-49")}
                         className="w-full text-left block px-4 py-2 hover:bg-gray-100"
                     >
-                        6 aus 49
+                        Lotto 6 aus 49
                     </button>
                 </li>
                 <li>
