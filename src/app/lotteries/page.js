@@ -1,4 +1,3 @@
-import Link from "next/link";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Card from "../components/ui/Card";
 import { Anton } from "next/font/google";
@@ -37,7 +36,9 @@ export const metadata = {
 };
 
 export default async function LotteriesPage() {
-    const response = await fetch(`${process.env.BASE_URL}/api/lotteries`, {cache: "no-store"} );
+    const response = await fetch(`${process.env.BASE_URL}/api/lotteries`, {
+      next: { revalidate: 60 },
+    } );
     if (!response.ok) {
         return <div>Error page</div>;
     }
