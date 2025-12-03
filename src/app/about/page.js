@@ -12,7 +12,7 @@ const titleDescription = "Verified data and modern lottery analysis methods";
 export const metadata = {
   title: 'About LottoMetrics - Verified Lottery Archives & Analytics',
   description:
-    'Discover LottoMetrics: transparent lottery statistics, official archives of Powerball, EuroMillions, and Germany’s 6 aus 49. Explore number frequency, hot and cold numbers, and winning strategies with modern analytics.',
+    'Discover LottoMetrics: transparent lottery statistics, official archives of Powerball, EuroMillions, Mega Millions, EuroJackpot, UK National Lottery, and Germany’s 6 aus 49. Explore number frequency, hot and cold numbers, and winning strategies with modern analytics.',
   keywords: [
     'lottery statistics',
     'lottery results',
@@ -20,6 +20,9 @@ export const metadata = {
     'official lottery data',
     'Powerball',
     'EuroMillions',
+    'Mega Millions',
+    'EuroJackpot',
+    'UK National Lottery',
     '6 aus 49',
     'lucky lottery numbers',
     'winning lottery strategies',
@@ -28,7 +31,7 @@ export const metadata = {
   openGraph: {
     title: 'About LottoMetrics - Verified Lottery Archives & Analytics',
     description:
-      'Learn about LottoMetrics: trusted source for official lottery archives and modern analytics. Explore Powerball, EuroMillions, and 6 aus 49 results with confidence.',
+      'Learn about LottoMetrics: trusted source for official lottery archives and modern analytics. Explore Powerball, EuroMillions, Mega Millions, EuroJackpot, UK National Lottery, and 6 aus 49 results with confidence.',
     url: 'https://lottometrics.app/about',
     siteName: 'LottoMetrics',
     type: 'website',
@@ -57,12 +60,15 @@ export default function Download() {
         </p>
         <h2 class={`${anton.className} text-xl mb-3`}>Lottery archives from official sources</h2>
         <p class="text-gray-800 leading-relaxed mb-4">
-          We provide complete archives sourced directly from official lottery operators. Explore histories and <strong>Mega Millions winning numbers</strong> along with major international games.
+          We provide complete archives sourced directly from official lottery operators. Explore histories and <strong>Mega Millions winning numbers</strong>, <strong>EuroJackpot draws</strong>, and <strong>UK National Lottery results</strong> along with other major international games.
         </p>
         <ul class="list-disc pl-6 text-gray-800 space-y-2 mb-8">
           <li><strong>Lotto 6 aus 49 (Germany):</strong> available from 1955</li>
           <li><strong>Powerball (USA):</strong> available from 1992</li>
           <li><strong>EuroMillions (Europe):</strong> available from 2004</li>
+          <li><strong>Mega Millions (USA):</strong> available from 1996</li>
+          <li><strong>EuroJackpot (Europe):</strong> available from 2012</li>
+          <li><strong>UK National Lottery:</strong> available from 1994</li>
         </ul>
         <h2 class={`${anton.className} text-xl mb-3`}>Analytics to explore number behavior</h2>
         <p class="text-gray-800 leading-relaxed mb-4">

@@ -26,7 +26,7 @@ export default function SelectLotteryBtn() {
             <ul className="py-1 text-sm text-gray-700">
                 <li>
                     <button
-                        onClick={() => handleSelect("6-aus-49")}
+                        onClick={() => handleSelect("lotto6aus49")}
                         className="w-full text-left block px-4 py-2 hover:bg-gray-100"
                     >
                         Lotto 6 aus 49
@@ -46,6 +46,30 @@ export default function SelectLotteryBtn() {
                         className="w-full text-left block px-4 py-2 hover:bg-gray-100"
                     >
                         Euromillions
+                    </button>
+                </li>
+                <li>
+                    <button
+                        onClick={() => handleSelect("megamillions")}
+                        className="w-full text-left block px-4 py-2 hover:bg-gray-100"
+                    >
+                        Mega Millions
+                    </button>
+                </li>
+                <li>
+                    <button
+                        onClick={() => handleSelect("eurojackpot")}
+                        className="w-full text-left block px-4 py-2 hover:bg-gray-100"
+                    >
+                        EuroJackpot
+                    </button>
+                </li>
+                <li>
+                    <button
+                        onClick={() => handleSelect("uknationallottery")}
+                        className="w-full text-left block px-4 py-2 hover:bg-gray-100"
+                    >
+                        UK National Lottery
                     </button>
                 </li>
             </ul>

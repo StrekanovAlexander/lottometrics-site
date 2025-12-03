@@ -25,6 +25,14 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://lottometrics.app/lottery/eurojackpot</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/uknationallottery</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://lottometrics.app/lottery/lotto6aus49/analysis</loc>
     <priority>0.8</priority>
   </url>
@@ -38,6 +46,14 @@
   </url>
   <url>
     <loc>https://lottometrics.app/lottery/megamillions/analysis</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/eurojackpot/analysis</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/uknationallottery/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
