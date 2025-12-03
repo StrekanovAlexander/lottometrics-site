@@ -7,7 +7,7 @@ export async function GET(request) {
         const [rows] = await pool.query(`
             SELECT id, main_numbers, extra_numbers 
             FROM draws 
-            WHERE lottery_id = 5 ORDER BY draw_date`);
+            WHERE lottery_id = 6 ORDER BY draw_date`);
         return NextResponse.json({ draws: rows });
     } catch (error) {
         console.error(error);
