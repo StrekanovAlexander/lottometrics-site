@@ -9,7 +9,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/6-aus-49</loc>
+    <loc>https://lottometrics.app/lottery/lotto6aus49</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -21,7 +21,11 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/6-aus-49/analysis</loc>
+    <loc>https://lottometrics.app/lottery/megamillions</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/lotto6aus49/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -30,6 +34,10 @@
   </url>
   <url>
     <loc>https://lottometrics.app/lottery/euromillions/analysis</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://lottometrics.app/lottery/megamillions/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
