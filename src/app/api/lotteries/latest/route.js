@@ -1,4 +1,5 @@
 import pool from '@/lib/db';
+import { NextResponse } from "next/server";
 
 export async function GET() {
   try {
@@ -41,9 +42,15 @@ export async function GET() {
       mainNumbers: row.main_numbers,
       extraNumbers: row.extra_numbers,
     }));
-        return Response.json({ lotteries });
-    } catch (error) {
-        console.error(error);
-        return Response.json({ error: 'DB error' }, { status: 500 });
-    }
+
+    return NextResponse.json({ lotteries }, {
+      status: 200,
+      headers: {
+        'Cache-Control': 'no-store',
+      },
+    });
+  } catch (error) {
+    console.error(error);
+    return NextResponse.json({ error: 'DB error' }, { status: 500 });
+  }
 }

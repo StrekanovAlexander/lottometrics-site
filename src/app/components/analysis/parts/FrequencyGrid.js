@@ -12,9 +12,8 @@ export default function FrequencyGrid() {
     async function loadData() {
       try {
         const res = await fetch(
-          `/api/lotteries/${lotterySlug}/analysis/frequency?start=${period.startDate}&end=${period.endDate}`,          
-          {
-            cache: "no-store",
+          `/api/lotteries/${lotterySlug}/analysis/frequency?start=${period.startDate}&end=${period.endDate}`, {
+            // cache: "no-store",
           }
         );
         const { rows } = await res.json();

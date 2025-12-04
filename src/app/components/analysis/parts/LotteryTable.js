@@ -14,7 +14,7 @@ export default function LotteryTable() {
       try {
         const res = await fetch(
           `/api/draws?slug=${lotterySlug}&start=${period.startDate}&end=${period.endDate}`, {
-            cache: "no-store",
+            // cache: "no-store",
           }
         );
         const data = await res.json();

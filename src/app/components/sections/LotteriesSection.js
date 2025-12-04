@@ -12,7 +12,7 @@ export default function LotteriesSection() {
     const fetchLotteries = async () => {
       try {
         const res = await fetch("/api/lotteries/latest", {
-          next: { revalidate: 60 }, 
+          // next: { revalidate: 60 }, 
         });
         if (!res.ok) {
           throw new Error("Failed to fetch lotteries");
