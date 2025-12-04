@@ -7,7 +7,7 @@ export async function GET(request) {
     const lotteryId = searchParams.get("lottery_id");
     try {
         const [rows] = await pool.query(`
-            SELECT id, main_numbers, extra_numbers, jackpot_amount 
+            SELECT * 
             FROM draws 
             WHERE lottery_id = ? ORDER BY draw_date`, [lotteryId]);
         return NextResponse.json({ draws: rows }, {
