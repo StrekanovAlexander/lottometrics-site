@@ -10,7 +10,12 @@ export async function GET(request) {
             SELECT id, main_numbers, extra_numbers, jackpot_amount 
             FROM draws 
             WHERE lottery_id = ? ORDER BY draw_date`, [lotteryId]);
-        return NextResponse.json({ draws: rows });
+        return NextResponse.json({ draws: rows }, {
+            status: 200,
+            headers: {
+                'Cache-Control': 'no-store',
+            },
+        });
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'DB error' }, { status: 500 });
