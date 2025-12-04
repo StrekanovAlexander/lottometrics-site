@@ -1,5 +1,7 @@
 import Breadcrumbs from "../components/layout/Breadcrumbs";
 import PageTitle from "../components/ui/PageTitle";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 import { Anton } from "next/font/google";
 const anton = Anton({
   weight: "400",
@@ -47,12 +49,14 @@ export const metadata = {
 export default function Download() {
   return (
     <>
+      <Header />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
           { label: title },
         ]}
       />
+      <section className="max-w-5xl mx-auto">
       <PageTitle title={title} description={titleDescription} />
       <section class="mx-auto max-w-4xl px-6">
         <p class="text-gray-800 leading-relaxed mb-8">
@@ -88,7 +92,9 @@ export default function Download() {
         <p class="text-gray-800 leading-relaxed">
           LottoMetrics aims to be your <strong>trusted lottery site</strong> with a focus on clarity and data integrity. We cover <strong>international lottery games</strong> and align with best practices around <strong>secure lottery tickets</strong>. If you play online, always choose reputable platforms and verify official sources.
         </p>
-      </section>  
+      </section>
+      </section>
+      <Footer />  
     </>
   );
 }

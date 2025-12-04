@@ -3,6 +3,8 @@ import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Sidebar from "@/app/components/layout/Sidebar";
 import AnalysisContent from "@/app/components/analysis/AnalysisContent";
 import SelectLotteryBtn from "@/app/components/ui/SelectLotteryBtn";
+import Header from "@/app/components/layout/Header";
+import Footer from "@/app/components/layout/Footer";
 import { Anton } from "next/font/google";
 const anton = Anton({
   weight: "400",
@@ -50,6 +52,9 @@ export default async function LotteryAnalysisPage({ params }) {
 
   if (!data || data.length === 0) {
     return (
+      <>
+      <Header />
+      
       <section className="w-full">
         <Breadcrumbs
           items={[
@@ -58,8 +63,10 @@ export default async function LotteryAnalysisPage({ params }) {
             { label: "Unknown Lottery" },
           ]}
         />
-        <h1 className="text-2xl font-bold mb-6">Unknown Lottery</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">Unknown Lottery</h1>
       </section>
+      <Footer />
+      </>
     );
   }
 
@@ -69,6 +76,7 @@ export default async function LotteryAnalysisPage({ params }) {
 
   return (
     <>
+      <Header />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -78,6 +86,7 @@ export default async function LotteryAnalysisPage({ params }) {
         ]}
       />
       {/* Header */}
+      <section className="max-w-5xl mx-auto">
       <section className="flex justify-between items-center py-8 px-6 bg-gray-100 mb-8">
         <div>
           <h1 className={`${anton.className} text-3xl font-bold text-gray-800`}>
@@ -97,6 +106,8 @@ export default async function LotteryAnalysisPage({ params }) {
         </aside>
         <AnalysisContent />
       </div>
+      </section>
+      <Footer />
     </>
   );
 }

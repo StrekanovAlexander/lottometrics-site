@@ -22,7 +22,7 @@ export default function Header() {
 
   return (
     <header className="sticky top-0 bg-gray-900 px-5 z-999 shadow-sm">
-      <div className="max-w-5xl mx-auto flex justify-between items-center py-6">
+      <div className="max-w-5xl mx-auto flex justify-between items-center py-6 mb-5">
         {/* Logo */}
         <div className="text-xl font-bold">
           <Link href="/" className={`${anton.className} hover:no-underline text-gray-100`}>

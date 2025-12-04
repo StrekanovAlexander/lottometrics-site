@@ -1,7 +1,5 @@
 import Script from "next/script";
 import { AnalyticsProvider } from "@/context/AnalyticsContext";
-import Header from "./components/layout/Header";
-import Footer from "./components/layout/Footer";
 import "./globals.css";
 
 export const metadata = {
@@ -35,13 +33,11 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className="flex flex-col min-h-screen">
-        <Header />
-          <AnalyticsProvider>
-            <main className="flex-grow max-w-5xl mx-auto py-8 w-full">
-              {children}
-            </main>
-          </AnalyticsProvider>
-        <Footer />
+        <AnalyticsProvider>
+          <main className="flex-grow w-full">
+            {children}
+          </main>
+        </AnalyticsProvider>
       </body>
     </html>
   );

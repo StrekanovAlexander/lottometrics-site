@@ -1,5 +1,7 @@
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import Card from "../components/ui/Card";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 import { Anton } from "next/font/google";
 const anton = Anton({
   weight: "400",
@@ -45,12 +47,15 @@ export default async function LotteriesPage() {
     const data = await response.json();
     return (
       <>
+        <Header />
         <Breadcrumbs
           items={[
             { label: "Home", href: "/" },
             { label: "Lotteries" },
           ]}
         />
+        <section className="max-w-5xl mx-auto">
+
         <section className="bg-gray-100 mb-8 px-8 p-6">
           <h1 className={`${anton.className} text-gray-900 text-2xl md:text-3xl font-extrabold`}>
             Lotteries
@@ -78,7 +83,9 @@ export default async function LotteriesPage() {
               <Card key={lottery.id} lottery={lottery} />
             ))}
           </div>
-        </section>  
+        </section>
+        </section>   
+        <Footer /> 
     </>
   );
 }

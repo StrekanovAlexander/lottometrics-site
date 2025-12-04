@@ -1,6 +1,8 @@
 import Hero from "./components/sections/Hero";
 import LotteriesSection from "./components/sections/LotteriesSection";
 import PopularAnalytics from "./components/sections/PopularAnalytics";
+import Header from "./components/layout/Header";
+import Footer from "./components/layout/Footer";
 
 export const metadata = {
   title: 'LottoMetrics - Honest Lottery Analytics',
@@ -11,9 +13,13 @@ export const metadata = {
 export default function Home() {
   return (
     <>
-      <Hero />
-      <LotteriesSection />
-      <PopularAnalytics />
+      <Header />
+      <div className="max-w-5xl mx-auto">
+        <Hero />
+        <LotteriesSection />
+        <PopularAnalytics />
+      </div>
+      <Footer />
     </>
   );
 }

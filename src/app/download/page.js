@@ -1,6 +1,8 @@
 import Link from "next/link";
 import Breadcrumbs from "../components/layout/Breadcrumbs";
 import PageTitle from "../components/ui/PageTitle";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 const title = "Download LottoMetrics";
 const description = "Get the latest version of LottoMetrics software"; 
@@ -13,12 +15,14 @@ export const metadata = {
 export default function Download() {
   return (
     <>
+    <Header />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
           { label: title },
         ]}
       />
+      <section className="max-w-5xl mx-auto">
       <PageTitle title={title} description={description} />
       <section className="bg-gray-50 p-8">
         <p className="text-gray-600 leading-relaxed py-2">
@@ -36,7 +40,9 @@ export default function Download() {
             Download Archive
           </Link>
         </div>
-      </section>  
+      </section>
+      </section>
+      <Footer />  
     </>
   );
 }

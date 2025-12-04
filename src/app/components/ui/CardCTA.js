@@ -14,7 +14,7 @@ export default function CardCTA({ lottery }) {
             border border-gray-200 w-full hover:shadow-xl">
             {/* Card Header */}
             <div className="text-center mx-2 py-4 border-b-2 pb-2">
-                <h2 className={`${anton.className} text-gray-900 text-center text-2xl`}>
+                <h2 className={`${anton.className} text-gray-900 text-center text-xl`}>
                     {lottery.lotteryName}
                 </h2>
                 <div className="text-sm font-semibold">

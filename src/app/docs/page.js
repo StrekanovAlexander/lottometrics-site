@@ -1,6 +1,8 @@
 import Image from "next/image";
 import Breadcrumbs from "../components/layout/Breadcrumbs";
 import PageTitle from "../components/ui/PageTitle";
+import Header from "../components/layout/Header";
+import Footer from "../components/layout/Footer";
 
 import { Anton } from "next/font/google";
 const anton = Anton({
@@ -42,12 +44,14 @@ export const metadata = {
 export default function Docs() {
   return (
     <>
+      <Header />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
           { label: title },
         ]}
       />
+      <section className="max-w-5xl mx-auto">
       <PageTitle title={title} description={description} />
 
       <section className="mx-auto max-w-4xl px-6 mb-8">
@@ -163,6 +167,8 @@ export default function Docs() {
           </div>
         </div>
       </section>
+      </section>
+      <Footer />
     </>
   );
 }

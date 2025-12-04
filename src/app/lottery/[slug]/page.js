@@ -2,6 +2,8 @@
 import Link from "next/link";
 import Breadcrumbs from "@/app/components/layout/Breadcrumbs";
 import PageTitle from "@/app/components/ui/PageTitle";
+import Header from "@/app/components/layout/Header";
+import Footer from "@/app/components/layout/Footer";
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
@@ -47,7 +49,9 @@ export default async function LotteryPage({ params }) {
 
    if (!data || data.length === 0) {
     return (
-      <section className="w-full">
+      <>
+      <Header/>
+      <section className="max-w-5xl mx-auto">
         <Breadcrumbs
             items={[
                 { label: "Home", href: "/" },
@@ -55,8 +59,10 @@ export default async function LotteryPage({ params }) {
                 { label: "Unknown Lottery" },
             ]}
         />
-        <h1 className="text-2xl font-bold mb-6">Unknown Lottery</h1>
+        <h1 className="text-2xl font-bold mb-6 text-center">Unknown Lottery</h1>
       </section>
+      <Footer />
+      </>
     );
   }
 
@@ -68,6 +74,7 @@ export default async function LotteryPage({ params }) {
 
   return (
     <>
+      <Header />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
@@ -76,6 +83,7 @@ export default async function LotteryPage({ params }) {
         ]}
       />
 
+      <section className="max-w-5xl mx-auto"> 
         <PageTitle title={lotteryName} description={pageTitleDescription} />
         <section className="bg-gray-50 p-8">
           <p className="text-gray-600 leading-relaxed mb-8">
@@ -90,6 +98,8 @@ export default async function LotteryPage({ params }) {
             </Link>
           </div>
         </section>
+        </section> 
+        <Footer />
       </>
     );
 }
