@@ -67,7 +67,7 @@ export default function ResultsTable() {
                                 {el.extra_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-yellow-soft text-gray-800 text-sm font-bold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-graphite-middle text-gray-50 text-sm font-bold"
                                     >
                                         {el}
                                     </span>

@@ -16,7 +16,7 @@ export default function ResultsPage({slug}) {
       ]} />    
 
       <h1 className="text-3xl md:text-4xl font-extrabold text-graphite mb-8">
-        Lottery {lottery} Results
+        Lottery "{lottery}" Results
       </h1>
       <ResultsBar />
       <ResultsTable />

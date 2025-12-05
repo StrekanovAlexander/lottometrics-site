@@ -3,7 +3,7 @@ import { Menu, Settings } from "lucide-react";
 export default function Header({isNavMobileOpen, setIsNavMobileOpen, setIsSidebarMobileOpen}) {
   return (
     <header className="sticky top-0 p-4 bg-teal text-white shadow flex justify-between items-center z-50">
-      <h1 className="text-xl font-bold">LottoMetrics Dashboard</h1>
+      <a href="/dashboard" className="text-xl font-bold">LottoMetrics</a>
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-6">
         <a href="/" className="hover:text-white">Home</a>

@@ -1,3 +1,5 @@
+import { Activity,  ArrowRightLeft, BarChart3, ListChecks } from "lucide-react";
+
 export const lotteries = [
     {slug: 'lotto6aus49', label: 'Lotto 6 aus 49' },
     {slug: 'powerball', label: 'Powerball' },
@@ -8,9 +10,9 @@ export const lotteries = [
 ];
 
 export const parts = [
-    {name: 'results', label: 'Results' },
-    {name: 'frequency', label: 'Frequency' },
-    {name: 'gaps', label: 'Gaps' },
+    {name: 'results', label: 'Results', icon: ListChecks, isInNav: false},
+    {name: 'frequency', label: 'Frequency', icon: Activity, isInNav: true},
+    {name: 'gaps', label: 'Gaps', icon: ArrowRightLeft, isInNav: true},
 ];
 
 export function isLotteryExists(slug) {
@@ -20,4 +22,3 @@ export function isLotteryExists(slug) {
 export function isPartExists(part) {
     return parts.some(el => el.name === part);
 }
-

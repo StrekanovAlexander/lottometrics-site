@@ -14,6 +14,7 @@ module.exports = {
           DEFAULT: "#2f2f2f",
           dark: "#1f1f1f",
           light: "#d9d9d9",
+          middle: "#7a7a7a"
         },
         lightgray: "#F5F5F5",
         // Accent palette (Neo Pastel)
