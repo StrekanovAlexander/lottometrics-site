@@ -3,7 +3,7 @@ import Breadcrumbs from "../components/layout/Breadcrumb";
 import LotteryCard from "../components/elements/cards/LotteryCard";
 
 export default async function LotteriesPage() {
-    const res = await fetch(`${process.env.BASE_URL}/api/dashboard/lotteries`);
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/lotteries`);
     
     if (!res.ok) {
         return <div>Error page</div>;
