@@ -2,15 +2,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ChevronDown } from "lucide-react";
-
-const lotteries = [
-    {slug: 'lotto6aus49', name: 'Lotto 6 aus 49' },
-    {slug: 'powerball', name: 'Powerball' },
-    {slug: 'euromillions', name: 'Euromillions' },
-    {slug: 'megamillions', name: 'Mega Millions'},
-    {slug: 'eurojackpot', name: 'EuroJackpot'},
-    {slug: 'uknationallottery', name: 'UK National Lottery'},
-];
+import { lotteries } from "@/lib/global";
 
 export default function SelectLotteryBtn() {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,7 +31,7 @@ export default function SelectLotteryBtn() {
                 flex items-center gap-2"
         >
             <ChevronDown className="w-5 h-5" />
-            Change Lottery
+            Select Lottery
         </button>
 
         {isOpen && (
@@ -51,7 +43,7 @@ export default function SelectLotteryBtn() {
                             onClick={() => handleSelect(el.slug)}
                             className="w-full text-left block px-4 py-2 hover:bg-gray-100"
                         >
-                        {el.name}
+                        {el.label}
                         </button>
                     </li>
                 ))}

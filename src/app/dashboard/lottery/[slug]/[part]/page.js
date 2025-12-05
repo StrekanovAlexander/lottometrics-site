@@ -2,17 +2,15 @@
 "use client";
 import { redirect } from "next/navigation";
 import { useDashboard } from "@/context/DashboardContext";
+import { isLotteryExists, isPartExists } from "@/lib/global";
 import Results from "@/app/dashboard/components/lottery/Results";
-
-const parts = ["results", "frequency", "gaps"];
-const slugs = ["lotto6aus49", "powerball", "euromillions", "megamillions", "eurojackpot", "uknationallottery"];
 
 export default function LotteryPage({ params }) {
   const { setLottery, setPart } = useDashboard();
   const { slug, part } = params || {};
   
-  if (!slug || !part || !slugs.includes(slug) || !parts.includes(part) ) {
-    redirect(`/dashboard/lottery`);
+  if (!slug || !part || !isLotteryExists(slug) || !isPartExists(part) ) {
+    redirect(`/dashboard/lotteries`);
   }
 
   setLottery(slug);

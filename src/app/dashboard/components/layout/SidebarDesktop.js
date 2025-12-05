@@ -2,7 +2,7 @@ import SelectLotteryBtn from "../elements/buttons/SelectLotteryBtn"
 
 export default function SidebarDesktop() {
     return (
-        <aside className="hidden md:flex md:flex-col w-64 bg-graphite text-lightgray p-4">
+        <aside className="hidden md:flex md:flex-col w-64 flex-shrink-0 bg-graphite text-lightgray p-4">
             <SelectLotteryBtn />
             
             <nav className="space-y-2">

@@ -6,9 +6,9 @@ export default function Header({isNavMobileOpen, setIsNavMobileOpen, setIsSideba
       <h1 className="text-xl font-bold">LottoMetrics Dashboard</h1>
       {/* Desktop nav */}
       <nav className="hidden md:flex space-x-6">
-        <a href="/" className="hover:text-lavender">Home</a>
-        <a href="/dashboard" className="hover:text-mint">Dashboard</a>
-        <a href="/lottery" className="hover:text-yellow">Lotteries</a>
+        <a href="/" className="hover:text-white">Home</a>
+        <a href="/dashboard" className="hover:text-white">Dashboard</a>
+        <a href="/dashboard/lotteries" className="hover:text-white">Lotteries</a>
       </nav>
       {/* Mobile buttons */}
       <div className="md:hidden flex space-x-2">
