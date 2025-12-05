@@ -10,15 +10,21 @@ module.exports = {
       colors: {
         // Base palette (Soft Tech)
         teal: "#00BFA6",
-        graphite: "#2f2f2f",
-        "graphite-dark": "#1f1f1f",
-
+        graphite: {
+          DEFAULT: "#2f2f2f",
+          dark: "#1f1f1f",
+          light: "#d9d9d9",
+        },
         lightgray: "#F5F5F5",
-
         // Accent palette (Neo Pastel)
         lavender: "#A78BFA",
         mint: "#34D399",
-        yellow: "#FCD34D",
+        yellow: {
+          DEFAULT: "#FCD34D",
+          soft: "#FDE68A",
+          calm: "#FAF089",
+          golden: "#FACC15",
+        },
       },
     },
   },

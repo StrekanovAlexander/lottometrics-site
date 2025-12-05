@@ -30,12 +30,10 @@ export default function LotteriesPage() {
   
     return (
         <div>
-            <Breadcrumbs
-                items={[
-                    { label: "Home", href: "/" },
-                    { label: "Lotteries" },
-                ]}
-            />    
+            <Breadcrumbs items={[
+                { label: "Home", href: "/" },
+                { label: "Lotteries" },
+            ]} />    
 
             <h1 className="text-3xl md:text-4xl font-extrabold text-graphite mb-8">
                 Lotteries Overview

@@ -3,7 +3,7 @@
 import { redirect } from "next/navigation";
 import { useDashboard } from "@/context/DashboardContext";
 import { isLotteryExists, isPartExists } from "@/lib/global";
-import Results from "@/app/dashboard/components/lottery/Results";
+import ResultsPage from "@/app/dashboard/components/lottery/results/ResultsPage";
 
 export default function LotteryPage({ params }) {
   const { setLottery, setPart } = useDashboard();
@@ -18,12 +18,12 @@ export default function LotteryPage({ params }) {
 
   switch (part) {
     case "results": 
-      return <Results slug={slug} />;
+      return <ResultsPage slug={slug} />;
     case "frequency":
       return <Frequency slug={slug} />;
     case "gaps":
       return <Gaps slug={slug} />;
     default:
-      return <Results slug={slug} />;
+      return <ResultsPage slug={slug} />;
   }
 }
