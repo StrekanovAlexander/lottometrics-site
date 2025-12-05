@@ -13,7 +13,7 @@ export default function Breadcrumbs({ items }) {
                         </Link>
                         <span className="mx-2 text-gray-400">/</span>
                     </>
-                    ) : (<span className="flex items-center text-teal font-semibold">{el.label}</span>)
+                    ) : (<span className="flex items-center text-graphite font-semibold">{el.label}</span>)
                 }
                 </li>
             ))}

@@ -33,15 +33,18 @@ export default function ResultsTable() {
 
     return (
         <div>
-            <div className="font-semibold mb-6">Selected Period: {formatDate(period.startDate)} - {formatDate(period.endDate)}</div>
             { loading && <Spinner />} 
-
             <table className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200">
                 <thead>
+                    <tr className="border-b">
+                        <th colspan={3} className="px-4 py-2 text-sm text-left">
+                            {formatDate(period.startDate)} - {formatDate(period.endDate)}
+                        </th>
+                    </tr>
                     <tr className="border-b border-gray-200 text-left">
-                    <th className="px-4 py-2 text-sm font-semibold text-gray-700">Date</th>
-                    <th className="px-4 py-2 text-sm font-semibold text-gray-700">Main Numbers</th>
-                    <th className="px-4 py-2 text-sm font-semibold text-gray-700">Extra</th>
+                        <th className="px-4 py-2 text-sm font-semibold text-gray-700">Date</th>
+                        <th className="px-4 py-2 text-sm font-semibold text-gray-700">Main Numbers</th>
+                        <th className="px-4 py-2 text-sm font-semibold text-gray-700">Extra</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -55,7 +58,7 @@ export default function ResultsTable() {
                                 {el.main_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-graphite-light text-gray-800 text-sm font-bold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-800 text-sm font-semibold"
                                     >
                                         {el}
                                     </span>
@@ -67,7 +70,7 @@ export default function ResultsTable() {
                                 {el.extra_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-graphite-middle text-gray-50 text-sm font-bold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 text-sm font-semibold"
                                     >
                                         {el}
                                     </span>

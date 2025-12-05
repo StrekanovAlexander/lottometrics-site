@@ -15,7 +15,7 @@ export default function ResultsPage({slug}) {
         { label: "Results"},
       ]} />    
 
-      <h1 className="text-3xl md:text-4xl font-extrabold text-graphite mb-8">
+      <h1 className="text-2xl md:text-3xl font-extrabold text-graphite mb-8">
         Lottery "{lottery}" Results
       </h1>
       <ResultsBar />
