@@ -11,6 +11,10 @@ export default async function LotteriesPage() {
     
     const {lotteries} = await res.json();
 
+    if (!lotteries || !Array.isArray(lotteries)) {
+        return <div>No lotteries available</div>;
+    }
+
     return (
         <div>
             <Breadcrumbs
