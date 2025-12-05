@@ -41,7 +41,9 @@ export default function FrequencyGrid() {
         return (
           <div
             key={number}
-            className={`cell-base ${bgColor}`}
+            style={{ backgroundColor: bgColor, display: "flex", flexDirection: "column", 
+              padding: "6px", textAlign: "center", borderRadius: "4px" }}
+            // className={`cell-base ${bgColor}`}
           >
             <span className="font-bold">{number}</span>
             <span className="text-xs">{freq}</span>

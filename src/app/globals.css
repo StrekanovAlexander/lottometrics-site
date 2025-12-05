@@ -2,40 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-.ball {
-  @apply w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold;
-}
+@layer components {
 
-.ball-main {
-  @apply bg-gray-800 text-white;
-}
+  .ball {
+    @apply w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold;
+  }
 
-.ball-extra {
-  @apply bg-gray-500 text-white;
-}
+  .ball-main {
+    @apply bg-gray-800 text-white;
+  }
 
-.ball-main-tbl {
-  @apply bg-gray-400 text-white text-shadow-sm;
-}
+  .ball-extra {
+    @apply bg-gray-500 text-white;
+  }
 
-.ball-extra-tbl {
-  @apply bg-gray-300 text-gray-800;
-}
+  .ball-main-tbl {
+    @apply bg-gray-400 text-white text-shadow-sm;
+  }
 
-.cell-base {
-  @apply flex flex-col items-center justify-center rounded-md p-2;
-}
-.cell-gray {
-  @apply bg-gray-300 text-black;
-}
-.cell-yellow {
-  @apply bg-yellow-300 text-black;
-}
-.cell-lightgreen {
-  @apply bg-green-300 text-black;
-}
-.cell-green {
-  @apply bg-green-600 text-white;
+  .ball-extra-tbl {
+    @apply bg-gray-300 text-gray-800;
+  }
+
+  .cell-base {
+    @apply flex flex-col items-center justify-center rounded-md p-2;
+  }
+  .cell-gray {
+    @apply bg-gray-300 text-black;
+  }
+  .cell-yellow {
+    @apply bg-yellow-300 text-black;
+  }
+  .cell-lightgreen {
+    @apply bg-green-300 text-black;
+  }
+  .cell-green {
+    @apply bg-green-600 text-white;
+  }
 }
 
 * {
