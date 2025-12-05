@@ -1,6 +1,8 @@
 import pool from '@/lib/db';
 import { NextResponse } from "next/server";
 
+export const dynamic = "force-dynamic";
+
 export async function GET() {
     try {
         const [rows] = await pool.query(
@@ -23,7 +25,9 @@ export async function GET() {
             FROM lotteries 
             WHERE is_active = true`
         );
-        return NextResponse.json(rows);
+        return NextResponse.json(rows, {
+            headers: { 'Cache-Control': 'no-store' },
+        });
     } catch (error) {
         console.error(error);
         return NextResponse.json(
