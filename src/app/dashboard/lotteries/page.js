@@ -1,20 +1,33 @@
 // dashboard/lotteries
+"use client";
+import { useEffect, useState } from "react";
+import Spinner from "../components/elements/messages/Spinner"
+import Error from "../components/elements/messages/Error";
 import Breadcrumbs from "../components/layout/Breadcrumb";
 import LotteryCard from "../components/elements/cards/LotteryCard";
 
-export default async function LotteriesPage() {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/dashboard/lotteries`);
-    
-    if (!res.ok) {
-        return <div>Error page</div>;
-    }
-    
-    const {lotteries} = await res.json();
+export default function LotteriesPage() {
+    const [data, setData] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const res = await fetch("/api/dashboard/lotteries");
+                if (!res.ok) throw new Error("Failed to fetch lotteries");
+                const lotteries = await res.json();
+                setData(lotteries);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchData();
+    }, []);
 
-    if (!lotteries || !Array.isArray(lotteries)) {
-        return <div>No lotteries available</div>;
-    }
-
+    if (error) return <Error message={error} />
+  
     return (
         <div>
             <Breadcrumbs
@@ -24,10 +37,12 @@ export default async function LotteriesPage() {
                 ]}
             />    
 
-            <h1 className="text-3xl md:text-4xl font-extrabold text-graphite text-transparent mb-8">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-graphite mb-8">
                 Lotteries Overview
             </h1>
-            
+
+            { loading && <Spinner />}    
+                       
             <div className="grid gap-6 
                 grid-cols-1 
                 sm:grid-cols-2 
@@ -35,7 +50,7 @@ export default async function LotteriesPage() {
                 lg:grid-cols-4 
                 xl:grid-cols-6"
             >
-                {lotteries.map((el) => (
+                {data.map((el) => (
                     <LotteryCard key={el.id} lottery={el} />
                 ))} 
             </div>
