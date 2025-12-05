@@ -5,6 +5,11 @@ import Spinner from "../components/elements/messages/Spinner"
 import Error from "../components/elements/messages/Error";
 import Breadcrumbs from "../components/layout/Breadcrumb";
 import LotteryCard from "../components/elements/cards/LotteryCard";
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "800"],
+});
 
 export default function LotteriesPage() {
     const [data, setData] = useState([]);
@@ -35,7 +40,7 @@ export default function LotteriesPage() {
                 { label: "Lotteries" },
             ]} />    
 
-            <h1 className="text-3xl md:text-4xl font-extrabold text-graphite mb-8">
+            <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite mb-8`}>
                 Lotteries Overview
             </h1>
 

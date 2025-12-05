@@ -8,7 +8,7 @@ export default function Breadcrumbs({ items }) {
                 <li key={ix} className="flex items-center">
                 {el.href ? (
                     <>
-                        <Link href={el.href} className="hover:text-teal transition">
+                        <Link href={el.href} className="hover:text-gray-900 transition">
                             {el.label}
                         </Link>
                         <span className="mx-2 text-gray-400">/</span>
