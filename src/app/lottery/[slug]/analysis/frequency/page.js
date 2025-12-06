@@ -18,10 +18,12 @@ export async function generateMetadata({ params }) {
         };
     } else {
         const lotteryLabel = getLotteryLabel(slug);
+        const url = `https://www.lottometrics.app/lottery/${slug}/analysis/frequency`;
         return {
             title: `${lotteryLabel} Frequency Analysis | LottoMetrics`,
             description:
                 `Explore frequency analysis for ${lotteryLabel}. Discover how often each number appears in official draws and gain insights into lottery statistics.`,
+            alternates: { canonical: url},
             keywords: [
                 `${lotteryLabel} frequency analysis`,
                 'lottery number frequency',
