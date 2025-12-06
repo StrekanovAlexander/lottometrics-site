@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { ArrowUpDown } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
@@ -11,6 +12,7 @@ export default function FrequencyGrid({slug}) {
     const [main, setMain] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [isSortMain, setIsSortMain] = useState(false);
 
     if (!lottery) {
         setLottery(slug)
@@ -49,8 +51,18 @@ export default function FrequencyGrid({slug}) {
             { loading && <Spinner />} 
             <div className="flex justify-start">
                 <div className="inline-block max-w-[700px] p-2 bg-white rounded-lg shadow-sm border border-gray-200">
-                    <div className="py-2 text-sm text-left font-semibold border-b">
-                        {formatDate(period.startDate)} - {formatDate(period.endDate)}
+                    <div className="py-2 text-sm text-left font-semibold border-b flex justify-between items-center">
+                        <div>{formatDate(period.startDate)} - {formatDate(period.endDate)}</div>
+                        <div>Main Numbers</div>
+                        <button
+                            onClick={() => {
+                                isSortMain ? main.sort((a, b) => a.number - b.number)
+                                  : main.sort((a, b) => b.freq - a.freq);
+                                setIsSortMain(!isSortMain);
+                            }} 
+                            className="px-2 py-1 border rounded-md shadow-md flex gap-1 items-center">
+                            <ArrowUpDown size={16} />
+                        </button>
                     </div>
                     <div className="grid grid-cols-10 gap-2 pt-2">
                         {main.map(({ number, freq }) => {
