@@ -5,6 +5,12 @@ module.exports = {
     "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  safelist: [
+    "bg-softgreen",
+    "bg-lightgreen",
+    "bg-softyellow",
+    "bg-gray-300",
+  ],
   theme: {
     extend: {
       colors: {
@@ -26,6 +32,9 @@ module.exports = {
           calm: "#FAF089",
           golden: "#FACC15",
         },
+        softgreen: "#A8D5BA",
+        lightgreen: "#DFF0D8",
+        softyellow: "#FAF089",
       },
     },
   },

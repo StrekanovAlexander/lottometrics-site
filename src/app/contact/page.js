@@ -1,35 +1,30 @@
-import Breadcrumbs from "../components/layout/Breadcrumbs";
-import PageTitle from "../components/ui/PageTitle";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-
-const title = "Contact";
-const description = "Get in touch with LottoMetrics team";
+import Breadcrumbs from "../components/layout/Breadcrumb";
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "800"],
+});
 
 export const metadata = {
-  title: title,
-  description: description,
+  title: 'Contact',
+  description: 'Get in touch with LottoMetrics team',
 };
 
 export default function Contact() {
   return (
     <>
-      <Header />
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
-          { label: title },
+          { label: 'Contact' },
         ]}
       />
-      <section className="max-w-5xl mx-auto">
-      <PageTitle title={title} description={description} />
-      <section className="bg-gray-50 p-8">
-        <p className="text-gray-600 font-semibold leading-relaxed">
-          For now, please reach us via email: <a href="mailto:info@lottometrics.com" className="text-blue-600">info@lottometrics.com</a>
-        </p>
-      </section>
-      </section>
-      <Footer />  
+      <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite mb-8`}>
+        Contact
+      </h1>
+      <p className="text-gray-600 font-semibold leading-relaxed">
+        For now, please reach us via email: <a href="mailto:info@lottometrics.com" className="text-blue-600">info@lottometrics.com</a>
+      </p>
     </>
   );
 }

@@ -15,10 +15,24 @@ export const parts = [
     {name: 'gaps', label: 'Gaps', icon: ArrowRightLeft, isInNav: true},
 ];
 
+export const routes = [
+    {label: 'Home', href: '/'},
+    {label: 'Lotteries', href: '/lotteries'},
+    {label: 'Download', href: '/download'},
+    {label: 'Docs', href: '/docs'},
+    {label: 'About', href: '/about'},
+    {label: 'Contact', href: '/contact'},
+];
+
 export function isLotteryExists(slug) {
     return lotteries.some(el => el.slug === slug);
 }
 
 export function isPartExists(part) {
     return parts.some(el => el.name === part);
+}
+
+export function getLotteryLabel(slug) {
+    const lottery = lotteries.find(el => el.slug === slug);
+    return lottery.label;
 }

@@ -1,5 +1,8 @@
 import Script from "next/script";
-import { AnalyticsProvider } from "@/context/AnalyticsContext";
+import { DashboardProvider } from "@/context/DashboardContext";
+import Header from "./components/layout/Header";
+import SidebarDesktop from "./components/layout/SidebarDesktop";
+import Footer from "./components/layout/Footer";
 import "./globals.css";
 
 export const metadata = {
@@ -14,7 +17,7 @@ export const metadata = {
   keywords: ['lottery analytics', 'number frequency', 'lotto statistics', 'lottery software'],
 };
 
-export default function RootLayout({ children }) {
+export default function DashboardLayout({ children }) {
   return (
     <html lang="en">
       <head>
@@ -33,11 +36,20 @@ export default function RootLayout({ children }) {
         </Script>
       </head>
       <body className="flex flex-col min-h-screen">
-        <AnalyticsProvider>
-          <main className="flex-grow w-full">
-            {children}
-          </main>
-        </AnalyticsProvider>
+        <div className="flex flex-col min-h-screen bg-gray-100 text-gray-900">
+          <DashboardProvider>
+            <Header />
+            {/* Main container */}
+            <div className="flex flex-grow">
+              <SidebarDesktop />
+              {/* Main content */}
+              <main className="flex-grow p-8">
+                {children}
+              </main>
+            </div>
+            <Footer />
+          </DashboardProvider>
+        </div>
       </body>
     </html>
   );

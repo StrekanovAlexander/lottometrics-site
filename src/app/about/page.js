@@ -1,15 +1,10 @@
-import Breadcrumbs from "../components/layout/Breadcrumbs";
-import PageTitle from "../components/ui/PageTitle";
-import Header from "../components/layout/Header";
-import Footer from "../components/layout/Footer";
-import { Anton } from "next/font/google";
-const anton = Anton({
-  weight: "400",
+import Image from "next/image";
+import Breadcrumbs from "../components/layout/Breadcrumb";
+import { Inter } from "next/font/google";
+const inter = Inter({
   subsets: ["latin"],
+  weight: ["400", "600", "800"],
 });
-
-const title = "About LottoMetrics";
-const titleDescription = "Verified data and modern lottery analysis methods"; 
 
 export const metadata = {
   title: 'About LottoMetrics - Verified Lottery Archives & Analytics',
@@ -46,23 +41,26 @@ export const metadata = {
   },
 };
 
-export default function Download() {
+export default function About() {
   return (
-    <>
-      <Header />
-      <Breadcrumbs
-        items={[
-          { label: "Home", href: "/" },
-          { label: title },
-        ]}
-      />
-      <section className="max-w-5xl mx-auto">
-      <PageTitle title={title} description={titleDescription} />
-      <section class="mx-auto max-w-4xl px-6">
+    <div>
+        <Breadcrumbs items={[
+            { label: "Home", href: "/" },
+            { label: "About"},
+        ]} />   
+        
+        <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite text-center mb-8`}>
+            About LottoMetrics
+        </h1>
+        <p className="text-center">
+          Verified data and modern lottery analysis methods
+        </p>
+
+        <section class="mx-auto max-w-4xl px-6">
         <p class="text-gray-800 leading-relaxed mb-8">
           LottoMetrics is built for players, researchers, and enthusiasts who want transparent, reliable <strong>lottery statistics</strong> and clear insights from <strong>lottery results</strong> and <strong>past lottery draws</strong>. Our platform combines historical archives with modern analytics to help you understand trends, probabilities, and the patterns behind winning numbers.
         </p>
-        <h2 class={`${anton.className} text-xl mb-3`}>Lottery archives from official sources</h2>
+        <h2 class={`${inter.className} text-xl mb-3`}>Lottery archives from official sources</h2>
         <p class="text-gray-800 leading-relaxed mb-4">
           We provide complete archives sourced directly from official lottery operators. Explore histories and <strong>Mega Millions winning numbers</strong>, <strong>EuroJackpot draws</strong>, and <strong>UK National Lottery results</strong> along with other major international games.
         </p>
@@ -74,7 +72,7 @@ export default function Download() {
           <li><strong>EuroJackpot (Europe):</strong> available from 2012</li>
           <li><strong>UK National Lottery:</strong> available from 1994</li>
         </ul>
-        <h2 class={`${anton.className} text-xl mb-3`}>Analytics to explore number behavior</h2>
+        <h2 class={`${inter.className} text-xl mb-3`}>Analytics to explore number behavior</h2>
         <p class="text-gray-800 leading-relaxed mb-4">
           Use our tools to run <strong>number frequency analysis</strong>, study <strong>lottery number gaps</strong>, identify <strong>hot and cold numbers</strong>, and examine interval patterns and pair relationships.
         </p>
@@ -84,17 +82,15 @@ export default function Download() {
           <li><strong>Hot and cold numbers:</strong> discover recent momentum vs. long-term dormancy</li>
           <li><strong>Pair analysis:</strong> find numbers that tend to occur together</li>
         </ul>
-        <h2 class={`${anton.className} text-xl mb-3`}>Guidance for smarter selections</h2>
+        <h2 class={`${inter.className} text-xl mb-3`}>Guidance for smarter selections</h2>
         <p class="text-gray-800 leading-relaxed mb-8">
           Whether you prefer <strong>lucky lottery numbers</strong> or data-driven choices, our insights can support <strong>winning lottery strategies</strong> and offer practical ideas on <strong>how to pick lottery numbers</strong>. Analytics do not guarantee outcomes, but they help you make informed decisions.
         </p>
-        <h2 class={`${anton.className} text-xl mb-3`}>Trust, security, and international coverage</h2>
+        <h2 class={`${inter.className} text-xl mb-3`}>Trust, security, and international coverage</h2>
         <p class="text-gray-800 leading-relaxed">
           LottoMetrics aims to be your <strong>trusted lottery site</strong> with a focus on clarity and data integrity. We cover <strong>international lottery games</strong> and align with best practices around <strong>secure lottery tickets</strong>. If you play online, always choose reputable platforms and verify official sources.
         </p>
       </section>
-      </section>
-      <Footer />  
-    </>
+    </div>
   );
 }

@@ -50,14 +50,15 @@ export function renderTableBalls(numbersString, extra = false) {
   );
 }
 
-export function getFrequencyColor(freq, minFreq, maxFreq) {
+export function frequencyColor(freq, minFreq, maxFreq) {
   if (maxFreq === minFreq) {
-    return "silver";
+    return "bg-gray-300";
   }
   const norm = (freq - minFreq) / (maxFreq - minFreq);
-  if (norm >= 0.66) return "limegreen";
-  if (norm >= 0.33) return "lightgreen";
-  if (norm > 0) return "khaki";
-  return "silver";
+  if (norm >= 0.66) return "bg-softgreen";
+  if (norm >= 0.33) return "bg-lightgreen";
+  if (norm > 0)     return "bg-softyellow";
+
+  return "bg-gray-300";
 }
 
