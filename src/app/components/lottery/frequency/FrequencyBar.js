@@ -39,13 +39,13 @@ export default function FrequencyBar({slug}) {
                 </div>
                 {/* Records */}
                 <div className="flex items-center gap-2">
-                    <label className="text-sm text-gray-700 whitespace-nowrap">Records:</label>
+                    <label className="text-sm text-gray-700 whitespace-nowrap">Draws count:</label>
                     <input
                         type="number"
                         value={drawsCount}
                         readOnly={true}
                         min="1"
-                        className="w-20 px-3 py-1 rounded-md border border-gray-300 
+                        className="w-20 px-3 py-1 rounded-md border border-gray-300 font-semibold text-center 
                             focus:outline-none focus:border-lavender focus:ring-1 focus:ring-lavender"
                         placeholder="e.g. 17"
                     />

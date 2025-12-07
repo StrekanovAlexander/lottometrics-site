@@ -66,7 +66,7 @@ export default function LotteryFrequencyPage({params}) {
                     { label: "Analysis", href: `/lotteries/${slug}/analysis`},
                     { label: "Frequency"},
                 ]} />    
-                <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite mb-8`}>
+                <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
                     Lottery "{lotteryLabel}" Frequency Analysis
                 </h1>
                 <FrequencyBar slug={slug} />

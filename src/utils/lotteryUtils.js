@@ -52,13 +52,17 @@ export function renderTableBalls(numbersString, extra = false) {
 
 export function frequencyColor(freq, minFreq, maxFreq) {
   if (maxFreq === minFreq) {
-    return "bg-gray-300";
+    return "bg-heatmap-10";
   }
   const norm = (freq - minFreq) / (maxFreq - minFreq);
-  if (norm >= 0.66) return "bg-softgreen";
-  if (norm >= 0.33) return "bg-lightgreen";
-  if (norm > 0)     return "bg-softyellow";
-
-  return "bg-gray-300";
+  if (norm >= 0.90) return "bg-heatmap-1";
+  if (norm >= 0.80) return "bg-heatmap-2";
+  if (norm >= 0.70) return "bg-heatmap-3";
+  if (norm >= 0.60) return "bg-heatmap-4";
+  if (norm >= 0.50) return "bg-heatmap-5";
+  if (norm >= 0.40) return "bg-heatmap-6";
+  if (norm >= 0.30) return "bg-heatmap-7";
+  if (norm >= 0.20) return "bg-heatmap-8";
+  if (norm >= 0.10) return "bg-heatmap-9";
+  return "bg-heatmap-10";
 }
-
