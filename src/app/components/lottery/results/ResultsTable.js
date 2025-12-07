@@ -43,8 +43,8 @@ export default function ResultsTable() {
                     </tr>
                     <tr className="border-b border-gray-200 text-left">
                         <th className="px-4 py-2 text-sm font-semibold text-gray-700">Date</th>
-                        <th className="px-4 py-2 text-sm font-semibold text-gray-700">Main Numbers</th>
-                        <th className="px-4 py-2 text-sm font-semibold text-gray-700">Extra</th>
+                        <th className="px-4 py-2 text-sm font-semibold text-gray-700 text-center">Main Numbers</th>
+                        <th className="px-4 py-2 text-sm font-semibold text-gray-700 text-center">Extra</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +58,7 @@ export default function ResultsTable() {
                                 {el.main_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-gray-800 text-sm font-semibold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-ball-main2 text-ball-text text-sm font-semibold"
                                     >
                                         {el}
                                     </span>
@@ -70,7 +70,7 @@ export default function ResultsTable() {
                                 {el.extra_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-gray-800 text-sm font-semibold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-ball-extra3 text-ball-text text-sm font-semibold"
                                     >
                                         {el}
                                     </span>
