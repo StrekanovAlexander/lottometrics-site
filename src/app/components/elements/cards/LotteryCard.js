@@ -11,7 +11,7 @@ export default function LotteryCard({lottery}) {
         <Link
             href={`/lottery/${lottery.slug}`}
             className="inline-block max-w-[400px] rounded-lg border min-w-[200px]
-              border-gray-200 p-6 shadow-md bg-graphite-light hover:shadow-lg transition cursor-pointer"
+              border-gray-300 p-6 shadow-md bg-graphite-light hover:shadow-lg transition cursor-pointer"
         >
             {/* Header */}
             <div className="mb-3 flex justify-between">
