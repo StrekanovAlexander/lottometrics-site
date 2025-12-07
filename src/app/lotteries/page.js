@@ -13,6 +13,8 @@ export const metadata = {
     title: 'Lotteries List - Official Archives | LottoMetrics',
     description:
         'Browse the list of supported lotteries including Germany`s 6 aus 49, Powerball, EuroMillions, Mega Millions, EuroJackpot, and UK National Lottery. Access official archives of past draws and explore detailed statistics on each lottery.',
+    alternates: 
+        { canonical: `https://www.lottometrics.app/lotteries`},
     keywords: [
         'lotteries list',
         'lottery archives',
@@ -48,7 +50,7 @@ export default function LotteriesPage() {
                 { label: "Home", href: "/" },
                 { label: "Lotteries" },
             ]} />    
-            <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite mb-8`}>
+            <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
                 Lotteries List
             </h1>
             <LotteriesData />

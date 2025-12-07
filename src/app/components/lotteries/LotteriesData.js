@@ -13,7 +13,7 @@ export default function LotteriesData() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const res = await fetch("/api/dashboard/lotteries");
+                const res = await fetch("/api/dashboard/lotteries/latest");
                 if (!res.ok) throw new Error("Failed to fetch lotteries");
                 const lotteries = await res.json();
                 setData(lotteries);
@@ -37,8 +37,7 @@ export default function LotteriesData() {
                 grid-cols-1 
                 sm:grid-cols-2 
                 md:grid-cols-3 
-                lg:grid-cols-4 
-                xl:grid-cols-6"
+                lg:grid-cols-4" 
             >
                 {data.map((el) => (
                     <LotteryCard key={el.id} lottery={el} />
