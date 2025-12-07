@@ -1,17 +1,22 @@
 import Link from "next/link";
 import { formatDate } from "@/utils/formatDate";
+import { Inter } from "next/font/google";
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["400", "600", "800"],
+});
 
 export default function LotteryCard({lottery}) {
     return (
         <Link
             href={`/lottery/${lottery.slug}`}
-            className="inline-block max-w-[700px] rounded-lg shadow-sm border 
+            className="inline-block max-w-[400px] rounded-lg border min-w-[200px]
               border-gray-200 p-6 shadow-md bg-graphite-light hover:shadow-lg transition cursor-pointer"
         >
             {/* Header */}
             <div className="mb-3 flex justify-between">
                 <div>
-                    <h2 className="text-xl font-bold text-gray-800">
+                    <h2 className={`${inter.className} text-xl font-bold text-gray-800`}>
                         {lottery.lottery_name}
                     </h2>
                     <p className="text-sm font-medium text-gray-500">
