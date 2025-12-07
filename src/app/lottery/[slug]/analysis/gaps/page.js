@@ -1,5 +1,6 @@
 import Breadcrumbs from "@/app/components/layout/Breadcrumb";
 import { isLotteryExists, getLotteryLabel } from "@/lib/global";
+import GapsData from "@/app/components/lottery/gaps/GapsData";
 import { Inter } from "next/font/google";
 const inter = Inter({
   subsets: ["latin"],
@@ -16,10 +17,12 @@ export async function generateMetadata({ params }) {
         };
     } else {
         const lotteryLabel = getLotteryLabel(slug);
+        const url = `https://www.lottometrics.app/lottery/${slug}/analysis/gaps`;
         return {
             title: `${lotteryLabel} Gaps Analysis | LottoMetrics`,
             description:
                 `Explore gaps analysis for ${lotteryLabel}. Discover how often each number appears in official draws and gain insights into lottery statistics.`,
+            alternates: { canonical: url},
             keywords: [
                 `${lotteryLabel} gaps analysis`,
                 'lottery number gaps',
@@ -62,9 +65,10 @@ export default function LotteryFrequencyPage({params}) {
                     { label: "Analysis", href: `/lottery/${slug}/analysis`},
                     { label: "Gaps"},
                 ]} />    
-                <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite mb-8`}>
+                <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
                     Lottery "{lotteryLabel}" Gaps Analysis
                 </h1>
+                <GapsData slug={slug} />
             </>
         )
     }    

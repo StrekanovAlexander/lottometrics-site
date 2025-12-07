@@ -50,11 +50,11 @@ export function renderTableBalls(numbersString, extra = false) {
   );
 }
 
-export function frequencyColor(freq, minFreq, maxFreq) {
-  if (maxFreq === minFreq) {
+export function heatMapAsc(val, min, max) {
+  if (max === min) {
     return "bg-heatmap-10";
   }
-  const norm = (freq - minFreq) / (maxFreq - minFreq);
+  const norm = (val - min) / (max - min);
   if (norm >= 0.90) return "bg-heatmap-1";
   if (norm >= 0.80) return "bg-heatmap-2";
   if (norm >= 0.70) return "bg-heatmap-3";
@@ -65,4 +65,21 @@ export function frequencyColor(freq, minFreq, maxFreq) {
   if (norm >= 0.20) return "bg-heatmap-8";
   if (norm >= 0.10) return "bg-heatmap-9";
   return "bg-heatmap-10";
+}
+
+export function heatMapDesc(val, min, max) {
+  if (max === min) {
+    return "bg-heatmap-1";
+  }
+  const norm = (val - min) / (max - min);
+  if (norm >= 0.90) return "bg-heatmap-9";
+  if (norm >= 0.80) return "bg-heatmap-8";
+  if (norm >= 0.70) return "bg-heatmap-7";
+  if (norm >= 0.60) return "bg-heatmap-6";
+  if (norm >= 0.50) return "bg-heatmap-5";
+  if (norm >= 0.40) return "bg-heatmap-4";
+  if (norm >= 0.30) return "bg-heatmap-3";
+  if (norm >= 0.20) return "bg-heatmap-2";
+  if (norm >= 0.10) return "bg-heatmap-1";
+  return "bg-heatmap-1";
 }

@@ -4,7 +4,7 @@ import { ArrowUpDown } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
-import { frequencyColor } from "@/utils/lotteryUtils";
+import { heatMapAsc } from "@/utils/lotteryUtils";
 import { formatDate } from "@/utils/formatDate";
 
 export default function FrequencyGrid({slug}) {
@@ -76,7 +76,7 @@ export default function FrequencyGrid({slug}) {
                     </div>
                     <div className="grid grid-cols-10 gap-2 pt-2">
                         {main.map(({ number, freq }) => {
-                            const bgColor = frequencyColor(freq, minFreqMain, maxFreqMain);
+                            const bgColor = heatMapAsc(freq, minFreqMain, maxFreqMain);
                             return (
                             <div
                                 key={number}
@@ -105,7 +105,7 @@ export default function FrequencyGrid({slug}) {
                     </div>
                     <div className="grid grid-cols-5 gap-2 pt-2">
                         {extra.map(({ number, freq }) => {
-                            const bgColor = frequencyColor(freq, minFreqExtra, maxFreqExtra);
+                            const bgColor = heatMapAsc(freq, minFreqExtra, maxFreqExtra);
                             return (
                             <div
                                 key={number}
