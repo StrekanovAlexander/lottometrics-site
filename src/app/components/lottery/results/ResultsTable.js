@@ -36,11 +36,6 @@ export default function ResultsTable() {
             { loading && <Spinner />} 
             <table className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200">
                 <thead>
-                    <tr className="border-b">
-                        <th colspan={3} className="px-4 py-2 text-sm text-left">
-                            {formatDate(period.startDate)} - {formatDate(period.endDate)}
-                        </th>
-                    </tr>
                     <tr className="border-b border-gray-200 text-left">
                         <th className="px-4 py-2 text-sm font-semibold text-gray-700">Date</th>
                         <th className="px-4 py-2 text-sm font-semibold text-gray-700 text-center">Main Numbers</th>

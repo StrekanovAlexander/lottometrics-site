@@ -63,7 +63,6 @@ export default function FrequencyGrid({slug}) {
             <div className="flex justify-start gap-5">
                 <div className="inline-block max-w-[700px] p-2 bg-white rounded-lg shadow-sm border border-gray-200">
                     <div className="py-2 text-sm text-left font-semibold border-b flex gap-1 justify-between items-center">
-                        <div>{formatDate(period.startDate)} - {formatDate(period.endDate)}</div>
                         <div>Main Numbers</div>
                         <button
                             onClick={() => {

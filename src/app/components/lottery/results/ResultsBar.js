@@ -1,5 +1,6 @@
 "use client";
 import { useDashboard } from "@/context/DashboardContext";
+import { formatDate } from "@/utils/formatDate";
 
 export default function ResultsBar({slug}) {
     const { lottery, setLottery, period, setPeriod, drawsCount } = useDashboard();
@@ -11,6 +12,11 @@ export default function ResultsBar({slug}) {
     return (
         <div className="inline-block mb-6 p-3 bg-white rounded-lg shadow-sm border border-gray-200">
             <div className="flex flex-wrap items-center gap-6">
+                {/* Period */}
+                <div className="text-base">
+                    <span className="text-gray-700">Period:</span>&nbsp; 
+                    <span className="font-semibold text-black">{formatDate(period.startDate)} - {formatDate(period.endDate)}</span>
+                </div>
                 {/* Start Date */}
                 <div className="flex items-center gap-2">
                     <label className="text-sm text-gray-700 whitespace-nowrap">Start Date:</label>
@@ -19,7 +25,7 @@ export default function ResultsBar({slug}) {
                         value={period.startDate}
                         onChange={(ev) => setPeriod({ ...period, startDate: ev.target.value })}
                         className="px-3 py-1 rounded-md border border-gray-300 
-                            focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal"
+                            focus:outline-none focus:border-yellow focus:ring-1 focus:ring-yellow"
                     />
                 </div>
                 {/* End Date */}
@@ -30,12 +36,12 @@ export default function ResultsBar({slug}) {
                         value={period.endDate}
                         onChange={(ev) => setPeriod({ ...period, endDate: ev.target.value })}
                         className="px-3 py-1 rounded-md border border-gray-300 
-                            focus:outline-none focus:border-teal focus:ring-1 focus:ring-teal"
+                            focus:outline-none focus:border-yellow focus:ring-1 focus:ring-yellow"
                     />
                 </div>
                 {/* Records */}
                 <div className="flex items-center gap-2">
-                    <label className="text-sm text-gray-700 whitespace-nowrap">Records:</label>
+                    <label className="text-sm text-gray-700 whitespace-nowrap">Draws count:</label>
                     <input
                         type="number"
                         value={drawsCount}
