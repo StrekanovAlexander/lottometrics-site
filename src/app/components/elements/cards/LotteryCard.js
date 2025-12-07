@@ -5,7 +5,8 @@ export default function LotteryCard({lottery}) {
     return (
         <Link
             href={`/lottery/${lottery.slug}`}
-            className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200 p-6 hover:shadow-md transition cursor-pointer"
+            className="inline-block max-w-[700px] rounded-lg shadow-sm border 
+              border-gray-200 p-6 shadow-md bg-graphite-light hover:shadow-lg transition cursor-pointer"
         >
             {/* Header */}
             <div className="mb-3 flex justify-between">
@@ -26,7 +27,7 @@ export default function LotteryCard({lottery}) {
                 <p className="text-sm font-semibold text-gray-700 my-6 text-center">
                     Last result: {formatDate(lottery.draw_date)}
                 </p>
-                <div className="flex flex-wrap gap-2 justify-center border-t pt-4">
+                <div className="flex flex-wrap gap-2 justify-center border-t border-gray-400 pt-4">
                     {lottery.main_numbers.split(",").map((el, ix) => 
                         <span
                             key={ix}
