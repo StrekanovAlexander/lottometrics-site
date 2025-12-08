@@ -38,14 +38,13 @@ export async function generateMetadata({ params }) {
                 url: `https://lottometrics.app/lottery/${lotteryLabel}/analysis/frequency`,
                 siteName: 'LottoMetrics',
                 type: 'website',
-                // images: [
-                // {
-                //     url: 'https://lottometrics.app/og-frequency.png',
-                //     width: 1200,
-                //     height: 630,
-                //     alt: `${lotteryLabel} Frequency Analysis Preview`,
-                // },
-                // ],
+                images: [{
+                    url: 'https://lottometrics.app/og-frequency.png',
+                    width: 1200,
+                    height: 630,
+                    alt: `Frequency Analysis Preview for ${lotteryLabel}`
+                    },
+                ],
             },
         }
     }
@@ -66,7 +65,7 @@ export default function LotteryFrequencyPage({params}) {
                     { label: "Analysis", href: `/lotteries/${slug}/analysis`},
                     { label: "Frequency"},
                 ]} />    
-                <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
+                <h1 className={`${inter.className} text-xl md:text-4xl font-bold text-graphite mb-8`}>
                     Lottery "{lotteryLabel}" Frequency Analysis
                 </h1>
                 <FrequencyBar slug={slug} />
