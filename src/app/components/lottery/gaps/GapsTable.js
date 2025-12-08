@@ -1,9 +1,36 @@
+"use client";
+import { useState } from "react";
+
 import { formatDate } from "@/utils/formatDate"
 import { heatMapDesc } from "@/utils/lotteryUtils";
 
-export default function GapsTable({data}) {
-    const main = data.filter(el => el.number_kind === 'main');
-    const extra = data.filter(el => el.number_kind === 'extra');
+export default function GapsTable({data, sort, filterZero}) {
+    const filtered = filterZero === "nonzero" ? [...data].filter(el => el.current_gap > 0) : data;
+    const [sorted, setSorted] = useState(filtered);
+    const [fMain, setFMain] = useState("current_gap");
+    const [fExtra, setFExtra] = useState("current_gap");
+
+    let main = sorted.filter(el => el.number_kind === 'main');
+    let extra = sorted.filter(el => el.number_kind === 'extra');
+
+    main = (sort === "up") 
+        ? (fMain === "last_hit_date") 
+            ? main.sort((a, b) => new Date(a[fMain]) - new Date(b[fMain])) 
+            : main.sort((a, b) => a[fMain] - b[fMain]) 
+        : (fMain === "last_hit_date") 
+            ? main.sort((a, b) => new Date(b[fMain]) - new Date(a[fMain])) 
+            : main.sort((a, b) => b[fMain] - a[fMain])
+        ;
+
+    extra = (sort === "up") 
+        ?  (fExtra === "last_hit_date") 
+           ? extra.sort((a, b) => new Date(a[fMain]) - new Date(b[fMain])) 
+           : extra.sort((a, b) => a[fMain] - b[fMain]) 
+        :  (fExtra === "last_hit_date") 
+            ? extra.sort((a, b) => new Date(b[fMain]) - new Date(a[fMain])) 
+            : extra.sort((a, b) => b[fMain] - a[fMain])
+        ;
+    ;    
 
     const gapMain = main.map(el => el.current_gap);
     const minGapMain = Math.min(...gapMain);
@@ -17,14 +44,50 @@ export default function GapsTable({data}) {
         <div className="flex gap-5 items-start">
             <table className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200">
                 <thead>
-                    <tr className="border-b border-gray-200 text-center font-semibold text-sm text-gray-700">
+                    <tr className="text-center font-semibold text-sm text-gray-700">
                         <th colSpan={4} className="px-2 py-1">Main Numbers</th>
                     </tr>
-                    <tr className="border-b border-gray-200 text-center font-semibold text-sm text-gray-700">
-                        <th className="px-2 py-1">Number</th>
-                        <th className="px-2 py-1">Current Gap</th>
-                        <th className="px-2 py-1">Max Gap</th>
-                        <th className="px-2 py-1">Last Hit Date</th>
+                    <tr className="border-b border-gray-200 text-center text-sm text-gray-700">
+                        <th className="py-1">
+                            <button
+                                onClick={() => setFMain("draw_number")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${ fMain === "draw_number" ? " font-semibold" : " font-normal"}    
+                                `}
+                            >
+                                Number
+                            </button>
+                        </th>
+                        <th className="py-1">
+                            <button 
+                                onClick={() => setFMain("current_gap")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${ fMain === "current_gap" ? " font-semibold" : " font-normal"}    
+                                `}
+                                >
+                                Current Gap
+                            </button>    
+                        </th>
+                        {/* <th className="py-1">
+                            <button 
+                                onClick={() => setFMain("max_gap")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${ fMain === "max_gap" ? " font-semibold" : " font-normal"}    
+                                `}
+                            >
+                                Max Gap
+                            </button> 
+                        </th> */}
+                        <th className="py-1">
+                            <button 
+                                onClick={() => setFMain("last_hit_date")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${ fMain === "last_hit_date" ? " font-semibold" : " font-normal"}    
+                                `}
+                            >
+                                Last Hit
+                            </button> 
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,19 +95,21 @@ export default function GapsTable({data}) {
                         const bgColor = heatMapDesc(el.current_gap, minGapMain, maxGapMain)
                         return (
                             <tr className={`${bgColor} border-b border-gray-100 text-center font-semibold text-sm`}>
-                                <td className="px-2 py-1">
-                                    <span
+                                <td className="px-2 py-1 text-center align-middle">
+                                    <div className="flex items-center justify-center">
+                                        <span
                                         className="flex items-center justify-center w-8 h-8 rounded-full bg-ball-main2 text-ball-text"
-                                    >
+                                        >
                                         {el.draw_number}
-                                    </span>
+                                        </span>
+                                    </div>
                                 </td>
                                 <td className="px-4 py-1 text-sm text-gray-600 text-center">
                                     {el.current_gap}
                                 </td>
-                                <td className="px-4 py-1 text-sm text-gray-600 font-semibold">
+                                {/* <td className="px-4 py-1 text-sm text-gray-600 font-semibold">
                                     {el.max_gap}
-                                </td>
+                                </td> */}
                                 <td className="px-4 py-1 text-sm text-gray-600 font-semibold">
                                     {formatDate(new Date(el.last_hit_date))}
                                 </td>
@@ -54,14 +119,50 @@ export default function GapsTable({data}) {
             </table>
             <table className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200">
                 <thead>
-                    <tr className="border-b border-gray-200 text-center font-semibold text-sm text-gray-700">
+                    <tr className="text-center font-semibold text-sm text-gray-700">
                         <th colSpan={4} className="px-2 py-1">Extra Numbers</th>
                     </tr>
-                    <tr className="border-b border-gray-200 text-center font-semibold text-sm text-gray-700">
-                        <th className="px-2 py-1">Number</th>
-                        <th className="px-2 py-1">Current Gap</th>
-                        <th className="px-2 py-1">Max Gap</th>
-                        <th className="px-2 py-1">Last Hit Date</th>
+                    <tr className="border-b border-gray-200 text-center text-sm text-gray-700">
+                        <th className="py-1">
+                            <button
+                                onClick={() => setFExtra("draw_number")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${fExtra === "draw_number" ? " font-semibold" : " font-normal"}    
+                                `}
+                            >
+                                Number
+                            </button>
+                        </th>
+                        <th className="py-1">
+                            <button 
+                                onClick={() => setFExtra("current_gap")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${fExtra === "current_gap" ? " font-semibold" : " font-normal"}    
+                                `}
+                                >
+                                Current Gap
+                            </button>    
+                        </th>
+                        {/* <th className="py-1">
+                            <button 
+                                onClick={() => setFExtra("max_gap")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${fExtra === "max_gap" ? " font-semibold" : " font-normal"}    
+                                `}
+                            >
+                                Max Gap
+                            </button> 
+                        </th> */}
+                        <th className="py-1">
+                            <button 
+                                onClick={() => setFExtra("last_hit_date")} 
+                                className={`w-full border rounded px-1 py-1 shadow-sm
+                                    ${fExtra === "last_hit_date" ? " font-semibold" : " font-normal"}    
+                                `}
+                            >
+                                Last Hit
+                            </button> 
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -69,19 +170,21 @@ export default function GapsTable({data}) {
                         const bgColor = heatMapDesc(el.current_gap, minGapExtra, maxGapExtra)
                         return (
                             <tr className={`${bgColor} border-b border-gray-100 text-center font-semibold text-sm`}>
-                                <td className="px-2 py-1">
-                                    <span
+                                <td className="px-2 py-1 text-center align-middle">
+                                    <div className="flex items-center justify-center">
+                                        <span
                                         className="flex items-center justify-center w-8 h-8 rounded-full bg-ball-extra3 text-ball-text"
-                                    >
+                                        >
                                         {el.draw_number}
-                                    </span>
+                                        </span>
+                                    </div>
                                 </td>
                                 <td className="px-4 py-1 text-sm text-gray-600 text-center">
                                     {el.current_gap}
                                 </td>
-                                <td className="px-4 py-1 text-sm text-gray-600 font-semibold">
+                                {/* <td className="px-4 py-1 text-sm text-gray-600 font-semibold">
                                     {el.max_gap}
-                                </td>
+                                </td> */}
                                 <td className="px-4 py-1 text-sm text-gray-600 font-semibold">
                                     {formatDate(new Date(el.last_hit_date))}
                                 </td>

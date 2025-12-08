@@ -5,7 +5,6 @@ import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
 import { heatMapAsc } from "@/utils/lotteryUtils";
-import { formatDate } from "@/utils/formatDate";
 
 export default function FrequencyGrid({slug}) {
     const { setDrawsCount, period, lottery, setLottery } = useDashboard();
@@ -48,6 +47,7 @@ export default function FrequencyGrid({slug}) {
     );
 
     if (error) return <Error message={error} />
+    if (loading) return <Spinner />
 
     const freqsMain = main.map(f => f.freq);
     const minFreqMain = Math.min(...freqsMain);
@@ -59,7 +59,6 @@ export default function FrequencyGrid({slug}) {
 
     return (
         <>
-            { loading && <Spinner />} 
             <div className="flex justify-start gap-5">
                 <div className="inline-block max-w-[700px] p-2 bg-white rounded-lg shadow-sm border border-gray-200">
                     <div className="py-2 text-sm text-left font-semibold border-b flex gap-1 justify-between items-center">

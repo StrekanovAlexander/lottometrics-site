@@ -4,10 +4,13 @@ import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
 import GapsTable from "./GapsTable";
+import GapsBar from "./GapsBar";
 
 export default function GapsData({slug}) {
     const { lottery, setLottery } = useDashboard();
     const [data, setData] = useState([]);
+    const [filterZero, setFilterZero] = useState("nonzero");
+    const [sort, setSort] = useState("down");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -33,11 +36,12 @@ export default function GapsData({slug}) {
     );
 
     if (error) return <Error message={error} />
-
+    if (loading) return <Spinner /> 
+    
     return (
         <>
-            {loading && <Spinner />}     
-            <GapsTable data={data} />
+            <GapsBar filterZero={filterZero} setFilterZero={setFilterZero} sort={sort} setSort={setSort} />
+            <GapsTable data={data} sort={sort} filterZero={filterZero} />
         </>
     )
 }

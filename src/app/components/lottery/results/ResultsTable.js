@@ -30,10 +30,10 @@ export default function ResultsTable() {
     }, [lottery, period, drawsCount]);
 
     if (error) return <Error message={error} />
+    if (loading) return <Spinner />
 
     return (
         <div>
-            { loading && <Spinner />} 
             <table className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200">
                 <thead>
                     <tr className="border-b border-gray-200 text-left">

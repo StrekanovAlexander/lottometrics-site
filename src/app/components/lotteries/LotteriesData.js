@@ -27,23 +27,13 @@ export default function LotteriesData() {
     }, []);
 
     if (error) return <Error message={error} />
+    if (loading) return <Spinner />
   
     return (
-        <div>
-            { loading && <Spinner />} 
-            <div className="
-                grid 
-                gap-2
-                md:gap-6 
-                grid-cols-1 
-                sm:grid-cols-2 
-                md:grid-cols-3 
-                lg:grid-cols-4" 
-            >
-                {data.map((el) => (
-                    <LotteryCard key={el.id} lottery={el} />
-                ))} 
-            </div>
+        <div className="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            {data.map((el) => (
+                <LotteryCard key={el.id} lottery={el} />
+            ))} 
         </div>
     )
 }

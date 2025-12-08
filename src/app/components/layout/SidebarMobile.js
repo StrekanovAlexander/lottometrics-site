@@ -1,9 +1,29 @@
 "use client";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import { Settings, X } from "lucide-react";
+import { useDashboard } from "@/context/DashboardContext";
+import { lotteries, parts } from "@/lib/global"
 
 export default function SidebarMobile() {
+    const { part, setPart, lottery, setLottery } = useDashboard();
+    const router = useRouter();
     const [open, setOpen] = useState(false);
+
+    function handleLotteryClick(slug) {
+        const selectedPart = "results";    
+        setLottery(slug);
+        setPart(selectedPart);
+        setOpen(false);
+        router.push(`/lottery/${slug}`);
+    }
+
+    function handlePartClick(name) {
+        setPart(name); 
+        setOpen(false); 
+        router.push(`/lottery/${lottery}/analysis/${name}`);
+    }
+
     return (
         <div className="flex justify-between">
             <button
@@ -21,11 +41,46 @@ export default function SidebarMobile() {
                         >
                             <X />
                         </button>
-                        <nav className="space-y-4">
-                            <a href="/#" className="block hover:text-lavender">Overview</a>
-                            <a href="/#" className="block hover:text-mint">Analytics</a>
-                            <a href="/#" className="block hover:text-yellow-300">Settings</a>
-                        </nav>
+                        <h2 className="text-gray-50 mb-2 font-semibold">Lotteries</h2>
+                        <ul className="flex flex-col">
+                            {lotteries.map(({ slug, label }) => {
+                                const isActive = slug === lottery;
+                                return (
+                                    <li key={slug}>
+                                        <button
+                                            onClick={() => handleLotteryClick(slug)}
+                                            className={`w-full flex items-center gap-3 mb-1 px-4 py-2 rounded-md transition-colors
+                                            ${isActive 
+                                                ? "text-yellow font-semibold" 
+                                                : "hover:bg-graphite-light hover:text-graphite"}
+                                            `}
+                                        >
+                                            <span className="text-sm">{label}</span>
+                                        </button>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                        <h2 className="text-gray-50 my-3 font-semibold">Analytics</h2>        
+                        <ul className="flex flex-col">
+                            {parts.filter(el => el.isInNav === true).map(({ name, label }) => {
+                                const isActive = name === part;
+                                return (
+                                    <li key={name}>
+                                        <button
+                                            onClick={() => handlePartClick(name)}
+                                            className={`w-full flex items-center gap-3 mb-1 px-4 py-2 rounded-md transition-colors
+                                            ${isActive 
+                                                ? "text-yellow font-semibold" 
+                                                : "hover:bg-graphite-light hover:text-graphite"}
+                                            `}
+                                        >
+                                            <span className="text-sm">{label}</span>
+                                        </button>
+                                    </li>
+                                );
+                            })}
+                        </ul>
                     </aside>
                     <div
                         className="flex-grow bg-black bg-opacity-50"
