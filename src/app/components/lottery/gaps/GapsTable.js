@@ -24,11 +24,11 @@ export default function GapsTable({data}) {
 
     extra = (sorting === "asc") 
         ?  (fExtra === "last_hit_date") 
-           ? extra.sort((a, b) => new Date(a[fMain]) - new Date(b[fMain])) 
-           : extra.sort((a, b) => a[fMain] - b[fMain]) 
+           ? extra.sort((a, b) => new Date(a[fExtra]) - new Date(b[fExtra])) 
+           : extra.sort((a, b) => a[fExtra] - b[fExtra]) 
         :  (fExtra === "last_hit_date") 
-            ? extra.sort((a, b) => new Date(b[fMain]) - new Date(a[fMain])) 
-            : extra.sort((a, b) => b[fMain] - a[fMain])
+            ? extra.sort((a, b) => new Date(b[fExtra]) - new Date(a[fExtra])) 
+            : extra.sort((a, b) => b[fExtra] - a[fExtra])
         ;
     ;    
 
