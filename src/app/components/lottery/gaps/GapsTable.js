@@ -1,19 +1,19 @@
 "use client";
 import { useState } from "react";
-
+import { useDashboard } from "@/context/DashboardContext";
 import { formatDate } from "@/utils/formatDate"
 import { heatMapDesc } from "@/utils/lotteryUtils";
 
-export default function GapsTable({data, sort, filterZero}) {
-    const filtered = filterZero === "nonzero" ? [...data].filter(el => el.current_gap > 0) : data;
-    const [sorted, setSorted] = useState(filtered);
+export default function GapsTable({data}) {
+    const { showZero, sorting } = useDashboard();
+    const [filtered, setFiltered] = useState([]);
     const [fMain, setFMain] = useState("current_gap");
     const [fExtra, setFExtra] = useState("current_gap");
+    
+    let main = data.filter(el => el.number_kind === 'main');
+    let extra = data.filter(el => el.number_kind === 'extra');
 
-    let main = sorted.filter(el => el.number_kind === 'main');
-    let extra = sorted.filter(el => el.number_kind === 'extra');
-
-    main = (sort === "up") 
+    main = (sorting === "asc") 
         ? (fMain === "last_hit_date") 
             ? main.sort((a, b) => new Date(a[fMain]) - new Date(b[fMain])) 
             : main.sort((a, b) => a[fMain] - b[fMain]) 
@@ -22,7 +22,7 @@ export default function GapsTable({data, sort, filterZero}) {
             : main.sort((a, b) => b[fMain] - a[fMain])
         ;
 
-    extra = (sort === "up") 
+    extra = (sorting === "asc") 
         ?  (fExtra === "last_hit_date") 
            ? extra.sort((a, b) => new Date(a[fMain]) - new Date(b[fMain])) 
            : extra.sort((a, b) => a[fMain] - b[fMain]) 

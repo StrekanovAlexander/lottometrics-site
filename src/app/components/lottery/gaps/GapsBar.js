@@ -1,4 +1,9 @@
-export default function GapsBar({filterZero, setFilterZero, sort, setSort}) {
+import { useDashboard } from "@/context/DashboardContext";
+
+export default function GapsBar() {
+    const { showZero, setShowZero, sorting, setSorting } = useDashboard();
+    const turnShowZero = (val) => setShowZero(val === "true");
+    
     return (
         <div className="inline-block mb-6 p-3 bg-white rounded-lg shadow-sm border border-gray-200">
             <div class="flex gap-3">
@@ -8,9 +13,9 @@ export default function GapsBar({filterZero, setFilterZero, sort, setSort}) {
                 <label class="inline-flex items-center gap-2 px-4 py-2">
                     <input
                         type="radio"
-                        value="nonzero"
-                        checked={filterZero === "nonzero"}
-                        onChange={(ev) => setFilterZero(ev.target.value)}
+                        value="false"
+                        checked={!showZero}
+                        onChange={(ev) => turnShowZero(ev.target.value)}
                         class="h-4 w-4 accent-graphite rounded-full border-gray-300"
                     />
                     <span class="text-sm text-gray-800">Non‑zero</span>
@@ -18,9 +23,9 @@ export default function GapsBar({filterZero, setFilterZero, sort, setSort}) {
                 <label class="inline-flex items-center gap-2 px-4 py-2">
                     <input
                         type="radio"
-                        value="all"
-                        checked={filterZero === "all"}
-                        onChange={(e) => setFilterZero(e.target.value)}
+                        value="true"
+                        checked={showZero}
+                        onChange={(ev) => turnShowZero(ev.target.value)}
                         class="h-4 w-4 accent-graphite rounded-full border-gray-300"
                     />
                     <span class="text-sm text-gray-800">All</span>
@@ -31,9 +36,9 @@ export default function GapsBar({filterZero, setFilterZero, sort, setSort}) {
                 <label class="inline-flex items-center gap-2 px-4 py-2">
                     <input
                         type="radio"
-                        value="down"
-                        checked={sort === "down"}
-                        onChange={(e) => setSort(e.target.value)}
+                        value="desc"
+                        checked={sorting === "desc"}
+                        onChange={(e) => setSorting(e.target.value)}
                         class="h-4 w-4 accent-graphite rounded-full border-gray-300"
                     />
                     <span class="text-sm text-gray-800">Down</span>
@@ -41,9 +46,9 @@ export default function GapsBar({filterZero, setFilterZero, sort, setSort}) {
                 <label class="inline-flex items-center gap-2 px-4 py-2">
                     <input
                         type="radio"
-                        value="up"
-                        checked={sort === "up"}
-                        onChange={(ev) => setSort(ev.target.value)}
+                        value="asc"
+                        checked={sorting === "asc"}
+                        onChange={(ev) => setSorting(ev.target.value)}
                         class="h-4 w-4 accent-graphite rounded-full border-gray-300"
                     />
                     <span class="text-sm text-gray-800">Up</span>

@@ -7,10 +7,8 @@ import GapsTable from "./GapsTable";
 import GapsBar from "./GapsBar";
 
 export default function GapsData({slug}) {
-    const { lottery, setLottery } = useDashboard();
+    const { lottery, setLottery, showZero } = useDashboard();
     const [data, setData] = useState([]);
-    const [filterZero, setFilterZero] = useState("nonzero");
-    const [sort, setSort] = useState("down");
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -38,10 +36,12 @@ export default function GapsData({slug}) {
     if (error) return <Error message={error} />
     if (loading) return <Spinner /> 
     
+    const filtered = showZero ? data : data.filter(el => el.current_gap > 0);
+    
     return (
         <>
-            <GapsBar filterZero={filterZero} setFilterZero={setFilterZero} sort={sort} setSort={setSort} />
-            <GapsTable data={data} sort={sort} filterZero={filterZero} />
+            <GapsBar />
+            <GapsTable data={filtered} />
         </>
     )
 }
