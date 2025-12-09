@@ -34,17 +34,17 @@ export async function generateMetadata({ params }) {
                 title: `${lotteryLabel} Gaps Analysis | LottoMetrics`,
                 description:
                 `Detailed gaps analysis of ${lotteryLabel} draws. See which numbers appear most often and explore historical patterns.`,
-                url: `https://lottometrics.app/lottery/${lotteryLabel}/analysis/gaps`,
+                url: `https://lottometrics.app/lottery/${slug}/analysis/gaps`,
                 siteName: 'LottoMetrics',
                 type: 'website',
-                // images: [
-                // {
-                //     url: 'https://lottometrics.app/og-frequency.png',
-                //     width: 1200,
-                //     height: 630,
-                //     alt: `${lotteryLabel} Frequency Analysis Preview`,
-                // },
-                // ],
+                images: [
+                {
+                    url: 'https://lottometrics.app/og-frequency.png',
+                    width: 1200,
+                    height: 630,
+                    alt: `${lotteryLabel} Frequency Analysis Preview`,
+                },
+                ],
             },
         }
     }
@@ -66,7 +66,7 @@ export default function LotteryFrequencyPage({params}) {
                     { label: "Gaps"},
                 ]} />    
                 <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
-                    Lottery "{lotteryLabel}" Gaps Analysis
+                    {lotteryLabel} Lottery Gaps Analysis
                 </h1>
                 <GapsData slug={slug} />
             </>

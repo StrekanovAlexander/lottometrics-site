@@ -35,7 +35,7 @@ export async function generateMetadata({ params }) {
                 title: `${lotteryLabel} Frequency Analysis | LottoMetrics`,
                 description:
                 `Detailed frequency analysis of ${lotteryLabel} draws. See which numbers appear most often and explore historical patterns.`,
-                url: `https://lottometrics.app/lottery/${lotteryLabel}/analysis/frequency`,
+                url: `https://lottometrics.app/lottery/${slug}/analysis/frequency`,
                 siteName: 'LottoMetrics',
                 type: 'website',
                 images: [{
@@ -66,7 +66,7 @@ export default function LotteryFrequencyPage({params}) {
                     { label: "Frequency"},
                 ]} />    
                 <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
-                    Lottery "{lotteryLabel}" Frequency Analysis
+                    {lotteryLabel} Lottery Frequency Analysis
                 </h1>
                 <FrequencyBar slug={slug} />
                 <FrequencyGrid slug={slug} />
