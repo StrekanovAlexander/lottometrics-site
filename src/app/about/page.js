@@ -25,6 +25,7 @@ export const metadata = {
     'winning lottery strategies',
     'lotto metrics',
   ],
+  alternates: { canonical: 'https://www.lottometrics.app/about' },
   openGraph: {
     title: 'About LottoMetrics - Verified Lottery Archives & Analytics',
     description:
