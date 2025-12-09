@@ -1,59 +1,59 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://lottometrics.app/</loc>
+    <loc>https://www.lottometrics.app/</loc>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lotteries</loc>
+    <loc>https://www.lottometrics.app/lotteries</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/lotto6aus49</loc>
+    <loc>https://www.lottometrics.app/lottery/lotto6aus49</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/powerball</loc>
+    <loc>https://www.lottometrics.app/lottery/powerball</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/euromillions</loc>
+    <loc>https://www.lottometrics.app/lottery/euromillions</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/megamillions</loc>
+    <loc>https://www.lottometrics.app/lottery/megamillions</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/eurojackpot</loc>
+    <loc>https://www.lottometrics.app/lottery/eurojackpot</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/uknationallottery</loc>
+    <loc>https://www.lottometrics.app/lottery/uknationallottery</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/lotto6aus49/analysis</loc>
+    <loc>https://www.lottometrics.app/lottery/lotto6aus49/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/powerball/analysis</loc>
+    <loc>https://www.lottometrics.app/lottery/powerball/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/euromillions/analysis</loc>
+    <loc>https://www.lottometrics.app/lottery/euromillions/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/megamillions/analysis</loc>
+    <loc>https://www.lottometrics.app/lottery/megamillions/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/eurojackpot/analysis</loc>
+    <loc>https://www.lottometrics.app/lottery/eurojackpot/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/lottery/uknationallottery/analysis</loc>
+    <loc>https://www.lottometrics.app/lottery/uknationallottery/analysis</loc>
     <priority>0.8</priority>
   </url>
   <url>
@@ -105,19 +105,19 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/download</loc>
+    <loc>https://www.lottometrics.app/download</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/docs</loc>
+    <loc>https://www.lottometrics.app/docs</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/about</loc>
+    <loc>https://www.lottometrics.app/about</loc>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://lottometrics.app/contact</loc>
+    <loc>https://www.lottometrics.app/contact</loc>
     <priority>0.8</priority>
   </url>
 </urlset>
