@@ -9,7 +9,13 @@ export async function GET(request) {
         const startDate = searchParams.get("start");
         const endDate = searchParams.get("end");
 
-        const [rows] = await pool.query(`
+        const [lotteryRows] = await pool.query(
+            `SELECT * FROM lotteries WHERE slug = ? AND is_active = 1`,
+            [slug]
+        );
+        const lott = lotteryRows[0];
+        
+        const [drawRows] = await pool.query(`
             SELECT 
                 d.id,
                 d.draw_date,
@@ -23,7 +29,7 @@ export async function GET(request) {
                 AND d.draw_date BETWEEN ? AND ?
             ORDER BY d.draw_date DESC    
         `, [slug, startDate, endDate]);
-        return NextResponse.json(rows);
+        return NextResponse.json({lott, draws: drawRows});
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'DB error' }, { status: 500 });

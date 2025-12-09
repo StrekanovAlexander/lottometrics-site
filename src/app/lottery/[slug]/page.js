@@ -12,19 +12,37 @@ export async function generateMetadata({ params }) {
   const name = lottery?.label ?? slug;
 
   return {
-    title: `${name} - Results | LottoMetrics`,
-    description: `Official results and archives for ${name}.`,
+    title: `${name} Lottery Results | LottoMetrics`,
+    description: `View official ${name} lottery results and archives with LottoMetrics. Explore past draws, winning numbers, and detailed statistics to better understand ${name} patterns.`,
+    alternates: { canonical: `https://lottometrics.app/lottery/${slug}`},
+    keywords: [
+      `${name} results`,
+      `${name} lottery results`,
+      `${name} winning numbers`,
+      `${name} draw archives`,
+      "lottery statistics",
+      "lotto metrics",
+      "lottery analysis",
+    ],
     openGraph: {
-      title: `${name} - Results | LottoMetrics`,
-      description: `Explore draw archives and statistics for ${name}.`,
-      url: `https://lottometrics.app/lottery/${slug}/results`,
+      title: `${name} Lottery Results | LottoMetrics`,
+      description: `Discover official ${name} results, winning numbers, and historical draw archives with LottoMetrics.`,
+      url: `https://lottometrics.app/lottery/${slug}`,
       siteName: "LottoMetrics",
       type: "website",
+      // images: [
+      // {
+      //   url: "https://lottometrics.app/og-results.png",
+      //   width: 1200,
+      //   height: 630,
+      //   alt: `${name} Lottery Results Preview`,
+      // },
+    // ],
     },
     twitter: {
       card: "summary",
-      title: `${name} — Results | LottoMetrics`,
-      description: `Official results and archives for ${name}.`,
+      title: `${name} Lottery Results | LottoMetrics`,
+      description: `Check official ${name} results, winning numbers, and archives with LottoMetrics.`,
     },
   };
 }

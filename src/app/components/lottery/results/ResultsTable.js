@@ -1,37 +1,6 @@
-"use client";
-import { useEffect, useState } from "react";
-import { useDashboard } from "@/context/DashboardContext";
-import Spinner from "../../../components/elements/messages/Spinner"
-import Error from "../../../components/elements/messages/Error";
 import { formatDate } from "@/utils/formatDate";
 
-export default function ResultsTable() {
-    const { period, lottery, drawsCount, setDrawsCount } = useDashboard();
-    const [data, setData] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        async function loadData() {
-            try {
-                const res = await fetch(
-                    `/api/dashboard/draws?slug=${lottery}&start=${period.startDate}&end=${period.endDate}`
-                );
-                const draws = await res.json();
-                setData(draws || []);
-                setDrawsCount(draws?.length || 0); 
-            } catch (err) {
-                setError(err.message);
-            } finally {
-                setLoading(false);
-            }
-        }
-        loadData();
-    }, [lottery, period, drawsCount]);
-
-    if (error) return <Error message={error} />
-    if (loading) return <Spinner />
-
+export default function ResultsTable({data}) {
     return (
         <div>
             <table className="inline-block max-w-[700px] bg-white rounded-lg shadow-sm border border-gray-200">
@@ -78,5 +47,4 @@ export default function ResultsTable() {
             </table>
         </div>
     )
-
 }
