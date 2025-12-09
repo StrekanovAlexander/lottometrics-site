@@ -3,9 +3,6 @@ import { useEffect, useState } from "react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../../components/elements/messages/Spinner"
 import Error from "../../../components/elements/messages/Error";
-
-
-import { lotteries } from "@/lib/global";
 import Breadcrumbs from "../../../components/layout/Breadcrumb";
 import ResultsBar from "./ResultsBar";
 import ResultsTable from "./ResultsTable";
