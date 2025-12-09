@@ -102,7 +102,7 @@ export default function FrequencyGrid({slug}) {
                             <ArrowUpDown size={16} />
                         </button>
                     </div>
-                    <div className="grid grid-cols-5 gap-2 pt-2">
+                    <div className="grid grid-cols-10 gap-2 pt-2">
                         {extra.map(({ number, freq }) => {
                             const bgColor = heatMapAsc(freq, minFreqExtra, maxFreqExtra);
                             return (

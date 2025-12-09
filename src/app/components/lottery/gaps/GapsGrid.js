@@ -63,7 +63,7 @@ export default function GapsGrid({data}) {
                 </div>
             )}
 
-            {extra.length && (
+            {extra.length > 0 && (
                 <div>
                     <h2 className={`${inter.className} text-xl font-semibold pb-4`}>
                         Extra numbers
