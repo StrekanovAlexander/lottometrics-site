@@ -29,10 +29,10 @@ export default function LotteryCard({lottery}) {
             </div>
             {/* Data */}
             <div>
-                <p className="text-sm font-semibold text-gray-700 my-6 text-center">
+                <p className="text-sm font-semibold text-gray-700 my-4 text-center">
                     Last result: {formatDate(lottery.draw_date)}
                 </p>
-                <div className="flex flex-wrap gap-2 justify-center border-t pt-4">
+                <div className="flex flex-wrap gap-1 justify-center">
                     {lottery.main_numbers.split(",").map((el, ix) => 
                         <span
                             key={ix}
