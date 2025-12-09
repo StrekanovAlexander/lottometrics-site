@@ -5,15 +5,20 @@ import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
 import GapsTable from "./GapsTable";
 import GapsBar from "./GapsBar";
+import GapsGrid from "./GapsGrid";
 
 export default function GapsData({slug}) {
-    const { lottery, setLottery, showZero } = useDashboard();
+    const { lottery, setLottery, part, setPart, showZero } = useDashboard();
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
     if (!lottery) {
-        setLottery(slug)
+        setLottery(slug);
+    }
+
+    if (!part) {
+        setPart("gaps");
     }
 
     useEffect(() => {
@@ -41,7 +46,8 @@ export default function GapsData({slug}) {
     return (
         <>
             <GapsBar />
-            <GapsTable data={filtered} />
+            <GapsGrid data={filtered} />
+            {/* <GapsTable data={filtered} /> */}
         </>
     )
 }

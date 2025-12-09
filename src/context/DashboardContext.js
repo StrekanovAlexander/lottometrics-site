@@ -19,7 +19,7 @@ export const DashboardProvider = ({ children }) => {
     const [lottery, setLottery] = useState(null);
     const [part, setPart] = useState(null);
     const [showZero, setShowZero] = useState(false);
-    const [sorting, setSorting] = useState("asc");
+    const [sorting, setSorting] = useState("desc");
 
     return (
         <DashboardContext.Provider
