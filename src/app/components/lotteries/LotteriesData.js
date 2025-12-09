@@ -30,7 +30,7 @@ export default function LotteriesData() {
     if (loading) return <Spinner />
   
     return (
-        <div className="grid gap-2 md:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+        <div className="">
             {data.map((el) => (
                 <LotteryCard key={el.id} lottery={el} />
             ))} 

@@ -62,8 +62,8 @@ export default function LotteriesPage() {
             </section>
 
             <section className="py-4">
-                <h2 className={`${inter.className} text-lg sm:text-xl font-semibold text-gray-900`}>
-                    Lottery results & winning numbers – Powerball, Mega Millions, EuroMillions, EuroJackpot, UK National Lottery, Lotto 6 aus 49
+                <h2 className={`${inter.className} text-xl md:text-2xl font-bold text-gray-900`}>
+                    Lottery results & winning numbers - Powerball, Mega Millions, EuroMillions, EuroJackpot, UK National Lottery, Lotto 6 aus 49
                 </h2>
                 <p className="my-4 text-gray-700">
                 Discover official lottery results and winning numbers for six of the world's most popular
