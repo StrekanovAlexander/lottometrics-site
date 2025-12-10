@@ -1,5 +1,5 @@
+import { Download } from "lucide-react";
 import Breadcrumbs from "../components/layout/Breadcrumb";
-import Link from "next/link";
 import { Inter } from "next/font/google";
 const inter = Inter({
   subsets: ["latin"],
@@ -9,7 +9,8 @@ const inter = Inter({
 export const metadata = {
   title: 'Download LottoMetrics Portable Application',
   description:
-    'Get LottoMetrics as a portable Windows application — no installation required. Unpack the archive and start analyzing lottery results instantly.',
+    'Get LottoMetrics as a portable Windows application - no installation required. Unpack the archive and start analyzing lottery results instantly.',
+  alternates: { canonical: 'https://www.lottometrics.app/download' },
   keywords: [
     'lotto metrics download',
     'lottery analytics software',
@@ -42,39 +43,41 @@ export const metadata = {
   },
 };
 
-export default function Download() {
+export default function DownloadPage() {
   return (
-    <div>
-        <Breadcrumbs items={[
-            { label: "Home", href: "/" },
-            { label: "Download"},
-        ]} />   
-        
-        <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-center text-graphite mb-8`}>
-            Download Software
-        </h1>
+    <>
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Download"},
+      ]} />  
 
-        <section className="bg-gray-50 py-16">
-            <div className="container mx-auto px-6">
-                <div className="max-w-3xl mx-auto text-center">
-                <p className="text-gray-700 leading-relaxed mb-6">
-                    LottoMetrics is delivered as a portable application. <strong>It does not require installation on your computer.</strong> 
-                    Simply unpack the archive and start working with the program.
-                </p>
-                <p className="text-gray-700 leading-relaxed mb-8">
-                    The software runs on Windows (Windows 10 and newer) and is lightweight, fast, and ready to use immediately. 
-                    The archive is clean and verified, ensuring a safe and reliable experience without hidden components.
-                </p>
-                <Link
-                    href={`/files/LottoMetrics.zip`}
-                    className="inline-block px-6 py-3 bg-yellow text-graphite font-semibold rounded-md 
-                        shadow-md hover:bg-yellow-400 transition focus:outline-none focus:ring-2 focus:ring-yellow-500"
-                >
-                    Download Archive
-                </Link>
-                </div>
-            </div>
-        </section>
-    </div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <section className="mb-12">
+            <h1 className={`${inter.className} text-2xl font-bold text-graphite mb-6`}>
+              Download Software
+            </h1>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              LottoMetrics is delivered as a portable application. <strong>It does not require installation on your computer.</strong> 
+              Simply unpack the archive and start working with the program.
+            </p>
+            <p className="text-gray-700 leading-relaxed mb-8">
+              The software runs on Windows (Windows 10 and newer) and is lightweight, fast, and ready to use immediately. 
+              The archive is clean and verified, ensuring a safe and reliable experience without hidden components.
+            </p>
+            <a
+              href={`/files/LottoMetrics.zip`}
+              className="inline-block px-4 py-2 text-graphite font-semibold border 
+                border-gray-300 rounded-lg shadow-sm hover:shadow-md transition"
+            >
+              <span  className="flex items-center gap-2">
+                <Download size={16} />
+                Download Archive
+              </span>
+            </a>
+          </section>
+        </div>
+      </div>    
+    </>
   );
 }

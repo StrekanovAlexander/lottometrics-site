@@ -68,7 +68,7 @@ export default function DashboardPage() {
           <h2
             className={`${inter.className} text-xl font-bold text-graphite mb-6`}
           >Lotteries List</h2>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
             {lotteries.map((el, ix) => 
               <LotterySmallCard key={ix} lottery={el}/>  
             )}
@@ -81,7 +81,7 @@ export default function DashboardPage() {
           >
             Lottery Results and Analysis Methods
           </h2>
-          <div className="grid grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 sm:gap-4 md:gap-6">
             {parts.map((el, ix) => { 
               const {fullLabel, description, icon: Icon} = el;
               return (
