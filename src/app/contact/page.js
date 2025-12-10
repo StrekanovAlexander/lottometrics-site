@@ -8,6 +8,7 @@ const inter = Inter({
 export const metadata = {
   title: 'Contact',
   description: 'Get in touch with LottoMetrics team',
+  alternates: { canonical: 'https://www.lottometrics.app/contact' },
 };
 
 export default function Contact() {
@@ -19,12 +20,16 @@ export default function Contact() {
           { label: 'Contact' },
         ]}
       />
-      <h1 className={`${inter.className} text-2xl md:text-3xl font-bold text-graphite mb-8`}>
-        Contact
-      </h1>
-      <p className="text-gray-600 font-semibold leading-relaxed">
-        For now, please reach us via email: <a href="mailto:info@lottometrics.com" className="text-blue-600">info@lottometrics.com</a>
-      </p>
+      <div className="container mx-auto px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h1 className={`${inter.className} text-2xl font-bold text-graphite mb-4`}>
+            Contact
+          </h1>
+          <p className="text-gray-600 font-semibold">
+            For now, please reach us via email: <a href="mailto:info@lottometrics.com" className="text-blue-600">info@lottometrics.com</a>
+          </p>
+        </div>
+      </div>    
     </>
   );
 }
