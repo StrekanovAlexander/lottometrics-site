@@ -67,7 +67,7 @@ export default function DownloadPage() {
             </p>
             <a
               href={`/files/LottoMetrics.zip`}
-              className="inline-block px-4 py-2 text-graphite font-semibold border 
+              className="inline-block px-4 py-2 bg-white text-graphite text-sm border 
                 border-gray-300 rounded-lg shadow-sm hover:shadow-md transition"
             >
               <span  className="flex items-center gap-2">
