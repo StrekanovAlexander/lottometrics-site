@@ -22,7 +22,7 @@ export const metadata = {
     title: 'Download LottoMetrics Portable Application',
     description:
       'LottoMetrics runs on Windows 10 and newer. Lightweight, fast, and safe — start analyzing lottery results immediately.',
-    url: 'https://lottometrics.app/download',
+    url: 'https://www.lottometrics.app/download',
     siteName: 'LottoMetrics',
     type: 'website',
     // images: [
