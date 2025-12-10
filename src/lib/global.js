@@ -1,18 +1,36 @@
-import { Activity,  ArrowRightLeft, BarChart3, ListChecks } from "lucide-react";
+import { Activity,  ArrowRightLeft, ListChecks } from "lucide-react";
 
 export const lotteries = [
-    {slug: 'lotto6aus49', label: 'Lotto 6 aus 49' },
-    {slug: 'powerball', label: 'Powerball' },
-    {slug: 'euromillions', label: 'Euromillions' },
-    {slug: 'megamillions', label: 'Mega Millions'},
-    {slug: 'eurojackpot', label: 'EuroJackpot'},
-    {slug: 'uknationallottery', label: 'UK National Lottery'},
+    {slug: 'lotto6aus49', label: 'Lotto 6 aus 49', country: 'Germany', shortText: 'National Lottery'},
+    {slug: 'powerball', label: 'Powerball', country: 'United States', shortText: 'Multi State Lottery'},
+    {slug: 'euromillions', label: 'Euromillions', country: 'Europe', shortText: 'Transnational Lottery'},
+    {slug: 'megamillions', label: 'Mega Millions', country: 'United States', shortText: 'Multi State Lottery'},
+    {slug: 'eurojackpot', label: 'EuroJackpot', country: 'Europe', shortText: 'Transnational Lottery'},
+    {slug: 'uknationallottery', label: 'UK National Lottery', country: 'United Kingdom', shortText: 'National Lottery'},
 ];
 
 export const parts = [
-    {name: 'results', label: 'Results', icon: ListChecks, isInNav: false},
-    {name: 'frequency', label: 'Frequency', icon: Activity, isInNav: true},
-    {name: 'gaps', label: 'Gaps', icon: ArrowRightLeft, isInNav: true},
+    {
+        name: 'results', 
+        label: 'Results', 
+        icon: ListChecks, 
+        fullLabel: 'Draw Results',
+        description: 'Shows the latest lottery draw results with winning numbers and statistics, helping you track outcomes quickly', 
+        isInNav: false},
+    {
+        name: 'frequency', 
+        label: 'Frequency', 
+        icon: Activity, 
+        fullLabel: 'Frequency Analysis', 
+        description: 'Displays how often each lottery number has appeared across draws, revealing patterns and trends in lottery statistics',
+        isInNav: true},
+    {
+        name: 'gaps', 
+        label: 'Gaps', 
+        icon: ArrowRightLeft, 
+        fullLabel: 'Gap Analysis',
+        description: 'Highlights how many draws have passed since each number last appeared, making it easy to spot long gaps and recent hits', 
+        isInNav: true},
 ];
 
 export const routes = [

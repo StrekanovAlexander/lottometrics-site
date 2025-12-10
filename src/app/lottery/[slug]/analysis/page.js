@@ -1,4 +1,3 @@
-import { BarChart3 } from "lucide-react";
 import { isLotteryExists, getLotteryLabel } from "@/lib/global";
 import Breadcrumbs from "@/app/components/layout/Breadcrumb";
 import AnalysisCard from "@/app/components/elements/cards/AnalysisCard";
