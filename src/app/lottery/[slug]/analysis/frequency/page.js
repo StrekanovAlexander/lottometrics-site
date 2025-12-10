@@ -35,11 +35,11 @@ export async function generateMetadata({ params }) {
                 title: `${lotteryLabel} Frequency Analysis | LottoMetrics`,
                 description:
                 `Detailed frequency analysis of ${lotteryLabel} draws. See which numbers appear most often and explore historical patterns.`,
-                url: `https://lottometrics.app/lottery/${slug}/analysis/frequency`,
+                url: `https://www.lottometrics.app/lottery/${slug}/analysis/frequency`,
                 siteName: 'LottoMetrics',
                 type: 'website',
                 images: [{
-                    url: 'https://lottometrics.app/og-frequency.png',
+                    url: 'https://www.lottometrics.app/og-frequency.png',
                     width: 1200,
                     height: 630,
                     alt: `Frequency Analysis Preview for ${lotteryLabel}`
@@ -64,12 +64,20 @@ export default function LotteryFrequencyPage({params}) {
                     { label: lotteryLabel, href: `/lotteries/${slug}`},
                     { label: "Analysis", href: `/lotteries/${slug}/analysis`},
                     { label: "Frequency"},
-                ]} />    
-                <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
-                    {lotteryLabel} Lottery Frequency Analysis
-                </h1>
-                <FrequencyBar slug={slug} />
-                <FrequencyGrid slug={slug} />
+                ]} /> 
+
+                <div className="max-w-4xl mx-auto text-center">
+                    <section className="mb-6">
+                        <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
+                            {lotteryLabel} Lottery Frequency Analysis
+                        </h1>
+                        <p class="mt-2 text-gray-700 text-sm">
+                            Discover how often lottery numbers appear across draws. LottoMetrics Frequency Analysis reveals hot and cold numbers, helping you explore lottery statistics with clarity.
+                        </p>
+                    </section>    
+                    <FrequencyBar slug={slug} />
+                    <FrequencyGrid slug={slug} />
+                </div>
             </>
         )
     }    

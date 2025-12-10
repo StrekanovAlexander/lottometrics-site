@@ -22,7 +22,7 @@ export default function ResultsBar({slug}) {
                         type="date"
                         value={period.startDate}
                         onChange={(ev) => setPeriod({ ...period, startDate: ev.target.value })}
-                        className="p-1 rounded-md border border-gray-300"
+                        className="p-1 rounded-md border border-gray-300 text-gray-500"
                     />
                 </div>
                 <div className="flex items-center gap-2">
@@ -31,7 +31,7 @@ export default function ResultsBar({slug}) {
                         type="date"
                         value={period.endDate}
                         onChange={(ev) => setPeriod({ ...period, endDate: ev.target.value })}
-                        className="p-1 rounded-md border border-gray-300"
+                        className="p-1 rounded-md border border-gray-300 text-gray-500"
                     />
                 </div>
                 <div className="flex items-center gap-2">

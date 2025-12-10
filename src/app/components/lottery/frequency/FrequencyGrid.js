@@ -59,10 +59,10 @@ export default function FrequencyGrid({slug}) {
 
     return (
         <>
-            <div className="flex justify-start gap-5">
-                <div className="inline-block max-w-[700px] p-2 bg-white rounded-lg shadow-sm border border-gray-200">
-                    <div className="py-2 text-sm text-left font-semibold border-b flex gap-1 justify-between items-center">
-                        <div>Main Numbers</div>
+            <div className="flex flex-col md:flex-row justify-center gap-3 md:gap-6">
+                <div className="inline-block p-2 bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div className="py-2 text-sm text-left border-b flex justify-between items-center">
+                        <h2>Main Numbers</h2>
                         <button
                             onClick={() => {
                                 isSortMain ? main.sort((a, b) => a.number - b.number)
@@ -70,10 +70,10 @@ export default function FrequencyGrid({slug}) {
                                 setIsSortMain(!isSortMain);
                             }} 
                             className="px-2 py-1 border rounded-md shadow-md flex gap-1 items-center">
-                            <ArrowUpDown size={16} />
+                            <ArrowUpDown size={12} />
                         </button>
                     </div>
-                    <div className="grid grid-cols-10 gap-2 pt-2">
+                    <div className="grid grid-cols-10 gap-1 pt-2">
                         {main.map(({ number, freq }) => {
                             const bgColor = heatMapAsc(freq, minFreqMain, maxFreqMain);
                             return (
@@ -88,10 +88,9 @@ export default function FrequencyGrid({slug}) {
                         })}
                     </div>
                 </div>    
-
-                <div className="inline-block max-w-[700px] p-2 bg-white rounded-lg shadow-sm border border-gray-200">
-                    <div className="py-2 text-sm text-left font-semibold border-b flex gap-1 justify-between items-center">
-                        <div>Extra Numbers</div>
+                <div className="inline-block p-2 bg-white rounded-lg shadow-sm border border-gray-200">
+                    <div className="py-2 text-sm text-left border-b flex justify-between items-center">
+                        <h2>Extra Numbers</h2>
                         <button
                             onClick={() => {
                                 isSortExtra ? extra.sort((a, b) => a.number - b.number)
@@ -99,10 +98,10 @@ export default function FrequencyGrid({slug}) {
                                 setIsSortExtra(!isSortExtra);
                             }} 
                             className="px-2 py-1 border rounded-md shadow-md flex gap-1 items-center">
-                            <ArrowUpDown size={16} />
+                            <ArrowUpDown size={12} />
                         </button>
                     </div>
-                    <div className="grid grid-cols-10 gap-2 pt-2">
+                    <div className="grid grid-cols-10 gap-1 pt-2">
                         {extra.map(({ number, freq }) => {
                             const bgColor = heatMapAsc(freq, minFreqExtra, maxFreqExtra);
                             return (
