@@ -61,8 +61,8 @@ export default function LotteryFrequencyPage({params}) {
                 <Breadcrumbs items={[
                     { label: "Home", href: "/"},
                     { label: "Lotteries", href: "/lotteries"},
-                    { label: lotteryLabel, href: `/lotteries/${slug}`},
-                    { label: "Analysis", href: `/lotteries/${slug}/analysis`},
+                    { label: lotteryLabel, href: `/lottery/${slug}`},
+                    { label: "Analysis", href: `/lottery/${slug}/analysis`},
                     { label: "Frequency"},
                 ]} /> 
 
