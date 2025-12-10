@@ -8,7 +8,7 @@ export default function Footer() {
         <ul className="flex space-x-4">
           {routes.map(el => (
             <li key={el.href}>
-              <a href={el.href} className="text-yellow hover:text-white">
+              <a href={el.href} className="text-sm text-white hover:text-yellow">
                 {el.label}
               </a>
             </li>
