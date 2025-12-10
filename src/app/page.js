@@ -61,9 +61,7 @@ export default function DashboardPage() {
             LottoMetrics - Lottery Analytics Online
           </h1>
           <p className="text-graphite leading-relaxed">
-            Analyze lottery results online with LottoMetrics. Access Powerball, Euromillions and 6 aus 49 archives,
-            check past draws, and discover number statistics. Our platform offers both online analytics
-            and a Windows offline version for professional lottery research.
+            Analyze lottery results online with LottoMetrics. Access archives for Lotto 6 aus 49, Powerball, Euromillions, Mega Millions, EuroJackpot, and the UK National Lottery. Explore past draws, number frequency, and gap analysis. LottoMetrics offers both online analytics and a Windows offline version for professional lottery research.
           </p>
         </section>
         <section className="mb-12">
