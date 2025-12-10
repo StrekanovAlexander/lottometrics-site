@@ -22,7 +22,7 @@ export default function ResultsTable({data}) {
                                 {el.main_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-heatmap-9 text-sm font-semibold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-200 text-sm font-semibold"
                                     >
                                         {el}
                                     </span>
@@ -34,7 +34,7 @@ export default function ResultsTable({data}) {
                                 {el.extra_numbers.split(",").map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-heatmap-8 text-sm font-semibold"
+                                        className="w-8 h-8 flex items-center justify-center rounded-full bg-gray-300 text-sm font-semibold"
                                     >
                                         {el}
                                     </span>

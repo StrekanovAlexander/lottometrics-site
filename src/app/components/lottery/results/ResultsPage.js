@@ -43,28 +43,32 @@ export default function ResultsPage({slug}) {
   if (loading) return <Spinner />
 
   return (
-    <div>
+    <>
       <Breadcrumbs items={[
         { label: "Home", href: "/" },
         { label: "Lotteries", href: "/lotteries"},
         { label: `${lottery.lottery_name}`},
       ]} />  
-      <section class="w-3/4">
-        <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite`}>
-          {lottery.lottery_name} Lottery
-        </h1>
-        <h2 className="font-semibold">
-          {lottery.country} {lottery.description_short_en}
-        </h2>
-        <p class="mt-4 text-gray-700 leading-relaxed">
-          {lottery.description_en}
-        </p>
-      </section>
-      <h3 className={`${inter.className} my-6 text-xl font-bold`}>
-          {lottery.lottery_name} Results & Winning Numbers
-      </h3>
-      <ResultsBar slug={slug} />
-      <ResultsTable data={data} />
-    </div>
+      <div className="container mx-auto">
+        <div className="max-w-4xl mx-auto text-center">
+          <section className="mb-6">
+            <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
+              {lottery.lottery_name} Lottery
+            </h1>
+            <h2 className="font-semibold">
+              {lottery.country} {lottery.description_short_en}
+            </h2>
+            <p class="mt-2 text-gray-700 text-sm">
+              {lottery.description_en}
+            </p>
+          </section>
+          <h3 className={`${inter.className} my-6 text-lg font-semibold`}>
+            {lottery.lottery_name} Results & Winning Numbers
+          </h3>
+          <ResultsBar slug={slug} />
+          <ResultsTable data={data} />
+        </div>
+      </div>    
+    </>
   )
 }
