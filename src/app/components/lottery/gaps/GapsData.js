@@ -41,12 +41,14 @@ export default function GapsData({slug}) {
     if (error) return <Error message={error} />
     if (loading) return <Spinner /> 
     
-    const filtered = showZero ? data : data.filter(el => el.current_gap > 0);
+    // const filtered = showZero ? data : data.filter(el => el.current_gap > 0);
+    const dataMain = data.filter(el => el.number_kind === 'main');
+    const dataExtra = data.filter(el => el.number_kind === 'extra');
     
     return (
         <>
-            <GapsBar />
-            <GapsGrid data={filtered} />
+            {/* <GapsBar /> */}
+            <GapsGrid dataMain={dataMain} dataExtra={dataExtra} />
             {/* <GapsTable data={filtered} /> */}
         </>
     )
