@@ -65,15 +65,20 @@ export default function LotteryFrequencyPage({params}) {
                     { label: "Analysis", href: `/lottery/${slug}/analysis`},
                     { label: "Gaps"},
                 ]} />    
-                <h1 className={`${inter.className} text-xl md:text-2xl font-semibold text-graphite mb-8`}>
-                    {lotteryLabel} Lottery Gaps Analysis
-                </h1>
-                <p className="w-3/4 my-6 text-base text-gray-800 font-semibold border rounded-lg shadow-sm p-6 bg-gray-50">
-                    <strong>Gap Analysis</strong> shows how many draws each lottery number has missed since its last appearance. 
-                    It highlights long gaps, recent hits, and overall number activity, 
-                    helping players and analysts explore lottery statistics and patterns with LottoMetrics.
-                </p>
-                <GapsData slug={slug} />
+                
+                <div className="max-w-4xl mx-auto text-center">
+                    <section className="mb-6">
+                        <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
+                            {lotteryLabel} Lottery Gap Analysis
+                        </h1>
+                        <p className="mt-2 text-gray-700 text-sm">
+                            Gap Analysis shows how many draws each lottery number has missed since its last appearance. 
+                            It highlights long gaps, recent hits, and overall number activity, 
+                            helping players and analysts explore lottery statistics and patterns with LottoMetrics.
+                        </p>
+                    </section>
+                    <GapsData slug={slug} />
+                </div>
             </>
         )
     }    
