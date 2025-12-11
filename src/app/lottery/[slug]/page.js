@@ -14,7 +14,7 @@ export async function generateMetadata({ params }) {
   return {
     title: `${name} Lottery Results | LottoMetrics`,
     description: `View official ${name} lottery results and archives with LottoMetrics. Explore past draws, winning numbers, and detailed statistics to better understand ${name} patterns.`,
-    alternates: { canonical: `https://lottometrics.app/lottery/${slug}`},
+    alternates: { canonical: `https://www.lottometrics.app/lottery/${slug}`},
     keywords: [
       `${name} results`,
       `${name} lottery results`,
