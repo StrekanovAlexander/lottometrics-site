@@ -3,6 +3,7 @@ import NavMobile from "../../components/layout/NavMobile";
 import SidebarMobile from "./SidebarMobile";
 import { routes } from "@/lib/global";
 import { Inter } from "next/font/google";
+import { ChartPie } from "lucide-react";
 const inter = Inter({
   subsets: ["latin"],
   weight: ["400", "600", "800"],
@@ -11,7 +12,8 @@ const inter = Inter({
 export default function Header() {
   return (
     <header className="sticky top-0 p-4 bg-graphite-dark shadow-sm flex justify-between items-center z-50">
-      <a href="/" className={`text-yellow font-semibold`}>
+      <a href="/" className="text-yellow font-semibold flex items-center gap-2">
+        <ChartPie size={20} />
         LottoMetrics
       </a>
       {/* Desktop nav */}
