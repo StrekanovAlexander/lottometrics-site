@@ -57,7 +57,7 @@ export default function LotteriesAnalysisGaps() {
                 { label: "Gaps Analysis"},
             ]} />    
             <div className="max-w-4xl mx-auto text-center">
-                <section className="mb-6">
+                <section className="mb-12">
                     <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
                         Lotteries Gap Analysis - Identify Number Intervals
 
@@ -68,7 +68,7 @@ export default function LotteriesAnalysisGaps() {
                 </section>
                 <section className="mb-12">
                     <h2 className={`${inter.className} text-xl font-bold text-graphite mb-6`}>
-                        Lotteries List
+                        Select a lottery for gap analysis
                     </h2>
                     <LotteriesData partUrl={'/analysis/gaps'} />
                 </section>
