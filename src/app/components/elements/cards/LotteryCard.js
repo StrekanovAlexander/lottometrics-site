@@ -1,9 +1,10 @@
 import { formatDate } from "@/utils/formatDate";
 
-export default function LotteryCard({lottery}) {
+export default function LotteryCard({lottery, partUrl}) {
+    const route = partUrl ? `/lottery/${lottery.slug}${partUrl}` : `/lottery/${lottery.slug}`;
     return (
         <a
-            href={`/lottery/${lottery.slug}`}
+            href={route}
             className="block bg-white border border-gray-200 rounded-lg shadow-sm hover:shadow-md transition-shadow p-4"
         >
             <h3 className="text-normal font-semibold text-gray-900">

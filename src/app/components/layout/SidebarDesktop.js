@@ -17,7 +17,12 @@ export default function SidebarDesktop() {
 
     function handlePartClick(name) {
         setPart(name); 
-        router.push(`/lottery/${lottery}/analysis/${name}`); 
+        if (lottery) {
+            router.push(`/lottery/${lottery}/analysis/${name}`);
+        }    
+        else {
+            router.push(`/lotteries/analysis/${name}`);
+        }         
     }
 
     return (

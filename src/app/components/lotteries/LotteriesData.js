@@ -5,7 +5,7 @@ import Spinner from "../elements/messages/Spinner"
 import Error from "../elements/messages/Error";
 import LotteryCard from "../elements/cards/LotteryCard";
 
-export default function LotteriesData() {
+export default function LotteriesData({partUrl=null}) {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -32,7 +32,7 @@ export default function LotteriesData() {
     return (
         <div className="grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
             {data.map((el, ix) => 
-                <LotteryCard key={ix} lottery={el}/>  
+                <LotteryCard key={ix} lottery={el} partUrl={partUrl}/>  
             )}
         </div>
     )

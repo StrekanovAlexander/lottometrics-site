@@ -66,31 +66,33 @@ export default function LotteryAnalysis ({ params }) {
                     { label: lotteryLabel, href: `/lottery/${slug}`},
                     { label: "Analysis"},
                 ]} />    
-                <section class="w-2/3">
-                    <h1 className={`${inter.className} text-xl md:text-2xl font-bold text-graphite mb-8`}>
-                        {lotteryLabel} Lottery Analysis with LottoMetrics
-                    </h1>
-                    <p class="mt-4 text-gray-700 leading-relaxed">
-                        Discover comprehensive {lotteryLabel} analytics with LottoMetrics. On this page you can explore
-                        detailed <span class="font-medium">Frequency Analysis</span> to see which numbers are drawn most
-                        often, dive into <span class="font-medium">Gap Analysis</span> to understand intervals between
-                        winning numbers, and access additional statistical insights. Our tools help you identify
-                        historical patterns, track hot and cold numbers, and make data‑driven decisions for your
-                        {lotteryLabel} strategy.
-                    </p>
-                </section>
-                <section className="my-8">
-                    <div className="flex justify-start gap-6">
-                        {parts.filter(el => el.isInNav === true).map((el, ix) => (
-                            <AnalysisCard 
-                                key={ix}
-                                slug={slug}
-                                lottery={lotteryLabel} 
-                                part={el}
-                            />
-                        ))}
-                    </div>
-                </section>
+                <div className="max-w-4xl mx-auto text-center">
+                    <section className="mb-6">
+                        <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
+                            {lotteryLabel} Lottery Analysis with LottoMetrics
+                        </h1>
+                        <p class="mt-4 text-gray-700 leading-relaxed">
+                            Discover comprehensive {lotteryLabel} analytics with LottoMetrics. On this page you can explore
+                            detailed <span class="font-medium">Frequency Analysis</span> to see which numbers are drawn most
+                            often, dive into <span class="font-medium">Gap Analysis</span> to understand intervals between
+                            winning numbers, and access additional statistical insights. Our tools help you identify
+                            historical patterns, track hot and cold numbers, and make data‑driven decisions for your
+                            {lotteryLabel} strategy.
+                        </p>
+                    </section>
+                    <section className="my-8">
+                        <div className="flex justify-start gap-6">
+                            {parts.filter(el => el.isInNav === true).map((el, ix) => (
+                                <AnalysisCard 
+                                    key={ix}
+                                    slug={slug}
+                                    lottery={lotteryLabel} 
+                                    part={el}
+                                />
+                            ))}
+                        </div>
+                    </section>
+                </div>
             </>
         )
     }    
