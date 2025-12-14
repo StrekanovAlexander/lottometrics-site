@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "cheerio": "^1.1.2",
     "lucide-react": "^0.555.0",
     "mysql2": "^3.15.3",
     "next": "14.2.3",
