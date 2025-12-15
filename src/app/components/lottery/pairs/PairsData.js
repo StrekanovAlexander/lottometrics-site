@@ -1,9 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useDashboard } from "@/context/DashboardContext";
+import PairCard from "../../elements/cards/PairCard";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
-// import GapsGrid from "./GapsGrid";
+import { heatMapAsc } from "@/utils/lotteryUtils";
 
 export default function PairsData({slug}) {
     const { setDrawsCount, period, lottery, setLottery, part, setPart } = useDashboard();
@@ -39,18 +40,19 @@ export default function PairsData({slug}) {
 
     if (error) return <Error message={error} />
     if (loading) return <Spinner /> 
+
+    const main = data.filter(el => el.pair_count > 1).map(el => el.pair_count);
+    const min = Math.min(...main);
+    const max = Math.max(...main);
     
     return (
         <div className="grid grid-cols-10 gap-1">
-            {data.filter(el => el.pair_count > 1).map((el, ix) => (
-                <div key={ix} className="flex flex-col border border-gray-300 rounded-md p-1">
-                    <div className="flex justify-center gap-2 font-semibold border-b border-gray-300 pb-1">
-                        <div>{el.draw_number1}</div>
-                        <div>{el.draw_number2}</div>
-                    </div>
-                    <div className="text-sm">{el.pair_count}</div>
-                </div>
-            ))}
+            {data.filter(el => el.pair_count > 1).map((el, ix) => {
+                const bgColor = heatMapAsc(el.pair_count, min, max);
+                return (
+                    <PairCard key={ix} item={el} bgColor={bgColor} />
+                )
+            })}
         </div>
         
     )
