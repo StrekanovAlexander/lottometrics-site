@@ -5,9 +5,17 @@ export async function getPowerball() {
     const html = await res.text();
     const $ = cheerio.load(html);
     
-    const dateText = $('.title-date').first().text().trim();
-    const drawDate = new Date(dateText).toLocaleDateString('en-CA', {timeZone: 'America/New_York'});
-    
+    const dateText = $('.title-date').first().text().trim(); 
+    const cleanDate = dateText.replace(/^[A-Za-z]+,\s*/, '');
+    const [monthStr, dayStr, yearStr] = cleanDate.replace(',', '').split(' ');
+
+    const months = {
+        Jan: '01', Feb: '02', Mar: '03', Apr: '04',
+        May: '05', Jun: '06', Jul: '07', Aug: '08',
+        Sep: '09', Oct: '10', Nov: '11', Dec: '12'
+    };
+
+    const drawDate = `${yearStr}-${months[monthStr]}-${dayStr.padStart(2, '0')}`;
     const mainNumbers = [];
     $('.white-balls.item-powerball').each((_, el) => {
         mainNumbers.push($(el).text().trim());

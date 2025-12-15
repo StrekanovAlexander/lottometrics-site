@@ -2,12 +2,20 @@ import pool from '@/lib/db';
 import { NextResponse } from 'next/server';
 import { getLotto6aus49 } from './lotteries/lotto6aus49';
 import { getPowerball } from './lotteries/powerball';
+import { getEuromillions } from './lotteries/euromillions';
+import { getMegamillions } from './lotteries/megamillions';
+import { getEurojackpot } from './lotteries/eurojackpot';
+import { getUKNanionalLottery } from './lotteries/uknationallottery';
 
 export async function GET() {
   try {
     const results = [];
     results.push(await getLotto6aus49());
     results.push(await getPowerball());
+    results.push(await getEuromillions());
+    results.push(await getMegamillions());
+    results.push(await getEurojackpot());
+    results.push(await getUKNanionalLottery());
 
     for (const draw of results) {
       const { lotteryId, drawDate, mainNumbers, extraNumbers, jackpotAmount } = draw;
