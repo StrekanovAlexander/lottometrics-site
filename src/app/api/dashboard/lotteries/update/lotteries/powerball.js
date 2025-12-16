@@ -1,7 +1,9 @@
 import * as cheerio from 'cheerio';
 
 export async function getPowerball() {
-    const res = await fetch('https://www.powerball.com/draw-result');
+    const res = await fetch('https://www.powerball.com/draw-result', {
+        cache: 'no-store'
+    });
     const html = await res.text();
     const $ = cheerio.load(html);
     
@@ -23,6 +25,11 @@ export async function getPowerball() {
     
     const extraNumbers = $('.powerball.item-powerball').first().text().trim();
     // const jackpotText = $('.estimated-jackpot span').last().text().trim();
+
+    const isCorrect = mainNumbers.every(el => /^\d+$/.test(el));
+    if (!isCorrect) {
+        return null;
+    }
 
     return {
         lotteryId: 2,

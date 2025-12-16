@@ -10,12 +10,24 @@ import { getUKNanionalLottery } from './lotteries/uknationallottery';
 export async function GET() {
   try {
     const results = [];
-    results.push(await getLotto6aus49());
-    results.push(await getPowerball());
-    results.push(await getEuromillions());
-    results.push(await getMegamillions());
-    results.push(await getEurojackpot());
-    results.push(await getUKNanionalLottery());
+    
+    const lotto6aus49 = await getLotto6aus49();
+    if (lotto6aus49) results.push(lotto6aus49);
+    
+    const powerball = await getPowerball();
+    if (powerball) results.push(powerball);
+    
+    const euromillions = await getEuromillions();
+    if (euromillions) results.push(euromillions);
+
+    const megamillions = await getMegamillions();
+    if (megamillions) results.push(megamillions);
+
+    const eurojackpot = await getEurojackpot();
+    if (eurojackpot) results.push(eurojackpot);
+
+    const ukanionalLottery = await getUKNanionalLottery();
+    if (ukanionalLottery) results.push(ukanionalLottery);
 
     for (const draw of results) {
       const { lotteryId, drawDate, mainNumbers, extraNumbers, jackpotAmount } = draw;

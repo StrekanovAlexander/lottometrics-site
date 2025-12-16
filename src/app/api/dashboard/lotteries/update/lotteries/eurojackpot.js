@@ -1,7 +1,9 @@
 import * as cheerio from 'cheerio';
 
 export async function getEurojackpot() {
-    const res = await fetch('https://euroj.eu/en/eurojackpot-results.aspx');
+    const res = await fetch('https://euroj.eu/en/eurojackpot-results.aspx', {
+        cache: 'no-store'
+    });
     const html = await res.text();
     const $ = cheerio.load(html);
     
@@ -13,6 +15,11 @@ export async function getEurojackpot() {
     
     const mainNumbers = row.find('td').eq(2).text().trim().replace(/\s+/g, '');
     const extraNumbers = row.find('td').eq(3).text().trim().replace(/\s+/g, '');
+
+    const isCorrect = mainNumbers.split(',').every(el => /^\d+$/.test(el));
+    if (!isCorrect) {
+        return null;
+    }
     
     return {
         lotteryId: 5,

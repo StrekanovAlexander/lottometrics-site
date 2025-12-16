@@ -1,7 +1,9 @@
 import * as cheerio from 'cheerio';
 
 export async function getMegamillions() {
-    const res = await fetch('https://www.lotteryusa.com/mega-millions/');
+    const res = await fetch('https://www.lotteryusa.com/mega-millions/', {
+        cache: 'no-store'
+    });
     const html = await res.text();
     const $ = cheerio.load(html);
     const box = $('.o-game-layout-grid__col--results').first();
@@ -25,6 +27,11 @@ export async function getMegamillions() {
     let jackpotRaw = box.find('.c-draw-card__prize-value').first().text().trim();
     const jackpotAmount = jackpotRaw.replace(/[^\d]/g, '');
     const jackpotFinal = jackpotAmount ? `${parseInt(jackpotAmount) * 1000000}` : null;
+
+    const isCorrect = mainNumbers.every(el => /^\d+$/.test(el));
+    if (!isCorrect) {
+        return null;
+    }
 
     return {
         lotteryId: 4,

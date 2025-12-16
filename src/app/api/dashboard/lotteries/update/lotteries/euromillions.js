@@ -1,7 +1,9 @@
 import * as cheerio from 'cheerio';
 
 export async function getEuromillions() {
-    const res = await fetch('https://www.lottery.co.uk/euromillions/results');
+    const res = await fetch('https://www.lottery.co.uk/euromillions/results', {
+        cache: 'no-store'
+    });
     const html = await res.text();
     const $ = cheerio.load(html);
     
@@ -36,6 +38,11 @@ export async function getEuromillions() {
     
     let jackpotRaw = box.find('.resultJackpot').first().text().trim();
     const jackpotAmount = jackpotRaw.replace(/[^\d]/g, '');
+
+    const isCorrect = mainNumbers.every(el => /^\d+$/.test(el));
+    if (!isCorrect) {
+        return null;
+    }
 
     return {
         lotteryId: 3,

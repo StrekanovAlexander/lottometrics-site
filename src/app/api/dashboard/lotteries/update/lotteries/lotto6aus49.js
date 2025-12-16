@@ -1,7 +1,9 @@
 import * as cheerio from 'cheerio';
 
 export async function getLotto6aus49() {
-    const res = await fetch('https://www.lotto-bayern.de/lotto6aus49/gewinnzahlen');
+    const res = await fetch('https://www.lotto-bayern.de/lotto6aus49/gewinnzahlen', {
+        cache: 'no-store'
+    });
     const html = await res.text();
     const $ = cheerio.load(html);
     const box = $('article.col-xs-16').first();
@@ -23,6 +25,11 @@ export async function getLotto6aus49() {
     });
     
     const superzahl = box.find('.numbers li.additional').attr('aria-label')?.replace('Superzahl ', '');
+
+    const isCorrect = mainNumbers.every(el => /^\d+$/.test(el));
+    if (!isCorrect) {
+        return null;
+    }
 
     return {
         lotteryId: 1,
