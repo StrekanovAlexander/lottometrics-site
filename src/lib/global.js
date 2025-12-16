@@ -1,4 +1,4 @@
-import { Activity,  ArrowRightLeft, ListChecks, SquaresIntersect } from "lucide-react";
+import { Activity,  ArrowRightLeft, ListChecks, SquaresIntersect, Shuffle } from "lucide-react";
 
 export const lotteries = [
     {slug: 'lotto6aus49', label: 'Lotto 6 aus 49', country: 'Germany', shortText: 'National Lottery'},
@@ -33,7 +33,13 @@ export const parts = [
         icon: SquaresIntersect, 
         fullLabel: 'Pairs Analysis',
         description: 'Pair Analysis reveals which lottery numbers often appear together. Studying frequent pairs helps uncover patterns, compare combinations, and gain statistical insights', 
-        isInNav: true},    
+        isInNav: true},  
+    {   name: 'precursors', 
+        label: 'Precursors', 
+        icon: Shuffle, 
+        fullLabel: 'Precursors Analysis',
+        description: 'Precursor Analysis reveals which lottery numbers tend to precede others. Studying sequential pairs helps uncover continuation patterns, highlight predictive links, and provide deeper statistical insights into number progressions', 
+        isInNav: true},      
 ];
 
 export const routes = [

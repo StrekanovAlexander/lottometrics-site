@@ -59,7 +59,7 @@ export default function LotteriesAnalysisPairs() {
             <div className="max-w-4xl mx-auto text-center">
                 <section className="mb-12">
                     <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
-                        Lotteries Pair Analysis – Discover Number Combinations
+                        Lotteries Pair Analysis - Discover Number Combinations
                     </h1>
                     <p class="mt-2 text-gray-700 text-sm">
                         Explore pair analysis across six major lotteries: Lotto 6 aus 49, Powerball, Euromillions, Mega Millions, EuroJackpot, and UK National Lottery. See which numbers most often appear together, uncover frequent pairs, and select a lottery below for detailed statistics.
