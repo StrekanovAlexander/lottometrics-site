@@ -4,6 +4,37 @@ import { NextResponse } from "next/server";
 export async function GET(request, { params }) {
     try {
         const { searchParams } = new URL(request.url);
+        const precursorKind = searchParams.get("precursor_kind");
+        const followerKind = searchParams.get("follower_kind");
+        const slug = params.slug; 
+
+        const [lotteryRows] = await pool.query(
+            `SELECT id FROM lotteries WHERE slug = ? AND is_active = 1`,
+            [slug]
+        );
+        const lottery = lotteryRows[0];
+
+        const [pairsRows] = await pool.query(`
+            SELECT precursor_value, follower_value, probability, uplift
+            FROM precursor_followers_stats
+            WHERE lottery_id = ?
+            AND precursor_kind = ?
+            AND follower_kind = ?
+        `, [lottery.id, precursorKind, followerKind]);
+
+        return NextResponse.json({ pairs: pairsRows });
+    } catch (error) {
+        console.error(error);
+        return NextResponse.json({ error: 'DB error' }, { status: 500 });
+    }
+}
+
+
+/*
+
+export async function GET(request, { params }) {
+    try {
+        const { searchParams } = new URL(request.url);
         const windowSize = parseInt(searchParams.get("window_size") || "50", 10);
         const precursorKind = searchParams.get("precursor_kind");
         const followerKind = searchParams.get("follower_kind");
@@ -62,3 +93,4 @@ export async function GET(request, { params }) {
         return NextResponse.json({ error: 'DB error' }, { status: 500 });
     }
 }
+*/

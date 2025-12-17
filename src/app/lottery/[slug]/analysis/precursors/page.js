@@ -1,4 +1,5 @@
 import Breadcrumbs from "@/app/components/layout/Breadcrumb";
+import PrecursorsData from "@/app/components/lottery/precursors/PrecursorsData";
 import { isLotteryExists, getLotteryLabel } from "@/lib/global";
 import { Inter } from "next/font/google";
 const inter = Inter({
@@ -73,7 +74,7 @@ export default function LotteryPrecursorsPage({params}) {
                     { label: "Precursors"},
                 ]} />    
                 
-                <div className="max-w-4xl mx-auto text-center">
+                <div className="w-full">
                     <section className="mb-6">
                         <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
                             {lotteryLabel} Lottery Precursors Analysis
@@ -84,7 +85,7 @@ export default function LotteryPrecursorsPage({params}) {
                             helping players and analysts explore lottery statistics and uncover deeper insights into number progressions with LottoMetrics.
                         </p>
                     </section>
-                    {/* <GapsData slug={slug} /> */}
+                    <PrecursorsData slug={slug} />
                 </div>
             </>
         )

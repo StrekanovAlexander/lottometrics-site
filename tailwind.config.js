@@ -26,6 +26,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontSize: {
+        'xxs': '0.65rem',
+      },
       colors: {
         // Base palette (Soft Tech)
         teal: "#00BFA6",
