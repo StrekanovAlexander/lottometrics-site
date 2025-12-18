@@ -15,7 +15,7 @@ export default function SidebarMobile() {
         setLottery(slug);
         setPart(selectedPart);
         setOpen(false);
-        router.push(`/lottery/${slug}`);
+        router.push(`/lottery/${slug}/analysis`);
     }
 
     function handlePartClick(name) {

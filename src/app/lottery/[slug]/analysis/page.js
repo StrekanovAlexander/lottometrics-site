@@ -1,5 +1,6 @@
 import { isLotteryExists, getLotteryLabel } from "@/lib/global";
 import Breadcrumbs from "@/app/components/layout/Breadcrumb";
+import PageAnalysisData from "@/app/components/lottery/anslysis/PageAnalysisData";
 import AnalysisCard from "@/app/components/elements/cards/AnalysisCard";
 import { parts } from "@/lib/global"
 import { Inter } from "next/font/google";
@@ -65,8 +66,23 @@ export default function LotteryAnalysis ({ params }) {
                     { label: "Lotteries", href: "/lotteries"},
                     { label: lotteryLabel, href: `/lottery/${slug}`},
                     { label: "Analysis"},
-                ]} />    
-                <div className="max-w-4xl mx-auto text-center">
+                ]} />
+
+                <section className="mb-6">
+                    <h1 className={`${inter.className} text-xl font-semibold text-graphite`}>
+                        {lotteryLabel} Lottery Analysis with LottoMetrics
+                    </h1>
+                    {/* <p class="mt-4 text-gray-700 leading-relaxed">
+                        Discover comprehensive {lotteryLabel} analytics with LottoMetrics. On this page you can explore
+                        detailed <span class="font-medium">Frequency Analysis</span> to see which numbers are drawn most
+                        often, dive into <span class="font-medium">Gap Analysis</span> to understand intervals between
+                        winning numbers, and access additional statistical insights. Our tools help you identify
+                        historical patterns, track hot and cold numbers, and make data‑driven decisions for your
+                        {lotteryLabel} strategy.
+                    </p> */}
+                </section>
+                <PageAnalysisData slug={slug} /> 
+                {/* <div className="max-w-4xl mx-auto text-center">
                     <section className="mb-6">
                         <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
                             {lotteryLabel} Lottery Analysis with LottoMetrics
@@ -92,7 +108,7 @@ export default function LotteryAnalysis ({ params }) {
                             ))}
                         </div>
                     </section>
-                </div>
+                </div> */}
             </>
         )
     }    

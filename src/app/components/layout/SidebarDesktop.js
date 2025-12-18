@@ -12,7 +12,7 @@ export default function SidebarDesktop() {
         const selectedPart = "results";    
         setLottery(slug);
         setPart(selectedPart);
-        router.push(`/lottery/${slug}`); 
+        router.push(`/lottery/${slug}/analysis`); 
     }
 
     function handlePartClick(name) {
