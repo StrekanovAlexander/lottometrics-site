@@ -100,3 +100,7 @@ export function heatMapDesc(val, min, max) {
   if (norm >= 0.8 && norm < 0.9) return "bg-heatmap-9";
   return "bg-heatmap-10"; 
 }
+
+export function generateRange(start, finish) {
+  return Array.from({ length: finish - start + 1 }, (_, i) => start + i);
+}

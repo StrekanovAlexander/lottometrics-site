@@ -9,7 +9,7 @@ export async function GET(request, { params }) {
         const windowSize = searchParams.get("window_size");
 
         const [lotteries] = await pool.query(
-            `SELECT main_start, main_finish, extra_start, extra_finish
+            `SELECT main_count, main_start, main_finish, extra_count, extra_start, extra_finish
             FROM lotteries WHERE slug = ? AND is_active = 1`,
             [slug]
         );
