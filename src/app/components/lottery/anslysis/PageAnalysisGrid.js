@@ -1,8 +1,8 @@
 import { useDashboard } from "@/context/DashboardContext";
 import { heatMapAsc } from "@/utils/lotteryUtils";
 
-export default function PageAnalysisGrid({data}) {
-    const { numberKind } = useDashboard();
+export default function PageAnalysisGrid({data, lotteryData}) {
+    const { numberKind, selectedNumber, setSelectedNumber, sortBy } = useDashboard();
 
     const counts = data.filter(el => el.number_kind === numberKind).reduce((acc, item) => {
         acc[item.draw_number] = (acc[item.draw_number] || 0) + 1;
@@ -12,35 +12,44 @@ export default function PageAnalysisGrid({data}) {
     const numbersPool = Object.entries(counts).map(([number, frequency]) => ({
         draw_number: Number(number),
         frequency
-    })).sort((a, b) => b.frequency - a.frequency);
+    }));
+    
+    if (sortBy === 'value') {
+        numbersPool.sort((a, b) => b.frequency - a.frequency);    
+    } else {
+        numbersPool.sort((a, b) => a.draw_number - b.draw_number);
+    }
 
     const frequencies = numbersPool.map(f => f.frequency);
     const minFreq = Math.min(...frequencies);
     const maxFreq = Math.max(...frequencies);
 
+    const handleSelectedNumber = () => {
+
+    }
+
     return (
         <>
-            <h2 className="text-lg font-semibold text-graphite mb-4">
-                Numbers Pool And Frequency For Period
-            </h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="bg-white border border-gray-300 rounded-md p-4 shadow-sm">
+                <h2 className="text-lg font-semibold text-gray-700 mb-4">
+                    Lottery Number Frequency (Selected Period)
+                </h2>
+                <div className="flex flex-wrap gap-1">
                 {numbersPool.map(({draw_number, frequency}) => {
-                    const bgColor = heatMapAsc(frequency, minFreq, maxFreq);
+                    const bgColor = draw_number === selectedNumber 
+                        ? 'bg-heatmap-11' 
+                        : heatMapAsc(frequency, minFreq, maxFreq);
+                    const fontColor = draw_number === selectedNumber ? 'text-white' : 'text-gray-700';    
                     return (
-                    <div className="flex flex-col">
-                        <span
-                            key={draw_number}
-                            className={`${bgColor} w-8 h-8 flex items-center justify-center rounded-full text-sm font-semibold my-1`}
-                        >
-                            {draw_number}
-                        </span>
-                        <div className="flex justify-center">
-                            <span className="w-6 h-6 flex items-center justify-center text-xs bg-white border rounded-full">
-                                {frequency} 
-                            </span>
-                        </div>
-                    </div>
-                )})}
+                        <button
+                            onClick={() => setSelectedNumber(draw_number)}
+                            key={draw_number} 
+                            className={`${bgColor} w-8 h-8 flex flex-col items-center justify-center rounded-full hover:bg-blue-400 transition`}>
+                            <span className={`${fontColor} text-sm font-bold leading-none`}>{draw_number}</span>
+                            <span className={`${fontColor} text-xxs leading-none`}>x{frequency}</span>
+                        </button>
+                    )})}
+                </div>
             </div>
         </>
     )

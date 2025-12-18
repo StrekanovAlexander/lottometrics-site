@@ -16,13 +16,7 @@ module.exports = {
     "bg-heatmap-8",
     "bg-heatmap-9",
     "bg-heatmap-10",
-    "bg-ball-main1",
-    "bg-ball-main2",
-    "bg-ball-main3",
-    "bg-ball-extra1",
-    "bg-ball-extra2",
-    "bg-ball-extra3",
-    "text-ball-text",
+    "bg-heatmap-11",
   ],
   theme: {
     extend: {
@@ -59,19 +53,10 @@ module.exports = {
           8: '#E8D9A8',
           9: '#D9D9C9',
           10: '#C0C0C0',
-        },
-        ball: {
-          main1: '#4A5568',
-          main2: '#6B7280',
-          main3: '#9CA3AF',
-          extra1: '#FBBF24',
-          extra2: '#F59E0B',
-          extra3: '#D97706',
-          text: '#FFF7ED',
+          11: '#5DADE2'
         },
       },
     },
   },
   plugins: [],
-
 };

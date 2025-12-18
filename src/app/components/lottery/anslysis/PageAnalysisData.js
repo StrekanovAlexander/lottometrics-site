@@ -10,6 +10,7 @@ import { formatDateISO } from "@/utils/formatDate";
 export default function PageAnalysisData({slug}) {
     const { lottery, period, setPeriod, setLottery, windowSize } = useDashboard();
     const [data, setData] = useState([]);
+    const [lotteryData, setLotteryData] = useState({});
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
@@ -21,8 +22,10 @@ export default function PageAnalysisData({slug}) {
         async function loadData() {
             try {
                 const res = await fetch(`/api/dashboard/lotteries/${slug}/analysis?window_size=${windowSize}`);
-                const {rows} = await res.json();
+                const {lott, rows} = await res.json();
                 setData(rows);
+                setLotteryData(lott);
+                // console.log(rows);
                 if (Array.isArray(rows) && rows.length) {
                     const dates = rows.map(el => new Date(el.draw_date));
                     const minDate = new Date(Math.min(...dates));
@@ -47,8 +50,8 @@ export default function PageAnalysisData({slug}) {
     
     return (
         <>
-            <PageAnalysisBar />
-            <PageAnalysisGrid data={data} />
+            <PageAnalysisBar lotteryData={lotteryData} />
+            <PageAnalysisGrid data={data} lotteryData={lotteryData} />
         </>
     )
 }
