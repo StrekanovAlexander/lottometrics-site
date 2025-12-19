@@ -4,10 +4,11 @@ const bgColors = {
 };
 
 export default function FrequencyCategoriesPart({calculatedData}) {
-    const notDrawnNumbers = calculatedData.filter(el => el.category === 'none').map(el => el.draw_number);
-    const hotNumbers = calculatedData.filter(el => el.category === 'hot').map(el => el.draw_number);
-    const coldNumbers = calculatedData.filter(el => el.category === 'cold').map(el => el.draw_number);
-    const middleNumbers = calculatedData.filter(el => el.category === 'middle').map(el => el.draw_number);
+    const data = [...calculatedData];
+    const notDrawnNumbers = data.filter(el => el.category === 'none').map(el => el.draw_number).sort((a, b) => a - b);
+    const hotNumbers = data.filter(el => el.category === 'hot').map(el => el.draw_number).sort((a, b) => a - b);
+    const coldNumbers = data.filter(el => el.category === 'cold').map(el => el.draw_number).sort((a, b) => a - b);
+    const middleNumbers = data.filter(el => el.category === 'middle').map(el => el.draw_number).sort((a, b) => a - b);
 
     return (
         <div className="bg-gray-50 border border-gray-300 rounded-md p-4 shadow-sm">
@@ -89,7 +90,7 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                                 : notDrawnNumbers.map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className={`${bgColors['none']} w-6 h-6 flex items-center justify-center 
+                                        className={`border border-4 border-heatmap-gray w-6 h-6 flex items-center justify-center 
                                             rounded-full text-xs font-semibold`}
                                     >
                                         {el}

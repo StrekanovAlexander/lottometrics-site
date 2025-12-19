@@ -2,8 +2,9 @@ import { useDashboard } from "@/context/DashboardContext";
 import AnalysisBar from "./AnalysisBar";
 import FrequencyPart from "./partials/FrequencyPart";
 import FrequencyCategoriesPart from "./partials/FrequencyCategoriesPart";
+import GapsPart from "./partials/GapsPart";
 
-export default function AnalysisReport({calculatedData}) {
+export default function AnalysisReport({calculatedData, gaps}) {
     const { sortBy } = useDashboard();
 
     if (sortBy === 'value') {
@@ -19,6 +20,7 @@ export default function AnalysisReport({calculatedData}) {
             <div>
                 <AnalysisBar/>
                 <FrequencyPart freqData={freqData} />
+                <GapsPart gaps={gaps} />
             </div>
             <div>
                 <FrequencyCategoriesPart calculatedData={calculatedData} />

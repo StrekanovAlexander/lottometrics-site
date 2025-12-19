@@ -20,3 +20,14 @@ export function getFreqCategory(hitsCount, ratio) {
 
     return category;
 }
+
+export function buildGapsSeries(gaps) {
+    const numbers = gaps.map(el => el.draw_number); 
+    const uniqueNumbers = Array.from(new Set(numbers));
+
+    return uniqueNumbers.reduce((acc, el) => {
+        const arr = gaps.filter(n => n.draw_number === el).map(s => s.series_length);
+        acc.push({draw_number: el, series: arr});
+        return acc;
+    }, []);
+}

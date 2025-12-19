@@ -9,6 +9,7 @@ import { getFreqCategory } from "@/utils/analysisUtils";
 export default function AnalysisData({slug}) {
     const { lotterySlug, setLotterySlug,  setPeriod, windowSize, numberKind } = useDashboard();
     const [data, setData] = useState([]);
+    const [gaps, setGaps] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
  
@@ -20,8 +21,9 @@ export default function AnalysisData({slug}) {
         async function loadData() {
             try {
                 const res = await fetch(`/api/dashboard/lotteries/${slug}/analysis?window_size=${windowSize}`);
-                const {periodRange, rows} = await res.json();
+                const {periodRange, rows, gaps} = await res.json();
                 setData(rows);
+                setGaps(gaps);
                 setPeriod(periodRange);
             } catch (err) {
                 setError(err.message);
@@ -37,6 +39,7 @@ export default function AnalysisData({slug}) {
     if (loading) return <Spinner /> 
 
     const filteredData = data.filter(el => el.number_kind === numberKind);
+    const filteredGaps = gaps.filter(el => el.number_kind === numberKind);
 
     const calculatedData = filteredData.map(el => {
         const N = el.number_finish - el.number_start + 1;
@@ -54,6 +57,8 @@ export default function AnalysisData({slug}) {
     });
      
     return (
-        <AnalysisReport calculatedData={calculatedData} />
+        <div>
+            <AnalysisReport calculatedData={calculatedData} gaps={filteredGaps} />
+        </div>
     )
 }

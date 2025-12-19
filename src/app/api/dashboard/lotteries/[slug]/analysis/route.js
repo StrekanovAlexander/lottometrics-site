@@ -66,8 +66,25 @@ export async function GET(request, { params }) {
             WHERE n.num BETWEEN l.extra_start AND l.extra_finish
             ORDER BY number_kind, draw_number`, 
             [lottery_id, lottery_id, startDate, endDate, lottery_id, lottery_id, startDate, endDate]  
-        );  
-        return NextResponse.json({periodRange, rows});
+        ); 
+        
+        const [gaps] = await pool.query(`
+            SELECT 
+                -- ngs.lottery_id,
+                ngs.draw_number,
+                ngs.number_kind,
+                dr1.draw_date as draw_date_start, 
+                -- dr2.draw_date as draw_date_end,
+                ngs.series_length
+            FROM number_gap_series ngs 
+            INNER JOIN draws dr1 ON dr1.id = ngs.start_draw_id 
+            INNER JOIN draws dr2 ON dr2.id = ngs.end_draw_id
+            WHERE ngs.lottery_id = ? 
+            AND dr1.draw_date BETWEEN ? AND ?
+            AND dr2.draw_date BETWEEN ? AND ?
+            ORDER BY ngs.draw_number, dr1.draw_date
+        `, [lottery_id, startDate, endDate, startDate, endDate]); 
+        return NextResponse.json({periodRange, rows, gaps});
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'DB error' }, { status: 500 });
