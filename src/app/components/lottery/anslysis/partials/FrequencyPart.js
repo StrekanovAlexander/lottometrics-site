@@ -14,7 +14,7 @@ export default function FrequencyPart({freqData}) {
             <div className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-lg p-3 flex flex-wrap gap-1">
                 {freqData.map(({draw_number, hits_count}) => {
                     const bgColor = draw_number === selectedNumber 
-                        ? 'bg-heatmap-11' 
+                        ? 'bg-heatmap-active' 
                         :  heatMapAsc(hits_count, minHitsCount, maxHitsCount);
                     const fontColor = draw_number === selectedNumber ? 'text-white' : 'text-gray-700';    
                     return (
