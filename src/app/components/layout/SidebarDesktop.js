@@ -48,8 +48,8 @@ export default function SidebarDesktop() {
                     );
                 })}
             </ul>
-            <h2 className="text-gray-50 my-3 font-semibold">Analytics</h2>        
-            <ul className="flex flex-col">
+            {/* <h2 className="text-gray-50 my-3 font-semibold">Analytics</h2>         */}
+            {/* <ul className="flex flex-col">
                 {parts.filter(el => el.isInNav === true).map(({ name, label, icon: Icon }) => {
                     const isActive = name === part;
                     return (
@@ -68,7 +68,7 @@ export default function SidebarDesktop() {
                         </li>
                     );
                 })}
-            </ul>
+            </ul> */}
         </aside>
     )
 }
