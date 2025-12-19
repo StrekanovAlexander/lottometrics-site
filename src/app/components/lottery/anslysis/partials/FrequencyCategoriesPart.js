@@ -1,9 +1,7 @@
-const bgColors = { 
-    hot: "bg-heatmap-1", middle: "bg-heatmap-5",
-    cold: "bg-heatmap-10", none: "bg-heatmap-gray"
-};
+import { useDashboard } from "@/context/DashboardContext";
 
 export default function FrequencyCategoriesPart({calculatedData}) {
+    const { selectedNumber, setSelectedNumber } = useDashboard();
     const data = [...calculatedData];
     const notDrawnNumbers = data.filter(el => el.category === 'none').map(el => el.draw_number).sort((a, b) => a - b);
     const hotNumbers = data.filter(el => el.category === 'hot').map(el => el.draw_number).sort((a, b) => a - b);
@@ -30,15 +28,18 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                         <td className="px-2 py-2 flex gap-1 items-center justify-start py-1">
                             {hotNumbers.length === 0 
                                 ? 'No data' 
-                                : hotNumbers.map((el, ix) => (
-                                    <span
-                                        key={ix}
-                                        className={`border border-4 border-heatmap-1 w-6 h-6 flex items-center justify-center 
-                                            rounded-full text-xs font-semibold`}
-                                    >
-                                        {el}
-                                    </span>
-                                ))
+                                : hotNumbers.map((el, ix) => {
+                                    const elClass = selectedNumber === el ? 'bg-heatmap-active' : 'border border-4 border-heatmap-1';
+                                    return (
+                                        <span
+                                            key={ix}
+                                            onClick={() => setSelectedNumber(el)} 
+                                            className={`${elClass} w-6 h-6 flex items-center justify-center 
+                                                rounded-full text-xs font-semibold cursor-pointer`}
+                                        >
+                                            {el}
+                                        </span>
+                                )})
                             }
                         </td>
                     </tr>
@@ -49,15 +50,18 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                         <td className="px-2 py-2 flex flex-wrap gap-1 items-center justify-start py-1">
                             {middleNumbers.length === 0 
                                 ? 'No data' 
-                                : middleNumbers.map((el, ix) => (
-                                    <span
-                                        key={ix}
-                                        className={`border border-4 border-heatmap-6 w-6 h-6 flex items-center justify-center 
-                                            rounded-full text-xs font-semibold`}
-                                    >
-                                        {el}
-                                    </span>
-                                ))
+                                : middleNumbers.map((el, ix) => {
+                                    const elClass = selectedNumber === el ? 'bg-heatmap-active' : 'border border-4 border-heatmap-6';
+                                    return (
+                                        <span
+                                            key={ix}
+                                            onClick={() => setSelectedNumber(el)} 
+                                            className={`${elClass} w-6 h-6 flex items-center justify-center 
+                                                rounded-full text-xs font-semibold cursor-pointer`}
+                                        >
+                                            {el}
+                                        </span>
+                                    )})
                             }
                         </td>
                     </tr>
@@ -68,15 +72,19 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                         <td className="px-2 py-2 flex flex-wrap gap-1 items-center justify-start py-1">
                             {coldNumbers.length === 0 
                                 ? 'No data' 
-                                : coldNumbers.map((el, ix) => (
-                                    <span
-                                        key={ix}
-                                        className={`border border-4 border-heatmap-10 w-6 h-6 flex items-center justify-center 
-                                            rounded-full text-xs font-semibold`}
-                                    >
-                                        {el}
-                                    </span>
-                                ))
+                                : coldNumbers.map((el, ix) => {
+                                    const elClass = selectedNumber === el ? 'bg-heatmap-active' : 'border border-4 border-heatmap-10';
+                                    return (
+                                        <span
+                                            key={ix}
+                                            onClick={() => setSelectedNumber(el)} 
+                                            className={`${elClass} w-6 h-6 flex items-center justify-center 
+                                                rounded-full text-xs font-semibold cursor-pointer`}
+                                        >
+                                            {el}
+                                        </span>
+                                    )
+                                })
                             }
                         </td>
                     </tr>

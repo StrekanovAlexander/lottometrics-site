@@ -4,7 +4,7 @@ import { buildGapsSeries } from "@/utils/analysisUtils";
 import RhythmCard from "@/app/components/elements/cards/RhythmCard";
 
 export default function GapsPart({gaps}) {
-    const { selectedNumber, setSelectedNumber, numberKind, period } = useDashboard();
+    const { numberKind, period } = useDashboard();
     const gapsSeries = buildGapsSeries(gaps);
 
     return (
