@@ -80,8 +80,7 @@ export async function GET(request, { params }) {
             INNER JOIN draws dr1 ON dr1.id = ngs.start_draw_id 
             INNER JOIN draws dr2 ON dr2.id = ngs.end_draw_id
             WHERE ngs.lottery_id = ? 
-            AND dr1.draw_date BETWEEN ? AND ?
-            AND dr2.draw_date BETWEEN ? AND ?
+            AND (dr1.draw_date BETWEEN ? AND ? OR dr2.draw_date BETWEEN ? AND ?)
             ORDER BY ngs.draw_number, dr1.draw_date
         `, [lottery_id, startDate, endDate, startDate, endDate]); 
         return NextResponse.json({periodRange, rows, gaps});
