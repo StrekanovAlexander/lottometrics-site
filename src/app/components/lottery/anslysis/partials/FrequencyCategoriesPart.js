@@ -10,7 +10,7 @@ export default function FrequencyCategoriesPart({calculatedData}) {
 
     return (
         <div className="bg-gray-50 border border-gray-300 rounded-md p-4 shadow-sm">
-            <h2 className="text-sm text-gray-700 mb-2">
+            <h2 className="text-sm font-semibold text-gray-700 mb-4">
                 Number Frequency Categories
             </h2>
             <table className="w-full bg-white rounded-lg shadow-sm border border-gray-200">
