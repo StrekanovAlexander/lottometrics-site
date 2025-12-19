@@ -4,6 +4,7 @@ import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
 import AnalysisReport from "./AnalysisReport";
+import { getFreqCategory } from "@/utils/analysisUtils";
 
 export default function AnalysisData({slug}) {
     const { lotterySlug, setLotterySlug,  setPeriod, windowSize, numberKind } = useDashboard();
@@ -38,22 +39,21 @@ export default function AnalysisData({slug}) {
     const filteredData = data.filter(el => el.number_kind === numberKind);
 
     const calculatedData = filteredData.map(el => {
-        const avgFreq = windowSize * (el.numbers_count / el.number_finish - el.number_start + 1);  
-        const frequency = el.hits_count ?? 0;
-        const ratio = frequency / avgFreq;
-        let category = "middle";
-        if (ratio > 1.5) category = "hot";
-        else if (ratio < 0.5) category = "cold";
+        const N = el.number_finish - el.number_start + 1;
+        const avgFreq = windowSize * (el.numbers_count / N);
+        const ratio = el.hits_count > 0 ? el.hits_count / avgFreq : 0;
+        const category = getFreqCategory(el.hits_count, ratio);
+
         return {
             ...el,
             expected: avgFreq,
-            frequency,
+            frequency: el.hits_count,
             ratio,
             category
         };
     });
      
     return (
-        <AnalysisReport calculatedData={calculatedData} filteredData={filteredData} />
+        <AnalysisReport calculatedData={calculatedData} />
     )
 }

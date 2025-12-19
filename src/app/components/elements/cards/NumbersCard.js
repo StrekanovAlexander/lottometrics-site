@@ -1,6 +1,6 @@
 export default function NumbersCard({title, numbers, category}) {
     const bgColors = { hot: "bg-heatmap-1", middle: "bg-heatmap-5",
-        cold: "bg-heatmap-10", missed: "bg-white"
+        cold: "bg-heatmap-10", none: "bg-white"
     };
 
     return (

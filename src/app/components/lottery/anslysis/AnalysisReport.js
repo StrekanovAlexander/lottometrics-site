@@ -3,8 +3,8 @@ import AnalysisBar from "./AnalysisBar";
 import FrequencyPart from "./partials/FrequencyPart";
 import FrequencyCategoriesPart from "./partials/FrequencyCategoriesPart";
 
-export default function AnalysisReport({calculatedData, filteredData}) {
-    const { numberKind, sortBy } = useDashboard();
+export default function AnalysisReport({calculatedData}) {
+    const { sortBy } = useDashboard();
 
     if (sortBy === 'value') {
         calculatedData.sort((a, b) => b.hits_count - a.hits_count);    
@@ -21,7 +21,7 @@ export default function AnalysisReport({calculatedData, filteredData}) {
                 <FrequencyPart freqData={freqData} />
             </div>
             <div>
-                <FrequencyCategoriesPart calculatedData={calculatedData} filteredData={filteredData} />
+                <FrequencyCategoriesPart calculatedData={calculatedData} />
             </div>
         </div>
     )

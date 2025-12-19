@@ -1,7 +1,7 @@
 import NumbersCard from "../../../elements/cards/NumbersCard";
 
-export default function FrequencyCategoriesPart({calculatedData, filteredData}) {
-    const missedNumbers = filteredData.filter(el => el.hits_count === 0).map(el => el.draw_number);
+export default function FrequencyCategoriesPart({calculatedData}) {
+    const missedNumbers = calculatedData.filter(el => el.category === 'none').map(el => el.draw_number);
     const hotNumbers = calculatedData.filter(el => el.category === 'hot').map(el => el.draw_number);
     const coldNumbers = calculatedData.filter(el => el.category === 'cold').map(el => el.draw_number);
     const middleNumbers = calculatedData.filter(el => el.category === 'middle').map(el => el.draw_number);
@@ -15,7 +15,7 @@ export default function FrequencyCategoriesPart({calculatedData, filteredData}) 
                 <NumbersCard title={`Hot Numbers`} numbers={hotNumbers} category={`hot`} />
                 <NumbersCard title={`Middle Numbers`} numbers={middleNumbers} category={`middle`} />
                 <NumbersCard title={`Cold Numbers`} numbers={coldNumbers} category={`cold`} />
-                <NumbersCard title={`Numbers Not Drawn`} numbers={missedNumbers} category={`missed`} />
+                <NumbersCard title={`Numbers Not Drawn`} numbers={missedNumbers} category={`none`} />
             </div>
         </div>
     )
