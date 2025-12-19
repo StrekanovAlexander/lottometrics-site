@@ -1,8 +1,6 @@
 import { isLotteryExists, getLotteryLabel } from "@/lib/global";
 import Breadcrumbs from "@/app/components/layout/Breadcrumb";
 import AnalysisData from "@/app/components/lottery/anslysis/AnalysisData";
-import AnalysisCard from "@/app/components/elements/cards/AnalysisCard";
-import { parts } from "@/lib/global"
 import { Inter } from "next/font/google";
 const inter = Inter({
   subsets: ["latin"],
@@ -95,18 +93,6 @@ export default function LotteryAnalysis ({ params }) {
                             historical patterns, track hot and cold numbers, and make data‑driven decisions for your
                             {lotteryLabel} strategy.
                         </p>
-                    </section>
-                    <section className="my-8">
-                        <div className="flex justify-start gap-6">
-                            {parts.filter(el => el.isInNav === true).map((el, ix) => (
-                                <AnalysisCard 
-                                    key={ix}
-                                    slug={slug}
-                                    lottery={lotteryLabel} 
-                                    part={el}
-                                />
-                            ))}
-                        </div>
                     </section>
                 </div> */}
             </>

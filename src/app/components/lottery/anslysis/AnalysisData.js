@@ -3,8 +3,7 @@ import { useEffect, useState } from "react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
-import AnalysisBar from "./AnalysisBar";
-import AnalysisGrid from "./AnalysisGrid";
+import AnalysisReport from "./AnalysisReport";
 
 export default function AnalysisData({slug}) {
     const { lotterySlug, setLotterySlug,  setPeriod, windowSize, numberKind } = useDashboard();
@@ -55,9 +54,6 @@ export default function AnalysisData({slug}) {
     });
      
     return (
-        <>
-            <AnalysisBar/>
-            <AnalysisGrid data={calculatedData} />
-        </>
+        <AnalysisReport calculatedData={calculatedData} filteredData={filteredData} />
     )
 }
