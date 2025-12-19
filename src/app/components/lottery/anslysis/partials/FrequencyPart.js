@@ -16,12 +16,12 @@ export default function FrequencyPart({freqData}) {
                     const bgColor = draw_number === selectedNumber 
                         ? 'bg-heatmap-active' 
                         :  heatMapAsc(hits_count, minHitsCount, maxHitsCount);
-                    const fontColor = draw_number === selectedNumber ? 'text-white' : 'text-gray-700';    
+                    const fontColor = 'text-gray-700';    
                     return (
                         <button
                             onClick={() => setSelectedNumber(draw_number)}
                             key={draw_number} 
-                            className={`${bgColor} w-8 h-8 flex flex-col items-center justify-center rounded-full hover:bg-blue-400 transition`}>
+                            className={`${bgColor} w-8 h-8 flex flex-col items-center justify-center rounded-full hover:bg-heatmap-active transition`}>
                             <span className={`${fontColor} text-sm font-bold leading-none`}>{draw_number}</span>
                             <span className={`${fontColor} text-xxs leading-none`}>x{hits_count}</span>
                         </button>

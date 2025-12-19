@@ -32,7 +32,7 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                                 : hotNumbers.map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className={`${bgColors['hot']} w-6 h-6 flex items-center justify-center 
+                                        className={`border border-4 border-heatmap-1 w-6 h-6 flex items-center justify-center 
                                             rounded-full text-xs font-semibold`}
                                     >
                                         {el}
@@ -51,7 +51,7 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                                 : middleNumbers.map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className={`${bgColors['middle']} w-6 h-6 flex items-center justify-center 
+                                        className={`border border-4 border-heatmap-6 w-6 h-6 flex items-center justify-center 
                                             rounded-full text-xs font-semibold`}
                                     >
                                         {el}
@@ -70,7 +70,7 @@ export default function FrequencyCategoriesPart({calculatedData}) {
                                 : coldNumbers.map((el, ix) => (
                                     <span
                                         key={ix}
-                                        className={`${bgColors['cold']} w-6 h-6 flex items-center justify-center 
+                                        className={`border border-4 border-heatmap-10 w-6 h-6 flex items-center justify-center 
                                             rounded-full text-xs font-semibold`}
                                     >
                                         {el}
