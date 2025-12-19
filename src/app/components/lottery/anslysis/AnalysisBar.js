@@ -2,7 +2,7 @@
 import { useDashboard } from "@/context/DashboardContext";
 import { formatDate } from "@/utils/formatDate";
 
-export default function PageAnalysisBar({lotteryData}) {
+export default function AnalysisBar() {
     const { period, windowSize, setWindowSize, numberKind, 
         setNumberKind, setSelectedNumber, sortBy, setSortBy } = useDashboard();
     return (
@@ -57,9 +57,9 @@ export default function PageAnalysisBar({lotteryData}) {
                             setSelectedNumber(null);
                         }}
                     >
-                        <option value="main">Main numbers ({lotteryData.main_start}-{lotteryData.main_finish})</option>
-                        <option value="extra">Extra numbers ({lotteryData.extra_start}-{lotteryData.extra_finish})</option>
-                    </select>
+                        <option value="main">Main numbers</option>
+                        <option value="extra">Extra numbers</option>
+                  </select>
                 </div>
             </div>
         </div>

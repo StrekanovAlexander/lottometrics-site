@@ -1,6 +1,7 @@
 // app/api/dashboare/lotteries/slug/analysis
 import pool from '@/lib/db';
 import { NextResponse } from "next/server";
+import { formatDateISO } from '@/utils/formatDate';
 
 export async function GET(request, { params }) {
     try {
@@ -8,30 +9,65 @@ export async function GET(request, { params }) {
         const { slug } = params;
         const windowSize = searchParams.get("window_size");
 
-        const [lotteries] = await pool.query(
-            `SELECT main_count, main_start, main_finish, extra_count, extra_start, extra_finish
-            FROM lotteries WHERE slug = ? AND is_active = 1`,
-            [slug]
-        );
-
-        const lott = lotteries[0];
-
-        const [rows] = await pool.query(`
-            SELECT nh.draw_id, nh.number_kind, nh.draw_number, nh.draw_date
-            FROM number_hits nh
-            JOIN (
-                SELECT d.id
+        const [lotteries] = await pool.query(`
+            SELECT dr.lottery_id, MIN(dr.draw_date) AS start_date, MAX(dr.draw_date) AS end_date
+            FROM (
+                SELECT d.lottery_id, d.draw_date
                 FROM draws d
                 JOIN lotteries l ON l.id = d.lottery_id
                 WHERE l.slug = ?
-                AND d.is_active = 1
-                ORDER BY d.id DESC
+                ORDER BY d.draw_date DESC
                 LIMIT ${windowSize}
-            ) last_draws ON nh.draw_id = last_draws.id
-            ORDER BY nh.draw_id DESC, nh.number_kind, nh.draw_number`,
-            [slug]
-        );
-        return NextResponse.json({lott, rows});
+            ) dr
+            GROUP BY dr.lottery_id`, [slug]);
+
+        const {lottery_id, start_date, end_date} = lotteries[0];
+        const startDate = formatDateISO(new Date(start_date));
+        const endDate = formatDateISO(new Date(end_date));
+        const periodRange = {startDate, endDate};
+
+        const [rows] = await pool.query(`
+            SELECT 
+                n.num AS draw_number,
+                'main' AS number_kind,
+                COALESCE(h.hits_count, 0) AS hits_count,
+                l.main_count   AS numbers_count,
+                l.main_start   AS number_start,
+                l.main_finish  AS number_finish
+            FROM numbers n
+            JOIN lotteries l ON l.id = ?
+            LEFT JOIN (
+                SELECT nh.draw_number, COUNT(*) AS hits_count
+                FROM number_hits nh
+                WHERE nh.lottery_id = ?
+                AND nh.number_kind = 'main'
+                AND nh.draw_date BETWEEN ? AND ?
+                GROUP BY nh.draw_number
+            ) h ON h.draw_number = n.num
+            WHERE n.num BETWEEN l.main_start AND l.main_finish
+            UNION ALL
+            SELECT 
+                n.num AS draw_number,
+                'extra' AS number_kind,
+                COALESCE(h.hits_count, 0) AS hits_count,
+                l.extra_count   AS numbers_count,
+                l.extra_start   AS number_start,
+                l.extra_finish  AS number_finish
+            FROM numbers n
+            JOIN lotteries l ON l.id = ?
+            LEFT JOIN (
+                SELECT nh.draw_number, COUNT(*) AS hits_count
+                FROM number_hits nh
+                WHERE nh.lottery_id = ?
+                AND nh.number_kind = 'extra'
+                AND nh.draw_date BETWEEN ? AND ?
+                GROUP BY nh.draw_number
+            ) h ON h.draw_number = n.num
+            WHERE n.num BETWEEN l.extra_start AND l.extra_finish
+            ORDER BY number_kind, draw_number`, 
+            [lottery_id, lottery_id, startDate, endDate, lottery_id, lottery_id, startDate, endDate]  
+        );  
+        return NextResponse.json({periodRange, rows});
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'DB error' }, { status: 500 });

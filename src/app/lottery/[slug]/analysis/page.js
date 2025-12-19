@@ -1,6 +1,6 @@
 import { isLotteryExists, getLotteryLabel } from "@/lib/global";
 import Breadcrumbs from "@/app/components/layout/Breadcrumb";
-import PageAnalysisData from "@/app/components/lottery/anslysis/PageAnalysisData";
+import AnalysisData from "@/app/components/lottery/anslysis/AnalysisData";
 import AnalysisCard from "@/app/components/elements/cards/AnalysisCard";
 import { parts } from "@/lib/global"
 import { Inter } from "next/font/google";
@@ -81,7 +81,7 @@ export default function LotteryAnalysis ({ params }) {
                         {lotteryLabel} strategy.
                     </p> */}
                 </section>
-                <PageAnalysisData slug={slug} /> 
+                <AnalysisData slug={slug} /> 
                 {/* <div className="max-w-4xl mx-auto text-center">
                     <section className="mb-6">
                         <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>

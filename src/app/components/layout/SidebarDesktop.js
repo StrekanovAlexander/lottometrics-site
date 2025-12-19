@@ -5,20 +5,20 @@ import { useDashboard } from "@/context/DashboardContext";
 import { lotteries, parts } from "@/lib/global"
 
 export default function SidebarDesktop() {
-    const { part, setPart, lottery, setLottery } = useDashboard();
+    const { part, setPart, lotterySlug, setLotterySlug } = useDashboard();
     const router = useRouter();
 
     function handleLotteryClick(slug) {
         const selectedPart = "results";    
-        setLottery(slug);
+        setLotterySlug(slug);
         setPart(selectedPart);
         router.push(`/lottery/${slug}/analysis`); 
     }
 
     function handlePartClick(name) {
         setPart(name); 
-        if (lottery) {
-            router.push(`/lottery/${lottery}/analysis/${name}`);
+        if (lotterySlug) {
+            router.push(`/lottery/${lotterySlug}/analysis/${name}`);
         }    
         else {
             router.push(`/lotteries/analysis/${name}`);
@@ -30,7 +30,7 @@ export default function SidebarDesktop() {
             <h2 className="text-gray-50 mb-2 font-semibold">Lotteries</h2>
             <ul className="flex flex-col">
                 {lotteries.map(({ slug, label }) => {
-                    const isActive = slug === lottery;
+                    const isActive = slug === lotterySlug;
                     return (
                         <li key={slug}>
                             <button

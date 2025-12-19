@@ -6,13 +6,13 @@ import { useDashboard } from "@/context/DashboardContext";
 import { lotteries, parts } from "@/lib/global"
 
 export default function SidebarMobile() {
-    const { part, setPart, lottery, setLottery } = useDashboard();
+    const { part, setPart, lotterySlug, setLotterySlug } = useDashboard();
     const router = useRouter();
     const [open, setOpen] = useState(false);
 
     function handleLotteryClick(slug) {
         const selectedPart = "results";    
-        setLottery(slug);
+        setLotterySlug(slug);
         setPart(selectedPart);
         setOpen(false);
         router.push(`/lottery/${slug}/analysis`);
@@ -44,7 +44,7 @@ export default function SidebarMobile() {
                         <h2 className="text-gray-50 mb-2 font-semibold">Lotteries</h2>
                         <ul className="flex flex-col">
                             {lotteries.map(({ slug, label }) => {
-                                const isActive = slug === lottery;
+                                const isActive = slug === lotterySlug;
                                 return (
                                     <li key={slug}>
                                         <button
@@ -91,16 +91,3 @@ export default function SidebarMobile() {
         </div>
     );
 }
-/*
-export default function NavMobile() {
-    return (
-        <div className="md:hidden bg-graphite text-lightgray p-4">
-            <ul className="space-y-4">
-                <li><a href="/" className="block hover:text-lavender">Home</a></li>
-                <li><a href="/dashboard" className="block hover:text-mint">Dashboard</a></li>
-                <li><a href="/lottery" className="block hover:text-yellow">Lotteries</a></li>
-            </ul>
-        </div>
-    )
-}
-*/

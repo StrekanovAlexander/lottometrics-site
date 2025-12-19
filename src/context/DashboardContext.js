@@ -18,7 +18,10 @@ export const DashboardProvider = ({ children }) => {
     const [drawsCount, setDrawsCount] = useState(0);
     const [windowSize, setWindowSize] = useState(20);
     const [selectedNumber, setSelectedNumber] = useState(null);
-    const [lottery, setLottery] = useState(null);
+    
+    const [lottery, setLottery] = useState(null); // to remove
+    const [lotterySlug, setLotterySlug] = useState(null);
+    
     const [numberKind, setNumberKind] = useState("main");
     const [part, setPart] = useState(null);
     const [sortBy, setSortBy] = useState('value');
@@ -27,7 +30,8 @@ export const DashboardProvider = ({ children }) => {
         <DashboardContext.Provider
             value={{ 
                 drawsCount, setDrawsCount,
-                lottery, setLottery,
+                lottery, setLottery, // to remove
+                lotterySlug, setLotterySlug,
                 part, setPart,
                 period, setPeriod,
                 windowSize, setWindowSize,
