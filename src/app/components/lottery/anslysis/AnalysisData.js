@@ -9,7 +9,8 @@ import { getFreqCategory } from "@/utils/analysisUtils";
 export default function AnalysisData({slug}) {
     const { lotterySlug, setLotterySlug,  setPeriod, windowSize, numberKind } = useDashboard();
     const [data, setData] = useState([]);
-    const [gaps, setGaps] = useState([]);
+    const [windowDraws, setWindowDraws] = useState([]);
+    const [hits, setHits] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
  
@@ -21,9 +22,10 @@ export default function AnalysisData({slug}) {
         async function loadData() {
             try {
                 const res = await fetch(`/api/dashboard/lotteries/${slug}/analysis?window_size=${windowSize}`);
-                const {periodRange, rows, gaps} = await res.json();
+                const {periodRange, rows, windowRows, hitsRows} = await res.json();
                 setData(rows);
-                setGaps(gaps);
+                setWindowDraws(windowRows); 
+                setHits(hitsRows);
                 setPeriod(periodRange);
             } catch (err) {
                 setError(err.message);
@@ -39,7 +41,7 @@ export default function AnalysisData({slug}) {
     if (loading) return <Spinner /> 
 
     const filteredData = data.filter(el => el.number_kind === numberKind);
-    const filteredGaps = gaps.filter(el => el.number_kind === numberKind);
+    const filteredHits = hits.filter(el => el.number_kind === numberKind);
 
     const calculatedData = filteredData.map(el => {
         const N = el.number_finish - el.number_start + 1;
@@ -57,8 +59,6 @@ export default function AnalysisData({slug}) {
     });
      
     return (
-        <div>
-            <AnalysisReport calculatedData={calculatedData} gaps={filteredGaps} />
-        </div>
+        <AnalysisReport calculatedData={calculatedData} windowDraws={windowDraws} hits={filteredHits} />
     )
 }

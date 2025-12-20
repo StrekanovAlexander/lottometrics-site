@@ -21,13 +21,27 @@ export function getFreqCategory(hitsCount, ratio) {
     return category;
 }
 
-export function buildGapsSeries(gaps) {
-    const numbers = gaps.map(el => el.draw_number); 
-    const uniqueNumbers = Array.from(new Set(numbers));
+export function computeGaps(hits, windowDraws) {
+    const indexMap = new Map();
+    windowDraws.forEach((d, i) => indexMap.set(d.id, i));
+    
+    const groups = new Map();
+    for (const hit of hits) {
+        const idx = indexMap.get(hit.draw_id);
+        if (!groups.has(hit.draw_number)) {
+            groups.set(hit.draw_number, []);
+        }
+        groups.get(hit.draw_number).push(idx);
+    }
 
-    return uniqueNumbers.reduce((acc, el) => {
-        const arr = gaps.filter(n => n.draw_number === el).map(s => s.series_length);
-        acc.push({draw_number: el, series: arr});
-        return acc;
-    }, []);
+    const result = [];
+    for (const [draw_number, positions] of groups.entries()) {
+        positions.sort((a, b) => a - b);
+        const gaps = [];
+        for (let i = 1; i < positions.length; i++) {
+            gaps.push(positions[i] - positions[i - 1] - 1);
+        }
+        result.push({ draw_number, gaps });
+    }
+    return result;
 }

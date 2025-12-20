@@ -68,22 +68,28 @@ export async function GET(request, { params }) {
             [lottery_id, lottery_id, startDate, endDate, lottery_id, lottery_id, startDate, endDate]  
         ); 
         
-        const [gaps] = await pool.query(`
-            SELECT 
-                -- ngs.lottery_id,
-                ngs.draw_number,
-                ngs.number_kind,
-                dr1.draw_date as draw_date_start, 
-                -- dr2.draw_date as draw_date_end,
-                ngs.series_length
-            FROM number_gap_series ngs 
-            INNER JOIN draws dr1 ON dr1.id = ngs.start_draw_id 
-            INNER JOIN draws dr2 ON dr2.id = ngs.end_draw_id
-            WHERE ngs.lottery_id = ? 
-            AND (dr1.draw_date BETWEEN ? AND ? OR dr2.draw_date BETWEEN ? AND ?)
-            ORDER BY ngs.draw_number, dr1.draw_date
-        `, [lottery_id, startDate, endDate, startDate, endDate]); 
-        return NextResponse.json({periodRange, rows, gaps});
+        const [windowRows] = await pool.query(`
+            SELECT id, draw_date
+            FROM draws
+            WHERE lottery_id = ? AND is_active = TRUE
+            ORDER BY id DESC
+            LIMIT ${windowSize}`, [lottery_id]
+        );
+
+        const windowIds = windowRows.map(r => r.id);
+        const [hitsRows] = await pool.query(`
+            SELECT DISTINCT
+                nh.number_kind,
+                nh.draw_number,
+                nh.draw_id,
+                nh.draw_date
+            FROM number_hits nh
+            WHERE nh.lottery_id = ?
+              AND nh.draw_id IN (?)
+            ORDER BY nh.number_kind, nh.draw_number, nh.draw_id
+            `, [lottery_id, windowIds]
+        );
+        return NextResponse.json({periodRange, rows, windowRows, hitsRows});
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'DB error' }, { status: 500 });

@@ -13,8 +13,8 @@ export default function RhythmCard({item}) {
                 {item.draw_number}
             </div>
             <div className={`text-xs text-gray-700 flex flex-col gap-1 px-2 py-1 text-center`}>
-                <div>Rhythm</div>
-                <div>[ {item.series.join('-')} ]</div>
+                <div>rhythm</div>
+                <div>[ {item.gaps.join('-')} ]</div>
             </div>
         </div>    
     )
