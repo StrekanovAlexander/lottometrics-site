@@ -15,7 +15,8 @@
     "next": "14.2.3",
     "react": "^18",
     "react-dom": "^18",
-    "react-heatmap-grid": "^0.9.1"
+    "react-heatmap-grid": "^0.9.1",
+    "recharts": "^2.3.2"
   },
   "devDependencies": {
     "postcss": "^8",

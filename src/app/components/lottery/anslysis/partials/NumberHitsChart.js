@@ -1,16 +1,57 @@
-import { formatDateISO } from "@/utils/formatDate";
+import { LineChart, Line, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+
+import { formatDateISO, formatDate } from "@/utils/formatDate";
 
 export default function NumberHitsChart({numberHits, windowDraws}) {
     const timeline = windowDraws
-        .map(el => ({ date: formatDateISO(new Date(el.draw_date)), hit: 0}))
-        .sort((a, b) => new Date(a.date) - new Date(b.date));
+        .map(el => (formatDateISO(new Date(el.draw_date))))
+        .sort((a, b) => new Date(a) - new Date(b));
 
     const hitDates = numberHits.map(el => formatDateISO(new Date(el.draw_date)));
-    const chartData = timeline.map(({date, hit}) => ({date, hit: hitDates.includes(date) ? 1 : 0}));
+
+    let cumulative = 0;
+    const chartData = timeline.map(date => {
+        const hit = hitDates.includes(date) ? 1 : 0;
+        cumulative += hit;
+        return { date: formatDate(date), hit, cumulative };
+    });
 
     return (
-        <div>
-            Number Hits Chart
+        <div style={{ width: "100%", height: 125 }}>
+            <ResponsiveContainer>
+                <LineChart 
+                    data={chartData}
+                    margin={{ left: 0, right: 10, top: 10, bottom: 0 }}
+                >
+                <XAxis
+                    dataKey="date"
+                    tick={{ fontSize: 10 }}
+                    tickMargin={8}
+                />
+                <YAxis
+                    width={24}
+                    domain={[0, 1]}
+                    ticks={[0, 1]}
+                    tick={{ fontSize: 10 }}
+                />
+                <Tooltip />
+                <Line
+                    type="monotone"
+                    dataKey="hit"
+                    stroke="#D9A07A"
+                    strokeWidth={1}
+                    dot={{ r: 2, fill: "#D9A07A" }}
+                    activeDot={{ r: 4 }}
+                />
+                {/* <Line
+                    type="monotone"
+                    dataKey="cumulative"
+                    stroke="#6B7280"
+                    strokeWidth={2}
+                    dot={false}
+                /> */}
+                </LineChart>
+            </ResponsiveContainer>
         </div>
     )
 }

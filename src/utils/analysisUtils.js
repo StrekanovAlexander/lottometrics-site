@@ -41,7 +41,8 @@ export function computeGaps(hits, windowDraws) {
         for (let i = 1; i < positions.length; i++) {
             gaps.push(positions[i] - positions[i - 1] - 1);
         }
-        result.push({ draw_number, gaps });
+        const reversed = gaps.reverse();
+        result.push({ draw_number, gaps: reversed });
     }
     return result;
 }
