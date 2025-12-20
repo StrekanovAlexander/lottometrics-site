@@ -67,7 +67,7 @@ export default function LotteryAnalysis ({ params }) {
                 ]} />
 
                 <section className="mb-6">
-                    <h1 className={`${inter.className} text-xl font-semibold text-graphite`}>
+                    <h1 className={`${inter.className} text-md font-bold text-graphite`}>
                         {lotteryLabel} Lottery Analysis with LottoMetrics
                     </h1>
                     {/* <p class="mt-4 text-gray-700 leading-relaxed">

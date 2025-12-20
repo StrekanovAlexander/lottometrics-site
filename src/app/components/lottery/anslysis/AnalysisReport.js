@@ -1,11 +1,11 @@
+import { ChartColumn } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
 import AnalysisBar from "./AnalysisBar";
 import FrequencyPart from "./partials/FrequencyPart";
-import FrequencyCategoriesPart from "./partials/FrequencyCategoriesPart";
 import GapsPart from "./partials/GapsPart";
 
 export default function AnalysisReport({calculatedData, windowDraws, hits}) {
-    const { sortBy } = useDashboard();
+    const { sortBy, selectedNumber } = useDashboard();
 
     if (sortBy === 'value') {
         calculatedData.sort((a, b) => b.hits_count - a.hits_count);    
@@ -23,7 +23,17 @@ export default function AnalysisReport({calculatedData, windowDraws, hits}) {
                 <GapsPart windowDraws={windowDraws} hits={hits} />
             </div>
             <div>
-                <FrequencyCategoriesPart calculatedData={calculatedData} />
+                {!selectedNumber && 
+                    <button
+                        class="bg-graphite hover:bg-graphite-dark rounded-md shadow-md text-sm
+                            font-semibold text-gray-100 hover:text-white hover:shadow-lg transition px-4 py-2
+                            flex items-center gap-1"
+                    >
+                        <ChartColumn size={16} />
+                        Select Number for Analysis
+                    </button>
+                }
+                {/* <FrequencyCategoriesPart calculatedData={calculatedData} /> */}
             </div>
         </div>
     )

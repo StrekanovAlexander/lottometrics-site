@@ -16,7 +16,7 @@ export const DashboardProvider = ({ children }) => {
     });
 
     const [drawsCount, setDrawsCount] = useState(0);
-    const [windowSize, setWindowSize] = useState(20);
+    const [windowSize, setWindowSize] = useState(30);
     const [selectedNumber, setSelectedNumber] = useState(null);
     
     const [lottery, setLottery] = useState(null); // to remove
