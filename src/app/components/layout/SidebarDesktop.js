@@ -5,13 +5,14 @@ import { useDashboard } from "@/context/DashboardContext";
 import { lotteries, parts } from "@/lib/global"
 
 export default function SidebarDesktop() {
-    const { part, setPart, lotterySlug, setLotterySlug } = useDashboard();
+    const { part, setPart, lotterySlug, setLotterySlug, setSelectedNumber } = useDashboard();
     const router = useRouter();
 
     function handleLotteryClick(slug) {
         const selectedPart = "results";    
         setLotterySlug(slug);
         setPart(selectedPart);
+        setSelectedNumber(null);
         router.push(`/lottery/${slug}/analysis`); 
     }
 

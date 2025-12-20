@@ -7,12 +7,17 @@ export default function RhythmCard({item}) {
     return (
         <div
             onClick={() => setSelectedNumber(item.draw_number)} 
-            className={`bg-white border border-1 ${borderClass} rounded-md text-gray-900 flex flex-col items-center cursor-pointer`}
+            className={`bg-white border border-1 ${borderClass} rounded-sm text-gray-900 
+            pt-1 px-1 flex flex-col items-center cursor-pointer`}
         >
-            <div className={`${bgClass} w-full rounded-sm rounded-t-sm rounded-b-none text-gray-900 font-bold text-xs text-center p-1`}>
+            <span
+                onClick={() => setSelectedNumber(item.draw_number)} 
+                className={`${bgClass} w-8 h-8 flex items-center justify-center 
+                    rounded-full text-sm font-bold cursor-pointer`}
+            >
                 {item.draw_number}
-            </div>
-            <div className={`text-xxs flex flex-col gap-1 px-2 py-1 text-center font-semibold`}>
+            </span>
+            <div className={`text-xxs flex flex-col gap-1 text-center font-semibold`}>
                 {item.gaps.join('-')}
             </div>
         </div>    

@@ -8,7 +8,7 @@ import { getFreqCategory } from "@/utils/analysisUtils";
 
 export default function AnalysisData({slug}) {
     const { lotterySlug, setLotterySlug,  setPeriod, windowSize, numberKind } = useDashboard();
-    const [data, setData] = useState([]);
+    const [freqs, setFreqs] = useState([]);
     const [windowDraws, setWindowDraws] = useState([]);
     const [hits, setHits] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -22,8 +22,8 @@ export default function AnalysisData({slug}) {
         async function loadData() {
             try {
                 const res = await fetch(`/api/dashboard/lotteries/${slug}/analysis?window_size=${windowSize}`);
-                const {periodRange, rows, windowRows, hitsRows} = await res.json();
-                setData(rows);
+                const {periodRange, freqRows, windowRows, hitsRows} = await res.json();
+                setFreqs(freqRows);
                 setWindowDraws(windowRows); 
                 setHits(hitsRows);
                 setPeriod(periodRange);
@@ -40,10 +40,10 @@ export default function AnalysisData({slug}) {
     if (error) return <Error message={error} />
     if (loading) return <Spinner /> 
 
-    const filteredData = data.filter(el => el.number_kind === numberKind);
+    const filteredFreqs = freqs.filter(el => el.number_kind === numberKind);
     const filteredHits = hits.filter(el => el.number_kind === numberKind);
 
-    const calculatedData = filteredData.map(el => {
+    const calculatedFreqs = filteredFreqs.map(el => {
         const N = el.number_finish - el.number_start + 1;
         const avgFreq = windowSize * (el.numbers_count / N);
         const ratio = el.hits_count > 0 ? el.hits_count / avgFreq : 0;
@@ -59,6 +59,6 @@ export default function AnalysisData({slug}) {
     });
      
     return (
-        <AnalysisReport calculatedData={calculatedData} windowDraws={windowDraws} hits={filteredHits} />
+        <AnalysisReport calculatedFreqs={calculatedFreqs} windowDraws={windowDraws} hits={filteredHits} />
     )
 }

@@ -26,7 +26,7 @@ export async function GET(request, { params }) {
         const endDate = formatDateISO(new Date(end_date));
         const periodRange = {startDate, endDate};
 
-        const [rows] = await pool.query(`
+        const [freqRows] = await pool.query(`
             SELECT 
                 n.num AS draw_number,
                 'main' AS number_kind,
@@ -89,7 +89,7 @@ export async function GET(request, { params }) {
             ORDER BY nh.number_kind, nh.draw_number, nh.draw_id
             `, [lottery_id, windowIds]
         );
-        return NextResponse.json({periodRange, rows, windowRows, hitsRows});
+        return NextResponse.json({periodRange, freqRows, windowRows, hitsRows});
     } catch (error) {
         console.error(error);
         return NextResponse.json({ error: 'DB error' }, { status: 500 });

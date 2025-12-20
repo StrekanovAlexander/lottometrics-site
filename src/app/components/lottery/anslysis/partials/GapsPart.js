@@ -25,7 +25,7 @@ export default function GapsPart({windowDraws, hits}) {
                     </p>
                 </div>
             </div>
-            <div className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md p-3 flex flex-wrap gap-2">
+            <div className="bg-white border border-gray-200 shadow-sm hover:shadow-md transition-shadow rounded-md p-3 flex flex-wrap gap-1">
                 {gapsSeries.filter(el => el.gaps.length > 1).map((el, ix) => (
                     <RhythmCard key={ix} item={el} /> 
                 ))}

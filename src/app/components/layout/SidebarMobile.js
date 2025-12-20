@@ -6,7 +6,7 @@ import { useDashboard } from "@/context/DashboardContext";
 import { lotteries, parts } from "@/lib/global"
 
 export default function SidebarMobile() {
-    const { part, setPart, lotterySlug, setLotterySlug } = useDashboard();
+    const { part, setPart, lotterySlug, setLotterySlug, setSelectedNumber } = useDashboard();
     const router = useRouter();
     const [open, setOpen] = useState(false);
 
@@ -14,6 +14,7 @@ export default function SidebarMobile() {
         const selectedPart = "results";    
         setLotterySlug(slug);
         setPart(selectedPart);
+        setSelectedNumber(null);
         setOpen(false);
         router.push(`/lottery/${slug}/analysis`);
     }

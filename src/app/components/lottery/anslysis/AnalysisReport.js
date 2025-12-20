@@ -1,19 +1,20 @@
-import { ChartColumn } from "lucide-react";
+import { Info } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
 import AnalysisBar from "./AnalysisBar";
 import FrequencyPart from "./partials/FrequencyPart";
 import GapsPart from "./partials/GapsPart";
+import NumberAnalysisPart from "./partials/NumberAnalysisPart";
 
-export default function AnalysisReport({calculatedData, windowDraws, hits}) {
+export default function AnalysisReport({calculatedFreqs, windowDraws, hits}) {
     const { sortBy, selectedNumber } = useDashboard();
 
     if (sortBy === 'value') {
-        calculatedData.sort((a, b) => b.hits_count - a.hits_count);    
+        calculatedFreqs.sort((a, b) => b.hits_count - a.hits_count);    
     } else {
-        calculatedData.sort((a, b) => a.draw_number - b.draw_number);
+        calculatedFreqs.sort((a, b) => a.draw_number - b.draw_number);
     }
 
-    const freqData = calculatedData.filter(el => el.hits_count > 0);
+    const freqData = calculatedFreqs.filter(el => el.hits_count > 0);
 
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -24,16 +25,14 @@ export default function AnalysisReport({calculatedData, windowDraws, hits}) {
             </div>
             <div>
                 {!selectedNumber && 
-                    <button
-                        class="bg-graphite hover:bg-graphite-dark rounded-md shadow-md text-sm
-                            font-semibold text-gray-100 hover:text-white hover:shadow-lg transition px-4 py-2
-                            flex items-center gap-1"
-                    >
-                        <ChartColumn size={16} />
-                        Select Number for Analysis
-                    </button>
+                    <div className="flex items-start gap-3 rounded-md border border-gray-300 bg-white p-3 shadow-sm">
+                        <Info size={20} className="text-gray-500 text-red-700" />
+                        <p className="text-gray-700 text-sm text-red-700">
+                            Select a number to begin the analysis.
+                        </p>
+                    </div>
                 }
-                {/* <FrequencyCategoriesPart calculatedData={calculatedData} /> */}
+                {selectedNumber && <NumberAnalysisPart hits={hits} windowDraws={windowDraws} />}
             </div>
         </div>
     )
