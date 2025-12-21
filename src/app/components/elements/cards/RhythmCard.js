@@ -17,7 +17,7 @@ export default function RhythmCard({item}) {
                 {item.draw_number}
             </span>
             <div className={`text-xxs text-center font-semibold 
-                border border-1 ${borderClass} rounded-md px-1 my-2`}
+                border border-1 ${borderClass} rounded-md px-1 mt-1 mb-1`}
             >
                 {item.gaps.join('-')}
             </div>
