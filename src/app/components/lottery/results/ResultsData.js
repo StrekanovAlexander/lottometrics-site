@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import { Info } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../../components/elements/messages/Spinner"
 import Error from "../../../components/elements/messages/Error";
@@ -56,11 +57,25 @@ export default function ResultsData({slug}) {
           <ResultsTable data={data} />
         </div>
         <div>
+          <div className="bg-gray-50 border border-gray-300 rounded-md p-4 shadow-sm mb-6">
+            <div className="flex items-center gap-4 mb-2">
+              <div className="w-8 h-8 rounded-full bg-white border border-gray-300 
+                flex items-center justify-center shadow-sm"
+              >
+                <Info size={16} className="text-gray-700" />
+              </div>
+              <div>
+                <h2 className="text-sm font-bold text-gray-700">
+                  About Lottery {lottery.lottery_name}
+                </h2>
+              </div>
+            </div>
+            <p class="bg-white text-gray-500 border rounded-lg text-sm text-justify p-2">
+              {lottery.description_en}
+            </p>
+          </div>
         </div>
       </div> 
-      <p class="w-1/2 my-4 text-gray-500 text-sm text-justify">
-        {lottery.description_en}
-      </p> 
     </>
   )
 }
