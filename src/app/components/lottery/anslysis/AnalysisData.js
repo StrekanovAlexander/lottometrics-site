@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../elements/messages/Spinner"
 import Error from "../../elements/messages/Error";
+import AnalysisBar from "./AnalysisBar";
 import AnalysisReport from "./AnalysisReport";
 import { getFreqCategory } from "@/utils/analysisUtils";
 
@@ -59,6 +60,9 @@ export default function AnalysisData({slug}) {
     });
      
     return (
-        <AnalysisReport calculatedFreqs={calculatedFreqs} windowDraws={windowDraws} hits={filteredHits} />
+        <>
+            <AnalysisBar slug={slug} />
+            <AnalysisReport calculatedFreqs={calculatedFreqs} windowDraws={windowDraws} hits={filteredHits} />
+        </>
     )
 }

@@ -1,43 +1,18 @@
-"use client";
+import { Table2 } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
-import { formatDate } from "@/utils/formatDate";
+import AnalysisPeriodPart from "./partials/AnalysisPeriodPart"
 
-export default function AnalysisBar() {
-    const { period, windowSize, setWindowSize, numberKind, 
-        setNumberKind, setSelectedNumber, sortBy, setSortBy } = useDashboard();
+export default function AnalysisBar({slug}) {
+    const { numberKind, setNumberKind, setSelectedNumber, sortBy, setSortBy } = useDashboard();
     return (
-        <div className="bg-gray-50 border border-gray-300 rounded-md p-2 mb-6 shadow-sm">
-            <div className="flex flex-wrap gap-2 text-sm text-gray-500">
-                <div className="flex flex-col md:flex-row items-center gap-1">
-                    <label>Window Size</label>
-                    <input
-                        type="number"
-                        onChange={(ev) => setWindowSize(ev.target.value)}
-                        value={windowSize}
-                        className="border border-gray-300 rounded p-1 w-20 text-gray-700 font-semibold text-center"
-                    />
-                </div>
-                <div className="flex flex-col md:flex-row items-center gap-1">
-                    <label>Period</label>
-                    <div className="flex gap-1">
-                        <input
-                            type="text"
-                            value={formatDate(period.startDate)}
-                            readOnly={true}
-                            className="border border-gray-300 rounded p-1 w-20 text-gray-700 font-semibold text-center"
-                        />
-                        <input
-                            type="text"
-                            value={formatDate(period.endDate)}
-                            readOnly={true}
-                            className="border border-gray-300 rounded p-1 w-20 text-gray-700 font-semibold text-center"
-                        />
-                    </div>
-                </div>
-                <div className="flex flex-col md:flex-row items-center gap-1">
-                    <label>Sort By</label>
+        <div className="bg-gray-50 mb-6 border border-gray-300 rounded-md p-1 
+            flex flex-col lg:flex-row justify-start lg:justify-between gap-2">
+            <div className="flex flex-col md:flex-row gap-2">
+                <AnalysisPeriodPart />
+                <div className="flex items-center text-xs gap-2">
+                    <span>Sort By</span>
                     <select
-                        className="border border-gray-300 rounded p-1 text-gray-700 font-semibold"
+                        className="border border-gray-300 rounded p-0.5 text-gray-700 font-semibold"
                         value={sortBy}
                         onChange={(e) => {
                             setSortBy(e.target.value);
@@ -46,11 +21,10 @@ export default function AnalysisBar() {
                         <option value="value">Frequency</option>
                         <option value="number">Numbers</option>
                     </select>
-                </div>
-                <div className="flex flex-col md:flex-row items-center gap-1">
-                    <label>Filter</label>
+
+                    <span>Filter</span>
                     <select
-                        className="border border-gray-300 rounded p-1 text-gray-700 font-semibold"
+                        className="border border-gray-300 rounded p-0.5 text-gray-700 font-semibold"
                         value={numberKind}
                         onChange={(e) => {
                             setNumberKind(e.target.value);
@@ -59,9 +33,21 @@ export default function AnalysisBar() {
                     >
                         <option value="main">Main numbers</option>
                         <option value="extra">Extra numbers</option>
-                  </select>
+                    </select>    
                 </div>
+            </div>
+            <div>
+                <a
+                    href={`/lottery/${slug}`}
+                    className="inline-block px-4 py-2 bg-graphite text-white text-sm border font-semibold 
+                        rounded-md shadow-md hover:shadow-md hover:bg-graphite-dark transition"
+                >
+                    <span className="flex items-center gap-1">
+                        <Table2 size={16} />
+                        Lottery Results
+                    </span>
+                </a>
             </div>
         </div>
     )
-} 
+}

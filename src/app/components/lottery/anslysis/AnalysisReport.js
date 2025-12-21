@@ -1,6 +1,5 @@
 import { Info } from "lucide-react";
 import { useDashboard } from "@/context/DashboardContext";
-import AnalysisBar from "./AnalysisBar";
 import FrequencyPart from "./partials/FrequencyPart";
 import GapsPart from "./partials/GapsPart";
 import NumberAnalysisPart from "./partials/NumberAnalysisPart";
@@ -19,7 +18,6 @@ export default function AnalysisReport({calculatedFreqs, windowDraws, hits}) {
     return (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
-                <AnalysisBar/>
                 <FrequencyPart freqData={freqData} />
                 <GapsPart windowDraws={windowDraws} hits={hits} />
             </div>

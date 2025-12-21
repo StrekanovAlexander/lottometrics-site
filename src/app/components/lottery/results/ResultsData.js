@@ -66,7 +66,7 @@ export default function ResultsData({slug}) {
               </div>
               <div>
                 <h2 className="text-sm font-bold text-gray-700">
-                  About Lottery {lottery.lottery_name}
+                  About the Lottery {lottery.lottery_name}
                 </h2>
               </div>
             </div>
