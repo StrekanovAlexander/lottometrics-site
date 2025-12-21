@@ -1,6 +1,6 @@
 // /lottery/[slug]
-
-import ResultsPage from "@/app/components/lottery/results/ResultsPage";
+import Breadcrumbs from "@/app/components/layout/Breadcrumb";
+import ResultsData from "@/app/components/lottery/results/ResultsData";
 import { lotteries, isLotteryExists } from "@/lib/global";
 
 export async function generateMetadata({ params }) {
@@ -8,25 +8,26 @@ export async function generateMetadata({ params }) {
   if (!slug || !isLotteryExists(slug)) {
     return { title: "Lotteries | LottoMetrics" };
   }
-  const lottery = lotteries.find(el => el.slug === slug);
-  const name = lottery?.label ?? slug;
 
+  const lottery = lotteries.find(el => el.slug === slug);
+  const lotteryName = lottery?.label ?? slug;
+  
   return {
-    title: `${name} Lottery Results | LottoMetrics`,
-    description: `View official ${name} lottery results and archives with LottoMetrics. Explore past draws, winning numbers, and detailed statistics to better understand ${name} patterns.`,
+    title: `${lotteryName} Lottery Results | LottoMetrics`,
+    description: `View official ${lotteryName} lottery results and archives with LottoMetrics. Explore past draws, winning numbers, and detailed statistics to better understand ${lotteryName} patterns.`,
     alternates: { canonical: `https://www.lottometrics.app/lottery/${slug}`},
     keywords: [
-      `${name} results`,
-      `${name} lottery results`,
-      `${name} winning numbers`,
-      `${name} draw archives`,
+      `${lotteryName} results`,
+      `${lotteryName} lottery results`,
+      `${lotteryName} winning numbers`,
+      `${lotteryName} draw archives`,
       "lottery statistics",
       "lotto metrics",
       "lottery analysis",
     ],
     openGraph: {
-      title: `${name} Lottery Results | LottoMetrics`,
-      description: `Discover official ${name} results, winning numbers, and historical draw archives with LottoMetrics.`,
+      title: `${lotteryName} Lottery Results | LottoMetrics`,
+      description: `Discover official ${lotteryName} results, winning numbers, and historical draw archives with LottoMetrics.`,
       url: `https://lottometrics.app/lottery/${slug}`,
       siteName: "LottoMetrics",
       type: "website",
@@ -41,8 +42,8 @@ export async function generateMetadata({ params }) {
     },
     twitter: {
       card: "summary",
-      title: `${name} Lottery Results | LottoMetrics`,
-      description: `Check official ${name} results, winning numbers, and archives with LottoMetrics.`,
+      title: `${lotteryName} Lottery Results | LottoMetrics`,
+      description: `Check official ${lotteryName} results, winning numbers, and archives with LottoMetrics.`,
     },
   };
 }
@@ -53,7 +54,17 @@ export default function LotteryResultsPage({ params }) {
     return <p>Select a Lottery</p>;
   }
 
+  const lottery = lotteries.find(el => el.slug === slug);
+  const lotteryName = lottery?.label ?? slug;
+
   return (
-    <ResultsPage slug={slug} />  
+    <>
+      <Breadcrumbs items={[
+        { label: "Home", href: "/" },
+        { label: "Lotteries", href: "/lotteries"},
+        { label: lotteryName},
+      ]} /> 
+      <ResultsData slug={slug} />
+    </>  
   )
 }

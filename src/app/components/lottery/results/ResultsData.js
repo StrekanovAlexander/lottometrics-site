@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import { useDashboard } from "@/context/DashboardContext";
 import Spinner from "../../../components/elements/messages/Spinner"
 import Error from "../../../components/elements/messages/Error";
-import Breadcrumbs from "../../../components/layout/Breadcrumb";
 import ResultsBar from "./ResultsBar";
 import ResultsTable from "./ResultsTable";
 import { Inter } from "next/font/google";
@@ -13,7 +12,7 @@ const inter = Inter({
   weight: ["400", "600", "800"],
 });
 
-export default function ResultsPage({slug}) {
+export default function ResultsData({slug}) {
   const { period, drawsCount, setDrawsCount } = useDashboard();
   const [data, setData] = useState([]);
   const [lottery, setLottery] = useState([]);
@@ -44,31 +43,24 @@ export default function ResultsPage({slug}) {
 
   return (
     <>
-      <Breadcrumbs items={[
-        { label: "Home", href: "/" },
-        { label: "Lotteries", href: "/lotteries"},
-        { label: `${lottery.lottery_name}`},
-      ]} />  
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto text-center">
-          <section className="mb-6">
-            <h1 className={`${inter.className} text-2xl font-bold text-graphite`}>
-              {lottery.lottery_name} Lottery
-            </h1>
-            <h2 className="font-semibold">
-              {lottery.country} {lottery.description_short_en}
-            </h2>
-            <p class="mt-2 text-gray-700 text-sm">
-              {lottery.description_en}
-            </p>
-          </section>
-          <h3 className={`${inter.className} my-6 text-lg font-semibold`}>
-            {lottery.lottery_name} Results & Winning Numbers
-          </h3>
-          <ResultsBar slug={slug} />
+      <h1 className={`${inter.className} text-md font-bold text-graphite`}>
+        {lottery.lottery_name} Lottery Results
+      </h1>
+      <h2 className="text-sm mb-6">
+        {lottery.country} {lottery.description_short_en}
+      </h2>
+      
+      <ResultsBar slug={slug} />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
           <ResultsTable data={data} />
         </div>
-      </div>    
+        <div>
+        </div>
+      </div> 
+      <p class="w-1/2 my-4 text-gray-500 text-sm text-justify">
+        {lottery.description_en}
+      </p> 
     </>
   )
 }
